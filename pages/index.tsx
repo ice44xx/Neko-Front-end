@@ -5,6 +5,7 @@ import CardSection from "@/components/homeNoAuth/cardsSection";
 import SlideSection from "@/components/homeNoAuth/slideSection";
 import { GetStaticProps } from "next";
 import animeService, { AnimeType } from "@/services/animesService";
+import Footer from "@/components/common/footer";
 
 interface IndexPageProps {
     children?: ReactNode;
@@ -26,7 +27,7 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
                 <HeadNoAuth/>
                 <SlideSection newestAnimes={anime}/>
                 <CardSection/>
-                
+                <Footer/>
             </main>
         </>
     )

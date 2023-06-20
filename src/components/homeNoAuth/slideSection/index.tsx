@@ -10,8 +10,10 @@ const SlideSection = ({newestAnimes}: props) => {
     return (
         <>
             <div>
-                <p className={styles.title}>Animes em destaques</p>
-                <SlideComponent anime={newestAnimes}/>
+                <p className={styles.title}>Top 10 em destaques</p>
+                <div className={styles.container}>
+                    <SlideComponent anime={newestAnimes}/>
+                </div>
             </div>
         </>
     )

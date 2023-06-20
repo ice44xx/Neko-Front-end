@@ -1,0 +1,53 @@
+.slide{
+    position: relative;
+    width: 310px;
+    height: 410px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0px 0px 19px 2px rgba(0,0,0,0.75);
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover{
+        border: 2px solid rgb(119, 119, 119);
+        transition: all 0.3s;
+    }
+    .title{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.884);
+        color: black;
+        font-size: 30px;
+        
+    }
+    .synopsis{
+        position: absolute;
+        bottom: -150px;
+        left: 0;
+        font-size: 20px;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.884);
+        padding: 6px;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    .slideImg{
+        min-width: 310px;
+        transition: all 0.3s;
+    }
+    &:hover{
+        .slideImg{
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+        .synopsis{
+            opacity: 1;
+            bottom: 0;
+            transition: all 0.3s;
+        }
+    }
+}

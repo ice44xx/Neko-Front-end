@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     gap: 25px;
-    padding: 0 50px;
+    padding: 50px;
     .cardOne{
         display: flex;
         flex-direction: column;
@@ -150,5 +150,25 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 1500px){
+    .container{
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        align-items: center;
+    }
+}
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 885px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

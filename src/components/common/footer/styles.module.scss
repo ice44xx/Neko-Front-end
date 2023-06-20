@@ -1,0 +1,44 @@
+.containerImg{
+    position: relative;
+    height: 355px;
+    overflow: hidden;
+    .img{
+        z-index: 3;
+        position: absolute;
+        top: -5px;
+        left: 30px;
+        width: 80px;
+    }
+    .footer{
+        position: absolute;
+        bottom: 0;
+        height: 200px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 18px;
+        background-color: rgb(15, 15, 15);
+        .hr{
+            width: 800px;
+            height: 1px;
+            color: #fff;
+        }
+        .containerImgEnd{
+            position: relative;
+            .imgEnd{
+                position: absolute;
+                width: 50px;
+                bottom: -55px;
+                cursor: pointer;
+            }
+        }&:hover{
+            .imgEnd{
+                bottom: -74px;
+            }
+        }
+    }
+    
+}
