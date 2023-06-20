@@ -1,14 +1,3 @@
-.ctaSeaction{
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(247, 247, 247);
-    p {
-        color: black;
-        font-size: 25px;
-    }
-}
 .nav{
     height: 120px;
     background-color: rgb(15, 15, 15);
@@ -17,7 +6,7 @@
     justify-content: space-between;
     padding: 0 50px;
     .imgCta{
-        margin-top: -20px;  
+        width: 300px;
     }
     .containerButton{
         display: flex;
@@ -34,6 +23,9 @@
                 border-bottom: 2px solid rgb(145, 20, 247);
                 transition: ease-in-out 0.3s;
             }
+            &:focus{
+                box-shadow: none;
+            }
         }
     }
 
@@ -42,9 +34,6 @@
 @media(max-width: 650px){
     .nav{
         padding: 0 30px;
-        .imgCta{
-            width: 300px;
-        }
         .containerButton{
             .button{
                 padding: 12px 0px;

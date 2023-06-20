@@ -10,6 +10,7 @@
     justify-content: center;
     gap: 25px;
     padding: 50px;
+    overflow: hidden;
     .cardOne{
         display: flex;
         flex-direction: column;
@@ -170,5 +171,43 @@
 @media (max-width: 885px) {
     .container {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        .cardOne{
+            width: 250px;
+            height: 340px;
+        }
+        .cardSecond{
+            width: 250px;
+            height: 340px;
+        }
+        .cardThird{
+            width: 250px;
+            height: 340px;
+        }
+        .cardFourth{
+            width: 250px;
+            height: 340px;
+        }
+        .cardFifith{
+            width: 250px;
+            height: 340px;
+        }
+    }
+    
+    
+}
+@media (max-width: 550px) {
+    .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media(max-width: 430px) {
+    .title{
+        font-size: 40px;
+        padding: 50px 10px;
     }
 }

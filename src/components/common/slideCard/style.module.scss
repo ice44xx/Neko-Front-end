@@ -1,3 +1,4 @@
+
 .slide{
     position: relative;
     width: 310px;
@@ -49,5 +50,18 @@
             bottom: 0;
             transition: all 0.3s;
         }
+    }
+}
+
+@media (max-width: 1200px) {
+    .slide{
+        width: 280px;
+        height: 380px;
+    }
+}
+@media (max-width: 300px) {
+    .slide{
+        width: 260px;
+        height: 380px;
     }
 }

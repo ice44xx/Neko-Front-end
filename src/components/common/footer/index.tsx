@@ -6,7 +6,7 @@ const Footer = () => {
             <div className={styles.containerImg}>
             <img src="/footer.png" alt="" className={styles.img}/>
                 <div className={styles.footer}>
-                    <p>Esse site não hospeda nenhum vídeo em seu servidor. Todo o conteúdo é disponibilizado por terceiros não afiliados.</p>
+                    <p className={styles.desc}>Esse site não hospeda nenhum vídeo em seu servidor. Todo o conteúdo é disponibilizado por terceiros não afiliados.</p>
                     <p>© 2023 - Neko Animes - Todos os Direitos Reservados</p>
                     <hr className={styles.hr}/>
                     <div className={styles.containerImgEnd}>

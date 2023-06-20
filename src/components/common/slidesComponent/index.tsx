@@ -1,3 +1,4 @@
+import styles from './styles.module.scss'
 import { AnimeType } from '@/services/animesService';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css'
@@ -11,19 +12,23 @@ const SlideComponent = ({anime}: props) => {
     return(
         <>
             <div>
-                <Splide options={{type: 'loop', perPage: 4, perMove: 1, pagination: false, width: 1500, breakpoints: {
-                    1500: {
+                <Splide className={styles.mySplide} options={{type: 'loop', perPage: 4, perMove: 1, pagination: true, width: 1450, breakpoints: {
+                    1450: {
                         perPage: 3,
-                        width: 1200
+                        width: 1150
                     },
-                    1175: {
+                    1125: {
+                        width: 1000
+                    },
+                    1000: {
                         perPage: 2,
-                        width: 800
+                        width: 650
                     },
-                    800: {
+                    635: {
                         perPage: 1,
-                        width: 600
+                        width: 400
                     }
+                    
                 }}}>
                     {anime?.map((anime) => (
                         <SplideSlide key={anime.id}>
