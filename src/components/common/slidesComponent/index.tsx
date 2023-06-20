@@ -1,13 +1,13 @@
 import { AnimeType } from '@/services/animesService';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/splide.min.js'
+import '@splidejs/splide/dist/css/splide.min.css'
 import SlideCard from '../slideCard';
 
 interface props {
     anime: AnimeType[];
 }
 
-const slideComponent = ({anime}: props) => {
+const SlideComponent = ({anime}: props) => {
     return(
         <>
             <div>
@@ -23,4 +23,4 @@ const slideComponent = ({anime}: props) => {
     )
 }
 
-export default slideComponent
+export default SlideComponent
