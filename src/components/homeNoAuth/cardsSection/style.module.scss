@@ -1,0 +1,154 @@
+.title{
+    font-size: 50px;
+    padding: 50px;
+}
+.container{
+    background-image: url('/paws.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 0 50px;
+    .cardOne{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border: 2px solid rgb(255, 255, 255);
+        width: 270px;
+        height: 350px;
+        border-radius: 5px;
+        transition: all ease-in-out 0.3s;
+        background: linear-gradient(rgba(0,0,0,0.7),rgb(0, 0, 0, 1)), url('/cardClass/Shounen.png');
+        background-size: cover;
+        box-shadow: 0px 4px 16px -3px rgba(0,0,0,0.75);
+        overflow: hidden;
+        cursor: pointer;
+        &:hover{
+            transform: translateY(-15px);
+            transition: all ease-in-out 0.3s;
+            border: 2px solid rgb(247, 58, 58);
+            .titleCard{
+                color: rgb(247, 58, 58);
+                margin: 0px;
+                font-size: 40px;
+                transition: all ease-in-out 0.3s;
+            }
+            .exampleCard{
+                span{
+                    color: rgb(247, 58, 58);
+                }
+                bottom: 10px;
+                opacity: 1;
+                transition: all ease-in 0.3s;
+            }
+            .descriptionCard{
+                opacity: 1;
+                font-size: 22px;
+                transition: all 0.3s;
+            }
+        }
+        .titleCard{
+            opacity: 1;
+            padding: 20px;
+            margin: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            transition: all ease-in-out 0.3s;
+        }
+        .descriptionCard{
+            opacity: 0;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 30px;
+            padding: 0 5px;
+            transition: all 0.3s;
+        }
+        .exampleCard{
+            position: absolute;
+            bottom: -35px;
+            width: 100%;
+            opacity: 0;
+            font-size: 18px;
+            text-align: center;
+            background-color: rgb(34, 34, 34);
+            transition: all ease-in-out 0.3s;
+            span{
+                color: rgb(145, 20, 247);
+            }
+        }
+    }
+    .cardSecond{
+        @extend .cardOne;
+        background-position: center;
+        background-size: cover;
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Seinen.png');
+        &:hover{
+            border: 2px solid rgb(255, 153, 0);
+            .titleCard{
+                color: rgb(255, 153, 0)
+            }
+            .exampleCard{
+                span{
+                    color: rgb(255, 153, 0);
+                }
+            }
+        }
+    }
+    .cardThird{
+        @extend .cardOne;
+        background-position: center;
+        background-size: cover;
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Shoujo.png');
+        &:hover{
+            border: 2px solid rgb(0, 174, 255);
+            .titleCard{
+                color: rgb(0, 174, 255)
+            }
+            .exampleCard{
+                span{
+                    color: rgb(0, 174, 255);
+                }
+            }
+        }
+    }
+    .cardFourth{
+        @extend .cardOne;
+        background-position: center;
+        background-size: cover;
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Josei.png');
+        &:hover{
+            border: 2px solid pink;
+            .titleCard{
+                color: pink
+            }
+            .exampleCard{
+                span{
+                    color: pink;
+                }
+            }
+        }
+    }
+    .cardFifith{
+        @extend .cardOne;
+        background-position: center;
+        background-size: cover;
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Kodomo.png');
+        &:hover{
+            border: 2px solid rgb(255, 208, 0);
+            .titleCard{
+                color: rgb(255, 208, 0);
+            }
+            .exampleCard{
+                span{
+                    color: rgb(255, 208, 0);
+                }
+            }
+        }
+    }
+}
