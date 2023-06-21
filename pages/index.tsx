@@ -17,7 +17,7 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
         <>
             <Head>
                 <title>Neko Animes</title>
-                <link rel="shortcut icon" href="/footer-cat-two.png" type="image/x-icon" />
+                <link rel="shortcut icon" href="/assets/footer-cat.png" type="image/x-icon" />
                 <meta property="og:title" content="Neko Animes" key = "title"/>
                 <meta name="description" content="" />
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>

@@ -3,6 +3,8 @@ import styles from '../styles/registerLogin.module.scss'
 import Head from 'next/head'
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
 import Footer from '@/components/common/footer'
+import Link from 'next/link'
+import FooterGeneric from '@/components/common/footerGeneric'
 
 const Register = () => {
     return (
@@ -17,12 +19,7 @@ const Register = () => {
                 <HeaderGeneric logoUrl='/' btnUrl='/login' btnContent='Quero Logar'/>
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>
-                        <div className={styles.welcome}>
-                            <p className={styles.title}>Olá,</p>
-                            <p className={styles.desc}>Primeiros passos para se tornar um Neko</p>
-                        </div>
-                        
-                        
+                        <div className={styles.welcome}></div>
                     </div>
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>
@@ -54,20 +51,17 @@ const Register = () => {
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Label for = 'password' className={styles.label}>Confirme sua senha</Label>
-                                    <Input required id='password' name='password' type='password' placeholder='Confirme sua senha' minLength={6} maxnLength={20} className={styles.input} />
+                                    <Label for = 'passwordConfirm' className={styles.label}>Confirme sua senha</Label>
+                                    <Input required id='passwordConfirm' name='passwordConfirm' type='password' placeholder='Confirme sua senha' minLength={6} maxnLength={20} className={styles.input} />
                                 </FormGroup>
                                 <div className={styles.containerBtn}>
-                                    <Button className={styles.btn}>Criar agora</Button>
+                                    <Button className={styles.btn} type='submit'>Criar agora</Button>
                                 </div>
                             </Form>
                         </div>
                     </div>
                 </div>
-
-                <div className={styles.footer}>
-                    <img src="/footer-cat-two.png" alt="" className={styles.img} />
-                </div>
+                <FooterGeneric/>
             </main>
         </>
     )

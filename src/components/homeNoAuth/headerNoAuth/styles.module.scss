@@ -35,9 +35,16 @@
                 background-color: transparent;
                 border-bottom: 2px solid rgb(145, 20, 247);
                 transition: ease-in-out 0.3s;
+                transform: scale(90%);
             }
             &:focus{
                 box-shadow: none;
+            }
+        }
+        .buttonEntry{
+            @extend .button;
+            &:hover{
+                border-bottom: 2px solid rgb(35, 145, 248);
             }
         }
     }

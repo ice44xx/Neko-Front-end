@@ -1,7 +1,7 @@
 import styles from './styles.module.scss'
 import { AnimeType } from '@/services/animesService';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/splide.min.css'
+import '@splidejs/react-splide/css/skyblue';
 import SlideCard from '../slideCard';
 
 interface props {

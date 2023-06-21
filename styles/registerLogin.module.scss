@@ -1,13 +1,13 @@
 .container{
     display: flex;
     .containerLeft{
-        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
         width: 60%;
-        height: 840px;
-        background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.8)),url('/teste1.jpg');
+        height: 100vh;
+        min-height: 840px;
+        background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.8)),url('/assets/register.jpg');
         background-size: cover;
         background-position: center;
         .welcome{
@@ -17,8 +17,7 @@
             text-align: center;
             .title{
                 font-size: 100px;
-                font-weight: 600;
-                
+                font-weight: 600;  
             }
             .desc{
                 font-size: 46px;
@@ -27,7 +26,9 @@
         }
     }
     .containerRight{
-        height: 840px;
+        overflow: hidden;
+        min-height: 840px;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -35,7 +36,7 @@
         padding: 0 30px;
         background-color: #fff;
         .containerRightContent{
-            margin-top: -30px;
+            margin-top: 120px;
             width: 550px;
             color: black;
             .title{
@@ -69,42 +70,13 @@
                     }
                 }
             }
-            
         }
     }
 }
-.footer{
-    display: flex;
-    justify-content: center;
-    background-color: rgb(15, 15, 15);
-    height: 50px;
-    position: relative;
-    overflow: hidden;
-    .img{
-        position: absolute;
-        width: 50px;
-    }&:hover{
-        .img{
-            bottom: -20px;
-        }
-    }
-}
-
 @media (max-width: 880px){
     .container{
         .containerLeft{
             width: 45%;
-            .welcome{
-                .title{
-                    font-size: 60px;
-                    font-weight: 600;
-                    
-                }
-                .desc{
-                    font-size: 30px;
-                    font-weight: 600;
-                }
-            }
         }
         .containerRight{
             width: 55%;
@@ -118,6 +90,7 @@
         }
         .containerRight{
             width: 100%;
+            min-height: 900px;
             .containerRightContent{
                 .containerBtn{
                     display: flex;
@@ -125,7 +98,14 @@
                     align-items: center;
                 }
             }
-            
+        }
+    }
+}
+@media (max-width: 480px){
+    .container{
+        .containerRight{
+            width: 100%;
+            margin-top: 60px;
         }
     }
 }
