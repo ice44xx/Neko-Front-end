@@ -7,9 +7,11 @@
         width: 60%;
         height: 100vh;
         min-height: 840px;
-        background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.8)),url('/assets/register.jpg');
-        background-size: cover;
-        background-position: center;
+        img{
+            width: max-content;
+            height: 100%;
+            pointer-events: none;
+        }
         .welcome{
             position: absolute;
             padding: 0 15px;

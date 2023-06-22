@@ -2,16 +2,67 @@ import HeaderGeneric from '@/components/common/headerGeneric'
 import styles from '../styles/registerLogin.module.scss'
 import Head from 'next/head'
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
-import Footer from '@/components/common/footer'
-import Link from 'next/link'
 import FooterGeneric from '@/components/common/footerGeneric'
-
+import {FormEvent, useState, useEffect} from 'react'
+import authService from '@/services/authService'
+import { useRouter } from 'next/router'
+import ToastComponent from '@/components/common/toast'
 const Register = () => {
+    const images = ['register.webp', 'register_one.webp', 'register_two.webp', 'register_third.webp']
+    const [randomImage, setRandomImage] = useState('')
+
+    useEffect(() => {
+        const index = Math.floor(Math.random() * images.length)
+        const randomImage = images[index]
+       setRandomImage(randomImage)
+    }, [])
+
+
+    const router = useRouter()
+    const [toast, setToast] = useState(false)
+    const [toastMessage, setToastMessage] = useState('')
+
+    const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget)
+        const firstName = formData.get('firstName')!.toString()
+        const userName = formData.get('userName')!.toString()
+        const email = formData.get('email')!.toString()
+        const birthday = formData.get('birthday')!.toString()
+        const password = formData.get('password')!.toString()
+        const passwordConfirm = formData.get('passwordConfirm')!.toString()
+
+        const attributes = {firstName, userName, email, birthday, password}
+
+        if(password !== passwordConfirm) {
+            setToast(true)
+            setTimeout(() => {
+                setToast(false)
+            }, 1000 * 3)
+            setToastMessage("Senha incorreta")
+            return
+        }
+
+        const {data, status} = await authService.register(attributes)
+
+        if(status === 201) {
+            router.push("/login?registred=true")
+        } else if (status === 400) {
+            setToast(true)
+            setTimeout(() => {
+                setToast(false)
+            }, 1000 * 3)
+            setToastMessage(data.message)
+            return
+        }
+    }
+
     return (
         <>
             <Head>
                 <title>Neko Animes - Registro</title>
-                <link rel="shortcut icon" href="/footer-cat-two.png" type="image/x-icon" />
+                <link rel="shortcut icon" href="/assets/footer-cat.png" type="image/x-icon" />
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet"></link>
             </Head>
@@ -19,11 +70,11 @@ const Register = () => {
                 <HeaderGeneric logoUrl='/' btnUrl='/login' btnContent='Quero Logar'/>
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>
-                        <div className={styles.welcome}></div>
+                        <img src={`/assets/${randomImage}`}/>
                     </div>
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>
-                            <Form>
+                            <Form onSubmit={handleRegister}>
                                 <p className={styles.title}><strong>Crie sua conta</strong></p>
                                 <FormGroup className={styles.formgroup}>
                                     <Label for = 'firstName' className={styles.label}>Nome</Label>
@@ -31,8 +82,8 @@ const Register = () => {
                                 </FormGroup>
 
                                 <FormGroup>
-                                    <Label for = 'nickName' className={styles.label}>Nick (apelido)</Label>
-                                    <Input required maxLength={15} id='nickName' name='nickName' type='text' placeholder='Escolha seu username' className={styles.input} />
+                                    <Label for = 'userName' className={styles.label}>Nick (apelido)</Label>
+                                    <Input required maxLength={15} id='userName' name='userName' type='text' placeholder='Escolha seu username' className={styles.input} />
                                 </FormGroup>
 
                                 <FormGroup>
@@ -47,13 +98,14 @@ const Register = () => {
 
                                 <FormGroup>
                                     <Label for = 'password' className={styles.label}>Senha</Label>
-                                    <Input required id='password' name='password' type='password' placeholder='Digite uma senha' minLength={6} maxnLength={20} className={styles.input} />
+                                    <Input required id='password' name='password' type='password' placeholder='Digite uma senha' minLength={6} maxLength={20} className={styles.input} />
                                 </FormGroup>
 
                                 <FormGroup>
                                     <Label for = 'passwordConfirm' className={styles.label}>Confirme sua senha</Label>
-                                    <Input required id='passwordConfirm' name='passwordConfirm' type='password' placeholder='Confirme sua senha' minLength={6} maxnLength={20} className={styles.input} />
+                                    <Input required id='passwordConfirm' name='passwordConfirm' type='password' placeholder='Confirme sua senha' minLength={6} maxLength={20} className={styles.input} />
                                 </FormGroup>
+
                                 <div className={styles.containerBtn}>
                                     <Button className={styles.btn} type='submit'>Criar agora</Button>
                                 </div>
@@ -62,6 +114,7 @@ const Register = () => {
                     </div>
                 </div>
                 <FooterGeneric/>
+                <ToastComponent isOpen={toast} message={toastMessage}/>
             </main>
         </>
     )
