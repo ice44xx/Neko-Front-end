@@ -9,6 +9,12 @@ import authService from '@/services/authService'
 import ToastError from '@/components/common/toastError'
 
 const Login = () => {
+    useEffect (() => {
+        if(sessionStorage.getItem('nekoanimes-token')) {
+            router.push('/home')
+        }
+    }, [])
+    
     const images = ['register.webp', 'register_one.webp', 'register_two.webp', 'register_third.webp']
     const [randomImage, setRandomImage] = useState('')
 
