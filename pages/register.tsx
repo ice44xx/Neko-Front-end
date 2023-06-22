@@ -1,12 +1,12 @@
 import HeaderGeneric from '@/components/common/headerGeneric'
-import styles from '../styles/registerLogin.module.scss'
+import styles from '../styles/register&login.module.scss'
 import Head from 'next/head'
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
 import FooterGeneric from '@/components/common/footerGeneric'
 import {FormEvent, useState, useEffect} from 'react'
 import authService from '@/services/authService'
 import { useRouter } from 'next/router'
-import ToastComponent from '@/components/common/toast'
+import ToastError from '@/components/common/toastError'
 const Register = () => {
     const images = ['register.webp', 'register_one.webp', 'register_two.webp', 'register_third.webp']
     const [randomImage, setRandomImage] = useState('')
@@ -62,9 +62,6 @@ const Register = () => {
         <>
             <Head>
                 <title>Neko Animes - Registro</title>
-                <link rel="shortcut icon" href="/assets/footer-cat.png" type="image/x-icon" />
-                <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet"></link>
             </Head>
             <main>
                 <HeaderGeneric logoUrl='/' btnUrl='/login' btnContent='Quero Logar'/>
@@ -114,7 +111,7 @@ const Register = () => {
                     </div>
                 </div>
                 <FooterGeneric/>
-                <ToastComponent isOpen={toast} message={toastMessage}/>
+                <ToastError isOpen={toast} message={toastMessage}/>
             </main>
         </>
     )

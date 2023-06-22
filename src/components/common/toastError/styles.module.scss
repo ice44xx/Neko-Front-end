@@ -1,0 +1,19 @@
+.toast{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 70, 70);
+    .toastBody{
+        margin-left: 60px;
+        font-size: 25px;
+        .img{
+            margin-top: -10px;
+            width: 80px;
+        }
+    }
+}

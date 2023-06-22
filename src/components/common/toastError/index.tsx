@@ -6,7 +6,7 @@ interface props {
     message: string
 }
 
-const ToastComponent = ({isOpen, message}: props) => {
+const ToastError = ({isOpen, message}: props) => {
     return(
         <>
             <Toast className={styles.toast} isOpen={isOpen} >
@@ -16,4 +16,4 @@ const ToastComponent = ({isOpen, message}: props) => {
     )
 }
 
-export default ToastComponent
+export default ToastError

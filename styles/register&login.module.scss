@@ -12,20 +12,6 @@
             height: 100%;
             pointer-events: none;
         }
-        .welcome{
-            position: absolute;
-            padding: 0 15px;
-            top: 25%;
-            text-align: center;
-            .title{
-                font-size: 100px;
-                font-weight: 600;  
-            }
-            .desc{
-                font-size: 46px;
-                font-weight: 600;
-            }
-        }
     }
     .containerRight{
         overflow: hidden;
