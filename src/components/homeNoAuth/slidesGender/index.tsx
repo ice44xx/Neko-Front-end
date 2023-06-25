@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./style.module.scss"
 
-const CardSection = () => {
+const SlideGender = () => {
     return (
         <>
             <p className = {styles.title}>Classificação de animes</p>
@@ -41,4 +41,4 @@ const CardSection = () => {
     )
 }
 
-export default CardSection
+export default SlideGender

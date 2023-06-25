@@ -9,6 +9,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 50px;
+    .logo{
+        width: 300px;
+    }
     .container{
         display: flex;
         justify-content: center;
@@ -26,9 +29,6 @@
             }
         }
     }
-    .imgCta{
-        width: 300px;
-    }
     .img{
         width: 40px;
         cursor: pointer;
@@ -40,15 +40,13 @@
    }
 }
 .container_search{
-    top: 120px;
-    height: 100px;
-    position: absolute;
+    margin-top: 120px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 255, 255);
     width: 100%;
-    left: 0;
     transition: all 0.3s;
     .form{
         display: flex;
@@ -71,7 +69,7 @@
     }
 }
 .active{
-    top: 0px;
+    margin-top: 0px;
     transition: all 0.3s;
 }
 .modal{
@@ -87,11 +85,11 @@
     outline: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: #fff;
+    background-color: rgb(15,15,15);
     .link{
         text-decoration: none;
         .modalLink{
-            color: black;
+            color: #fff;
             margin: 5px 0;
             font-size: 22px;
             transition: all 0.3s;
@@ -123,7 +121,7 @@
         .container{
             gap: 30px;
         }
-        .imgCta{
+        .logo{
             width: 240px;
         }
         .img{
@@ -149,16 +147,16 @@
         }
     }
     .container_search{
-        top: 190px;
+        margin-top: 170px;
         .form{
             .input{
+                width: 70%;
                 font-size: 40px;
             }
         }
     }
     .active{
-        top: 0px;
-        transition: all 0.3s;
+        margin-top: 0px;
     }
     .modal{
         width: 100%;

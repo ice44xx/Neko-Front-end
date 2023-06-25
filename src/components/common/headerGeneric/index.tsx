@@ -12,7 +12,7 @@ const HeaderGeneric = ({ logoUrl, btnUrl, btnContent }: props) => {
     return(
         <>
             <div className = {styles.nav}>
-                <Link href={logoUrl}> <img src="/assets/logo.png" alt="" className = {styles.imgCta} /> </Link>
+                <Link href={logoUrl}> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                 <div className = {styles.containerButton}>
                     <Link href = {btnUrl}><Button className = {styles.button} outline >{btnContent}</Button></Link>
                 </div>

@@ -78,7 +78,7 @@ const Login = () => {
                                 <p className={styles.title}><strong>Login</strong></p>
                                 <FormGroup className={styles.formgroup}>
                                     <Label for = 'email' className={styles.label}>E-mail</Label>
-                                    <Input required maxLength={25} id='email' name='email' type='email' placeholder='Digite seu email' className={styles.inputName}/>
+                                    <Input required id='email' name='email' type='email' placeholder='Digite seu email' className={styles.inputName}/>
                                 </FormGroup>
 
                                 <FormGroup className={styles.formgroup}>

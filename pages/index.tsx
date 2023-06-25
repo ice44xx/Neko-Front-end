@@ -1,11 +1,13 @@
 import Head from "next/head"
 import { ReactNode } from "react"
 import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth";
-import CardSection from "@/components/homeNoAuth/cardsSection";
-import SlideSection from "@/components/homeNoAuth/slideSection";
+
 import { GetStaticProps } from "next";
 import animeService, { AnimeType } from "@/services/animesService";
 import Footer from "@/components/common/footer";
+import SlidesNewest from "@/components/homeNoAuth/slidesNewest";
+import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures";
+import SlideGender from "@/components/homeNoAuth/slidesGender";
 
 interface IndexPageProps {
     children?: ReactNode;
@@ -22,8 +24,9 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
             </Head>
             <main>
                 <HeadNoAuth/>
-                <SlideSection newestAnimes={anime}/>
-                <CardSection/>
+                <SlidesNewest/>
+                <SlidesFeatures/>
+                <SlideGender/>
                 <Footer/>
             </main>
         </>

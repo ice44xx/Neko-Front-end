@@ -1,4 +1,12 @@
-import HeaderAuth from "@/components/common/headerAuth"
+import Footer from "@/components/common/footer"
+import Categories from "@/components/homeAuth/categories"
+import HeaderAuth from "@/components/homeAuth/headerAuth"
+import SlidesFavorites from "@/components/homeAuth/slidesFavorites"
+
+import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures"
+import SlideGender from "@/components/homeNoAuth/slidesGender"
+import SlidesNewest from "@/components/homeNoAuth/slidesNewest"
+
 import Head from "next/head"
 
 const Home = () => {
@@ -9,6 +17,12 @@ const Home = () => {
             </Head>
             <main>
                 <HeaderAuth/>
+                <Categories/>
+                <SlidesFavorites/>
+                <SlidesNewest/>
+                <SlidesFeatures/>
+                <SlideGender/>
+                <Footer/>
             </main>
         </>
     )

@@ -19,13 +19,57 @@ export type AnimeType = {
 
 const animeService = {
     getNewestAnimes: async () => {
-        const res = await api.get('/animes/newest').catch((error) => {
-            console.log(error.response.data.message)
-
+        try {
+            const res = await api.get('/animes/newest')
+            return res
+        } catch (error: any) {
+            //console.log(error.response.data.message)
             return error.response
+        }
+    },
+    getFeaturedAnimes: async () => {
+        try {
+            const res = await api.get('/animes/featured')
+            return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
+    addFavorite: async (animeId: number | string) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.post('/favorites', {animeId}, {headers: {
+                Authorization: `Bearer ${token}`
+            }
+            })
+            return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
+    removeFavorite: async (animeId: number | string) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.delete('/favorites', {headers: {
+                Authorization: `Bearer ${token}`
+            },
+            data: {animeId}
         })
-
         return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
+    getFavorites: async () => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.get('/favorites', {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+            return res
+        } catch (error: any) {
+            return error.response
+        }
     }
 }
 

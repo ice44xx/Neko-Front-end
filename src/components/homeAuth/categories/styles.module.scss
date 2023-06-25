@@ -1,0 +1,28 @@
+.mySplide{
+    margin: 0 auto;
+}
+.container{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .containerName{
+        border-radius: 2px;
+        text-align: center;
+        background-color: rgb(40,40,40);
+        padding: 2px;
+        min-width: 110px;
+        cursor: pointer;
+        font-size: 18px;
+        .link{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .container{
+        margin-top: 80px;
+    }
+}

@@ -9,7 +9,7 @@ Modal.setAppElement('#__next')
 
 const HeaderAuth = () => {
     const router = useRouter()
-    const [search, setSearch] = useState(false)
+    const [search, setSearch] = useState(true)
     const [modalOpen, setModalOpen] = useState(false)
     
     const handleOpenModal = () => {
@@ -31,7 +31,7 @@ const HeaderAuth = () => {
         <>
             <div className={styles.containerMain}>
                 <div className = {styles.nav}>
-                    <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.imgCta} /> </Link>
+                    <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                     <div className={styles.container}>
                         <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearch} />
                         <p className={styles.userProfile} onClick={handleOpenModal}>User</p>
