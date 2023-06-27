@@ -2,6 +2,7 @@ import Footer from "@/components/common/footer"
 import Categories from "@/components/homeAuth/categories"
 import HeaderAuth from "@/components/homeAuth/headerAuth"
 import SlidesFavorites from "@/components/homeAuth/slidesFavorites"
+import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes"
 
 import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures"
 import SlideGender from "@/components/homeNoAuth/slidesGender"
@@ -20,6 +21,7 @@ const Home = () => {
                 <Categories/>
                 <SlidesFavorites/>
                 <SlidesNewest/>
+                <SlidesAnimes/>
                 <SlidesFeatures/>
                 <SlideGender/>
                 <Footer/>

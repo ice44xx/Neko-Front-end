@@ -70,6 +70,15 @@ const animeService = {
         } catch (error: any) {
             return error.response
         }
+    },
+    findAll: async () => {
+        try {
+            const res = await api.get('/animes')
+            return res
+
+        } catch (error: any) {
+            return error
+        }
     }
 }
 

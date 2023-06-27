@@ -1,0 +1,162 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 900px;
+    .containerContent{
+        width: 100%;
+        width: 900px;
+        height: 600px;
+        min-height: 600px;
+        display: flex;
+        justify-content: center;
+        margin-top: -50px;
+        padding: 0 20px;
+        .containerLeft{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.8)),url('/assets/alterprofile.jpg');
+            background-position: -250px;
+            background-size: cover;
+            background-color: rgb(40,40,40);
+            border-top-left-radius: 30px;
+            border: 2px solid #fff;
+            .containerContentLeft{
+                margin-top: -50px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 150px;
+                .title{
+                    text-align: center;
+                    margin-bottom: 20px;
+                    font-size: 50px;
+                }
+                .containerBtn{
+                    display: flex;
+                    justify-content: center;
+                    gap: 20px;
+                    .btn{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        .containerRight{
+            width: 50%;
+            height: 100%;
+            background-color: #fff;
+            border-bottom-right-radius: 30px;
+            .containerContentRight{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 50px;
+                align-items: center;
+                color: rgb(40,40,40);
+                .title{
+                    width: 100%;
+                    height: 50px;
+                    text-align: center;
+                    font-size: 40px;
+                }
+                .form{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;  
+                    .input{
+                        width: 300px;
+                        border: none;
+                        border-bottom: 2px solid black;
+                        border-radius: 0;
+                        &:focus{
+                            box-shadow: none;
+                        }
+                    }
+                    .label{
+                        font-size: 20px;
+                    }
+                    .btn{
+                        width: 100%;
+                        margin-top: 25px;
+                        max-width: 200px;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 790px) {
+    .container{
+        min-height: 900px;
+        .containerContent{
+            width: 100%;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            .containerLeft{
+                width: 100%;
+                background-position: center;
+                .containerContentLeft{
+                    margin-top: 0px;
+                    height: 200px;
+                    .title{
+                        margin-bottom: 10px;
+                    }
+                    .containerBtn{
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        .btn{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .containerRight{
+                width: 100%;
+                height: 100%;
+                .containerContentRight{
+                    height: 550px;
+                    gap: 50px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 375px) {
+    .container{
+        .containerContent{
+            padding: 0 5px;
+            .containerLeft{
+                .containerContentLeft{
+                    .containerBtn{     
+                        .btn{
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+            .containerRight{
+                .containerContentRight{
+                    gap: 50px;
+                    .form{
+                        .input{
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

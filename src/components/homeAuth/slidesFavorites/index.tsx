@@ -7,11 +7,13 @@ const SlidesFavorites = () => {
     const { data, error } = useSWR('/favorites', animeService.getFavorites)
     if(!data) return null
     if(error) return error
+    
+    const favoriteAnimes = data.data?.animes || []
     return (
         <>  
             <div className={styles.containerMain}>
                 <p className={styles.titlePage}>Meus Favoritos</p>
-                {data.data.animes.length >= 1 ? 
+                {favoriteAnimes.length >= 1 ? 
                 (
                     <Splide className={styles.mySplide}>
                         <SplideSlide>

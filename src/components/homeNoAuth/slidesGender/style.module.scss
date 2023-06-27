@@ -11,7 +11,7 @@
     gap: 25px;
     padding: 50px;
     overflow: hidden;
-    .cardOne{
+    .card{
         display: flex;
         flex-direction: column;
         position: relative;
@@ -29,27 +29,28 @@
             transform: translateY(-15px);
             transition: all ease-in-out 0.3s;
             border: 2px solid rgb(247, 58, 58);
-            .titleCard{
+            .title{
                 color: rgb(247, 58, 58);
                 margin: 0px;
                 font-size: 40px;
                 transition: all ease-in-out 0.3s;
             }
-            .exampleCard{
+            .example{
                 span{
                     color: rgb(247, 58, 58);
+                    margin-right: 5px;
                 }
                 bottom: 10px;
                 opacity: 1;
                 transition: all ease-in 0.3s;
             }
-            .descriptionCard{
+            .description{
                 opacity: 1;
                 font-size: 22px;
                 transition: all 0.3s;
             }
         }
-        .titleCard{
+        .title{
             opacity: 1;
             padding: 20px;
             margin: 100px;
@@ -59,7 +60,7 @@
             font-size: 55px;
             transition: all ease-in-out 0.3s;
         }
-        .descriptionCard{
+        .description{
             opacity: 0;
             height: 50%;
             display: flex;
@@ -70,7 +71,7 @@
             padding: 0 5px;
             transition: all 0.3s;
         }
-        .exampleCard{
+        .example{
             position: absolute;
             bottom: -35px;
             width: 100%;
@@ -84,68 +85,64 @@
             }
         }
     }
-    .cardSecond{
-        @extend .cardOne;
+    .card-2{
         background-position: center;
         background-size: cover;
         background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Seinen.png');
         &:hover{
             border: 2px solid rgb(255, 153, 0);
-            .titleCard{
+            .title{
                 color: rgb(255, 153, 0)
             }
-            .exampleCard{
+            .example{
                 span{
                     color: rgb(255, 153, 0);
                 }
             }
         }
     }
-    .cardThird{
-        @extend .cardOne;
+    .card-3{
         background-position: center;
         background-size: cover;
         background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Shoujo.png');
         &:hover{
             border: 2px solid rgb(0, 174, 255);
-            .titleCard{
+            .title{
                 color: rgb(0, 174, 255)
             }
-            .exampleCard{
+            .example{
                 span{
                     color: rgb(0, 174, 255);
                 }
             }
         }
     }
-    .cardFourth{
-        @extend .cardOne;
+    .card-4{
         background-position: center;
         background-size: cover;
         background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Josei.png');
         &:hover{
             border: 2px solid pink;
-            .titleCard{
+            .title{
                 color: pink
             }
-            .exampleCard{
+            .example{
                 span{
                     color: pink;
                 }
             }
         }
     }
-    .cardFifith{
-        @extend .cardOne;
+    .card-5{
         background-position: center;
         background-size: cover;
         background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Kodomo.png');
         &:hover{
             border: 2px solid rgb(255, 208, 0);
-            .titleCard{
+            .title{
                 color: rgb(255, 208, 0);
             }
-            .exampleCard{
+            .example{
                 span{
                     color: rgb(255, 208, 0);
                 }
@@ -176,23 +173,7 @@
 @media (max-width: 600px) {
     .container {
         grid-template-columns: repeat(2, 1fr);
-        .cardOne{
-            width: 250px;
-            height: 340px;
-        }
-        .cardSecond{
-            width: 250px;
-            height: 340px;
-        }
-        .cardThird{
-            width: 250px;
-            height: 340px;
-        }
-        .cardFourth{
-            width: 250px;
-            height: 340px;
-        }
-        .cardFifith{
+        .card{
             width: 250px;
             height: 340px;
         }

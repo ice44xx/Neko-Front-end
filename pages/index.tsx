@@ -8,6 +8,7 @@ import Footer from "@/components/common/footer";
 import SlidesNewest from "@/components/homeNoAuth/slidesNewest";
 import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures";
 import SlideGender from "@/components/homeNoAuth/slidesGender";
+import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes";
 
 interface IndexPageProps {
     children?: ReactNode;
@@ -25,6 +26,7 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
             <main>
                 <HeadNoAuth/>
                 <SlidesNewest/>
+                <SlidesAnimes/>
                 <SlidesFeatures/>
                 <SlideGender/>
                 <Footer/>

@@ -17,9 +17,9 @@ const categoriesService = {
             return error
         }
     },
-    getAnimes: async (id: number) => {
+    getAnimes: async (name: string | number) => {
         try {
-            const res = await api.get(`categories/${id}`)
+            const res = await api.get(`categories/${name}`)
             return res
         } catch (error: any) {
             return error

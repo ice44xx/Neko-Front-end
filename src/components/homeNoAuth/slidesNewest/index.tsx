@@ -9,13 +9,6 @@ import { useState, useEffect } from 'react'
 
 const SlidesNewest = () => {
     const [load, setLoad] = useState(false)
-    useEffect(() => {
-        if(!data) {
-            setLoad(true)
-        }
-        data
-        setLoad(false)
-    })
     
     const { data, error } = useSWR('/animes/newest', animeService.getFeaturedAnimes)
 
@@ -48,18 +41,20 @@ const SlidesNewest = () => {
 
                     {data.data?.map((anime: AnimeType) => (
                         <SplideSlide key={anime.id}>
-                            <div className={styles.slide}>
-                                {
-                                    load ? (
-                                        <div className={styles.load}>Loading...</div>
-                                    ) : ( 
-                                    <>
-                                        <p className={styles.title}>{anime.name}</p>
-                                        <p className={styles.synopsis}>{anime.synopsis}</p>
-                                        <Link href={`/animes/${anime.id}`}><img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} /></Link>
-                                    </>)
-                                }
-                            </div>
+                            <Link href={`/animes/${anime.name}`}>
+                                <div key={anime.id} className={styles.slide}>
+                                    {
+                                        load ? (
+                                            <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
+                                        ) : ( 
+                                        <>
+                                            <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
+                                            <p className={styles.synopsis}>{anime.synopsis}</p>
+                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} />
+                                        </>)
+                                    }
+                                </div>
+                            </Link>
                         </SplideSlide>
                     ))}
                 </Splide>

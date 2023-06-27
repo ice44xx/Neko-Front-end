@@ -10,7 +10,8 @@ const Categories = () => {
     if(error) return error
 
     return(
-    <>  <Splide className={styles.mySplide} options={{type: 'loop', width: 1980, gap: 120, perPage: 20, perMove: 1, arrows: false, pagination: false}}>
+    <>  
+        <Splide className={styles.mySplide} options={{type: 'loop', width: 1980, gap: 120, perPage: 20, perMove: 1, arrows: false, pagination: false}}>
             {data.data.categories?.map((categories: CategoryType) => (
                 <SplideSlide>
                     <div className={styles.container}>
