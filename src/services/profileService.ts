@@ -1,9 +1,14 @@
 import api from './api'
 
+export type User = {
+    image?: string
+}
+
 interface UserParams {
     firstName?: string
     userName?: string
     email?: string
+    image?: string
     created_at?: string
 }  
 
