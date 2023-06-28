@@ -12,8 +12,10 @@
         min-height: 600px;
         display: flex;
         justify-content: center;
-        margin-top: -50px;
-        padding: 0 20px;
+        margin: 0px 20px;
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        box-shadow: 0px 0px 22px 1px rgba(0,0,0,0.75);
         .containerLeft{
             width: 50%;
             display: flex;
@@ -48,6 +50,7 @@
             }
         }
         .containerRight{
+            position: relative;
             width: 50%;
             height: 100%;
             background-color: #fff;
@@ -77,6 +80,7 @@
                         border: none;
                         border-bottom: 2px solid black;
                         border-radius: 0;
+                        font-size: 20px;
                         &:focus{
                             box-shadow: none;
                         }
@@ -137,7 +141,6 @@
 @media (max-width: 375px) {
     .container{
         .containerContent{
-            padding: 0 5px;
             .containerLeft{
                 .containerContentLeft{
                     .containerBtn{     

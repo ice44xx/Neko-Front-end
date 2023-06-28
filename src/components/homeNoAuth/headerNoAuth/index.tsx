@@ -16,7 +16,7 @@ export const HeadNoAuth = () => {
                 <p>FEITO COM <img src="/assets/heart.png" alt="" className={styles.imgHeart} /> E MUITO <img src="/assets/coffe.png" alt="" className={styles.imgCoffe} /></p>
             </div>
             <div className = {styles.nav}>
-                    <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
+                    <Link href='/'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                     <div className={styles.container}>
                         <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearch} />
                         <div className={styles.containerContent}>
