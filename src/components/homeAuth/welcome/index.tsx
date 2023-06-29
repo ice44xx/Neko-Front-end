@@ -10,8 +10,13 @@ const Welcome = () => {
 
     return(
         <>
-            <p className={styles.welcome}>Bem-vindo {userName}</p>
-            <hr className={styles.hr} />
+            <div className={styles.container}>
+                <div className={styles.welcome}>
+                    <p>Bem-vindo {userName} <img src="/assets/catwelcome.png" alt="welcome" className={styles.img} /></p>
+                    <hr className={styles.hr} />
+                </div>
+            </div>
+            
         </>
     )
 }

@@ -1,6 +1,7 @@
 .containerMain{
     display: flex;
     flex-direction: column;
+    margin: 0 50px;
     padding: 0 20px;
     .btn{
         display: flex;
@@ -30,10 +31,11 @@
         display: grid;
         justify-items: center;
         grid-template-columns: repeat(5, 1fr);
-        grid-gap: 40px;
+        grid-gap: 40px 0;
         width: 100%;
         height: 100%;
-        padding: 50px 150px;
+        padding: 50px 0;
+        overflow: hidden;
         .card{
             position: relative;
             width: 250px;
@@ -41,7 +43,6 @@
             border: 2px solid #fff;
             border-radius: 5px;
             overflow: hidden;
-            margin: 0 20px;
             box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.75);
             cursor: pointer;
             transition: all 0.3s;
@@ -103,3 +104,34 @@
         }
     }
 }
+
+@media (max-width: 1550px) {
+    .containerMain {
+        margin: 0;
+        .container{
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+@media (max-width: 1110px) {
+    .containerMain {
+        .container{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+@media (max-width: 830px) {
+    .containerMain {
+        .container{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+@media (max-width: 600px) {
+    .containerMain {
+        .container{
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+

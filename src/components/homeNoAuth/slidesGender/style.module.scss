@@ -88,7 +88,7 @@
     .card-2{
         background-position: center;
         background-size: cover;
-        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Seinen.png');
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Shoujo.png');
         &:hover{
             border: 2px solid rgb(255, 153, 0);
             .title{
@@ -104,7 +104,7 @@
     .card-3{
         background-position: center;
         background-size: cover;
-        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Shoujo.png');
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Seinen.png');
         &:hover{
             border: 2px solid rgb(0, 174, 255);
             .title{

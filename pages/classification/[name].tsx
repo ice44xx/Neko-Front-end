@@ -6,6 +6,8 @@ import genderService, { GenderType } from "@/services/genderService"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
+import Categories from '@/components/homeAuth/categories'
+import FooterGeneric from '@/components/common/footerGeneric'
  
 const classification = () => {
     const router = useRouter()
@@ -41,6 +43,7 @@ const classification = () => {
 
             <main>
                 {auth ? <HeaderAuth/> : <HeadNoAuth/>}
+                <Categories/>
                 <div className={styles.containerMain}>
                     <p className={styles.titlePageGender}>Categoria {name}</p>
                     <div className={styles.container}>
@@ -60,8 +63,8 @@ const classification = () => {
                             </div>
                         ))}
                     </div>
+                    <FooterGeneric/>
                 </div>
-                
             </main>
         </>
     )

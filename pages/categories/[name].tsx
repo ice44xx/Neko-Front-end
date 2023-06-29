@@ -1,3 +1,4 @@
+import Categories from '@/components/homeAuth/categories'
 import styles from '../classification/styles.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
 import { AnimeType } from "@/services/animesService"
@@ -5,6 +6,7 @@ import categoriesService, { CategoryType } from "@/services/categoriesService"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useState, useEffect } from 'react'
+import FooterGeneric from '@/components/common/footerGeneric'
 
 const CategoriesPage = () => {
     const [category, setCategory] = useState<CategoryType>()
@@ -40,6 +42,7 @@ const CategoriesPage = () => {
             </Head>
             <main>
                 <HeaderAuth/>
+                <Categories/>
                 <div className={styles.containerMain}>
                     <p className={styles.titlePage}>Animes de {name}</p>
                     <div className={styles.container}>
@@ -47,7 +50,7 @@ const CategoriesPage = () => {
                             <div key={anime.id} className={styles.card}>
                                 {load ? (
                                     <>
-                                        <div></div>
+                                        <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
                                     </>
                                 ) : (
                                     <>
@@ -60,6 +63,7 @@ const CategoriesPage = () => {
                         ))}
                     </div>
                 </div>
+                <FooterGeneric/>
             </main>
         </>
     )
