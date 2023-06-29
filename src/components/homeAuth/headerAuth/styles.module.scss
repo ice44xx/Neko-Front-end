@@ -20,9 +20,8 @@
         gap: 60px;
         .userProfile{
             margin: auto 0;
-            width: 80px;
-            height: 80px;
-            background-color: rgb(51, 51, 51);
+            width: 90px;
+            height: 90px;
             border-radius: 100%;
             cursor: pointer;
             transition: all 0.4s;
@@ -34,6 +33,7 @@
                 width: 100%;
                 height: 100%;
                 border-radius: 100%;
+                object-fit: cover;
             }
         }
     }
@@ -149,7 +149,8 @@
             justify-content: space-evenly;
             margin-bottom: 12px;
             .userProfile{
-                padding: 15px;
+                width: 60px;
+                height: 60px;
                 cursor: pointer;
             }
         }

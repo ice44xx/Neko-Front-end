@@ -34,59 +34,6 @@
                 justify-content: center;
                 align-items: center;
                 height: 150px;
-                .containerProfileImg{
-                    width: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    .containerImg{
-                        margin: 0 auto;
-                        width: 120px;
-                        height: 120px;
-                        border-radius: 100%;
-                        background-color: rgb(31, 31, 31);
-                        margin: 20px auto;
-                        img{
-                            width: 100%;
-                            height: 100%;
-                            border-radius: 100%;
-                        }
-                    }
-                    .containerFileButton{
-                        height: 38px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        .input{
-                           height: 100%;
-                        }
-                        .btnImg{
-                            padding: 0;
-                            height: 100%;
-                            width: 100px;
-                        }
-                    }
-                    .formImg{
-                        width: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-around;
-                        .imgUser{
-                            display: flex;
-                            width: 150px;
-                            border-radius: 100%;
-                        }
-                        .containerRow{
-                            width: 200px;
-                            display: flex;
-                            flex-direction: column;
-                            gap: 10px;
-                            justify-content: center;
-                        }
-                    }
-                   
-                }
                 .title{
                     text-align: center;
                     margin-bottom: 20px;
@@ -146,6 +93,48 @@
                         margin-top: 25px;
                         max-width: 200px;
                         font-size: 20px;
+                    }
+                }
+                .containerContentImg{
+                    width: 100%;
+                    height: 400px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .form{
+                        display: flex;
+                        gap: 60px;
+                        .container_img{
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 100%;
+                            background-color: rgb(40, 40, 40);
+                            .img{
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 100%;
+                                object-fit: cover;
+                                box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+                            }
+                        }
+                        .container_btn{
+                            display: flex;
+                            gap: 30px;
+                            flex-direction: column;
+                            .input{
+                                width: 100%;
+                                border: 2px solid rgb(40,40,40);
+                                transition: all 0.3s;
+                                &:hover{
+                                    border: 2px solid #631dc0;
+                                    transition: all 0.3s;
+                                }
+                            }
+                            .btn{
+                                margin: 0 auto;
+                                box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+                            }
+                        }
                     }
                 }
             }
