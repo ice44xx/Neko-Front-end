@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import styles from './styles.module.scss'
-import {Form, Input} from 'reactstrap'
+import styles from '../headerAuth/styles.module.scss'
 import {useState} from 'react'
 import Modal from 'react-modal'
 import { useRouter } from 'next/router'
@@ -9,9 +8,8 @@ import profileService from '@/services/profileService'
 
 Modal.setAppElement('#__next')
 
-const HeaderAuth = () => {
+const HeaderProfileAuth = () => {
     const router = useRouter()
-    const [search, setSearch] = useState(true)
     const [modalOpen, setModalOpen] = useState(true)
     
     const { data, error } = useSWR('/users/current', profileService.getUser)
@@ -24,9 +22,6 @@ const HeaderAuth = () => {
         router.push('/')
     }
 
-    const handleSearch = () => {
-        setSearch(!search)
-    }
     const handleModal = () => {
         setModalOpen(!modalOpen)
     }
@@ -37,7 +32,7 @@ const HeaderAuth = () => {
                 <div className = {styles.nav}>
                     <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                     <div className={styles.container}>
-                        <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearch} />
+                        <Link href='/home'> <img src="/assets/home_arrow.png" alt="" className = {styles.home_arrow} /> </Link>
                         <div className={styles.containerProfile}>
                             <div className={styles.userName}>
                                 <p>{data.userName}</p>
@@ -52,11 +47,6 @@ const HeaderAuth = () => {
                         </div>
                     </div>
                 </div>
-                <div className={`${styles.container_search} ${search ? styles.active : ''}`} id='containerSearch'>
-                    <Form className={styles.form}>
-                        <Input name='search' type='search' placeholder='Pesquisar...' className={styles.input}></Input>
-                    </Form>
-                </div>
 
                 <div className={`${styles.modal} ${modalOpen ? styles.activeModal : ''}`}>
                     <Link href='/profile' className={styles.link}><p className={styles.modalLink}>Meus Dados <img src="/assets/user.png" alt="user" className={styles.img} /></p></Link>
@@ -67,4 +57,4 @@ const HeaderAuth = () => {
     )
 }
 
-export default HeaderAuth
+export default HeaderProfileAuth

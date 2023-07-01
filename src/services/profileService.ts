@@ -17,7 +17,7 @@ const profileService = {
     getUser: async () => {
         try {
             const token = sessionStorage.getItem('nekoanimes-token')
-            const res = await api.get('/users/current', {
+            const res = await api.get('/profile', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -30,7 +30,7 @@ const profileService = {
     getUpdate: async (attributes: UserParams) => {
         try {
             const token = sessionStorage.getItem('nekoanimes-token')
-            const res = await api.put('/users/current', attributes, {
+            const res = await api.put('/profile', attributes, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -43,7 +43,7 @@ const profileService = {
     passwordUpdate : async (attributes: PasswordParams) => {
         try {
             const token = sessionStorage.getItem('nekoanimes-token')
-            const res = await api.put('/users/current/password', attributes, {
+            const res = await api.put('/profile/password', attributes, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

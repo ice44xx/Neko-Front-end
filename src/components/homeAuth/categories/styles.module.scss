@@ -1,6 +1,11 @@
 .mySplide{
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 50px; 
 }
+
 .container{
     margin: 10px 0;
     display: flex;
@@ -18,11 +23,5 @@
             text-decoration: none;
             color: #fff;
         }
-    }
-}
-
-@media (max-width: 480px) {
-    .container{
-        margin-top: 80px;
     }
 }

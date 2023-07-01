@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/globals.scss';
 import Head from 'next/head';
 
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
+
   return (
     <>
       <Head>

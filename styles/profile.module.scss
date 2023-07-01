@@ -2,102 +2,117 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    min-height: 900px;
+    height: 100vh;
+    min-height: 1000px;
+    overflow: hidden;
+    margin: -40px 0;
+    padding: 0 20px;
+    background-image: url('/assets/buble.png');
     .containerContent{
-        width: 100%;
-        width: 900px;
-        height: 600px;
-        min-height: 600px;
         display: flex;
-        justify-content: center;
-        margin: 0px 20px;
-        border-top-left-radius: 30px;
+        width: 1100px;
+        max-width: 1100px;
+        height: 700px;
+        min-height: 720px;
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
         border-bottom-right-radius: 30px;
-        box-shadow: 0px 0px 22px 1px rgba(0,0,0,0.75);
+        border-top-left-radius: 30px;
         .containerLeft{
             width: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.8)),url('/assets/alterprofile.jpg');
-            background-position: -250px;
-            background-size: cover;
-            background-color: rgb(40,40,40);
-            border-top-left-radius: 30px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
             border: 2px solid #fff;
+            border-right: none;
+            border-top-left-radius: 30px;
+            .background{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                .background_img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
             .containerContentLeft{
-                margin-top: -50px;
+                z-index: 1;
+                position: absolute;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                height: 150px;
+                gap: 20px;
+                width: 100%;
+                height: 100%;
                 .title{
-                    text-align: center;
-                    margin-bottom: 20px;
                     font-size: 50px;
                 }
                 .containerBtn{
                     display: flex;
-                    justify-content: center;
                     gap: 20px;
                     .btn{
-                        font-size: 20px;
+                        font-size: 25px;
                     }
                 }
             }
         }
         .containerRight{
-            position: relative;
             width: 50%;
             height: 100%;
             background-color: #fff;
             border-bottom-right-radius: 30px;
             .containerContentRight{
-                width: 100%;
-                height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                gap: 50px;
                 align-items: center;
-                color: rgb(40,40,40);
+                width: 100%;
+                height: 100%;
+                gap: 50px;
                 .title{
-                    width: 100%;
-                    height: 50px;
-                    text-align: center;
-                    font-size: 40px;
+                    font-size: 50px;
+                    color: rgb(40,40,40);
+                }
+                label{
+                    color: rgb(40,40,40);
                 }
             }
         }
     }
 }
 
-@media (max-width: 790px) {
+@media (max-width: 680px) {
     .container{
-        min-height: 900px;
+        height: 100vh;
+        min-height: none;
+        margin: -40px 0;
+        padding: 0 0px;
         .containerContent{
-            width: 100%;
-            margin-top: 60px;
-            display: flex;
             flex-direction: column;
+            width: 100%;
+            max-width: none;
+            height: 100vh;
+            min-height: 100%;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 0;
             .containerLeft{
+                margin-top: 40px;
                 width: 100%;
-                background-position: center;
+                height: 40%;
+                border: none;
+                border-right: none;
+                border-top-left-radius: 0;
                 .containerContentLeft{
-                    margin-top: 0px;
-                    height: 200px;
+                    gap: 20px;
                     .title{
-                        margin-bottom: 10px;
+                        font-size: 50px;
                     }
                     .containerBtn{
                         display: flex;
-                        justify-content: center;
                         gap: 20px;
                         .btn{
-                            font-size: 20px;
+                            font-size: 25px;
                         }
                     }
                 }
@@ -105,19 +120,20 @@
             .containerRight{
                 width: 100%;
                 height: 100%;
+                border-bottom-right-radius: 0px;
                 .containerContentRight{
-                    height: 550px;
+                    width: 100%;
                     gap: 50px;
+                    .title{
+                        font-size: 50px;
+                        color: rgb(40,40,40);
+                    }
+                    label{
+                        color: rgb(40,40,40);
+                        margin: 0;
+                    }
                 }
             }
-        }
-    }
-}
-@media (max-width: 360px) {
-    .container{
-        margin-top: 50px;
-        .containerContent{
-            margin: 0px 10px;
         }
     }
 }

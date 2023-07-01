@@ -20,7 +20,7 @@ export const HeadNoAuth = () => {
                     <div className={styles.container}>
                         <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearch} />
                         <div className={styles.containerContent}>
-                            <Link href={'/register'}><Button className={styles.register}>Fazer Parte</Button></Link>
+                            <Link href={'/register'}><Button className={styles.register}>Registrar-se</Button></Link>
                             <Link href={'/login'}><Button className={styles.login}>Entrar</Button></Link>
                         </div>
                         

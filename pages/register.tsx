@@ -7,8 +7,9 @@ import {FormEvent, useState, useEffect} from 'react'
 import authService from '@/services/authService'
 import { useRouter } from 'next/router'
 import ToastError from '@/components/common/toastError'
+import ReCAPTCHA from 'react-google-recaptcha'
+
 const Register = () => {
-    
     useEffect (() => {
         if(sessionStorage.getItem('nekoanimes-token')) {
             router.push('/home')
@@ -24,10 +25,14 @@ const Register = () => {
        setRandomImage(randomImage)
     }, [])
 
-
     const router = useRouter()
     const [toast, setToast] = useState(false)
     const [toastMessage, setToastMessage] = useState('')
+    const [recaptcha, setRecaptcha] = useState<string | null>(null);
+
+    const handleRecaptchaVerify = (response: string | null) => {
+        setRecaptcha(response);
+    };
 
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -38,18 +43,9 @@ const Register = () => {
         const email = formData.get('email')!.toString()
         const birthday = formData.get('birthday')!.toString()
         const password = formData.get('password')!.toString()
-        const passwordConfirm = formData.get('passwordConfirm')!.toString()
 
-        const attributes = {firstName, userName, email, birthday, password}
+        const attributes = {firstName, userName, email, birthday, password, recaptcha: recaptcha}
 
-        if(password !== passwordConfirm) {
-            setToast(true)
-            setTimeout(() => {
-                setToast(false)
-            }, 1000 * 3)
-            setToastMessage("Senha incorreta")
-            return
-        }
 
         const {data, status} = await authService.register(attributes)
 
@@ -72,6 +68,7 @@ const Register = () => {
             </Head>
             <main>
                 <HeaderGeneric logoUrl='/' btnUrl='/login' btnContent='Quero Logar'/>
+
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>
                         <img src={`/assets/${randomImage}`}/>
@@ -105,13 +102,9 @@ const Register = () => {
                                     <Input required id='password' name='password' type='password' placeholder='Digite uma senha' minLength={6} maxLength={20} className={styles.input} />
                                 </FormGroup>
 
-                                <FormGroup>
-                                    <Label for = 'passwordConfirm' className={styles.label}>Confirme sua senha</Label>
-                                    <Input required id='passwordConfirm' name='passwordConfirm' type='password' placeholder='Confirme sua senha' minLength={6} maxLength={20} className={styles.input} />
-                                </FormGroup>
-
                                 <div className={styles.containerBtn}>
                                     <Button className={styles.btn} type='submit'>Criar agora</Button>
+                                    <ReCAPTCHA sitekey='6Ld15-MmAAAAAAV_18udyVNsolr-i5rVt0w7s-Gf' onChange={handleRecaptchaVerify} className={styles.recaptcha}/>
                                 </div>
                             </Form>
                         </div>

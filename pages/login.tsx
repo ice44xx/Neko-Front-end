@@ -86,7 +86,7 @@ const Login = () => {
                                     <Input required maxLength={15} id='password' name='password' type='password' placeholder='Sua senha' className={styles.inputName}/>
                                 </FormGroup>
 
-                                <div className={styles.containerBtn}>
+                                <div className={styles.containerBtnLogin}>
                                     <Button className={styles.btn} type='submit'>Entrar</Button>
                                 </div>
                             </Form>

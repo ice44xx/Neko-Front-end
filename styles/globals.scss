@@ -14,7 +14,9 @@
     font-family: 'Pathway Gothic One', sans-serif;
 }
 main{
-    background-color: #631dc0;
+    background-color: #631dc0; 
+    height: 100%;   
+    overflow: hidden;
     color: white;
     p{
         margin: 0;

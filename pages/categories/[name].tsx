@@ -7,6 +7,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useState, useEffect } from 'react'
 import FooterGeneric from '@/components/common/footerGeneric'
+import withProtect from '@/components/withAuth'
 
 const CategoriesPage = () => {
     const [category, setCategory] = useState<CategoryType>()
@@ -43,9 +44,9 @@ const CategoriesPage = () => {
             <main>
                 <HeaderAuth/>
                 <Categories/>
-                <div className={styles.containerMain}>
+                <div className={styles.container}>
                     <p className={styles.titlePage}>Animes de {name}</p>
-                    <div className={styles.container}>
+                    <div className={styles.container_animes}>
                         {animes.map((anime) => (
                             <div key={anime.id} className={styles.card}>
                                 {load ? (
@@ -69,4 +70,4 @@ const CategoriesPage = () => {
     )
 }
 
-export default CategoriesPage
+export default withProtect (CategoriesPage)

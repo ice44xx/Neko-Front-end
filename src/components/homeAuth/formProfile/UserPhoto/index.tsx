@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import styles from '../style.module.scss'
 import profileService from '@/services/profileService';
 
@@ -7,7 +7,6 @@ import 'firebase/compat/storage';
 import { firebaseConfig } from '@/services/firebase';
 import { Button, Form, Input } from 'reactstrap';
 import useSWR from 'swr';
-
 
 firebase.initializeApp(firebaseConfig);
 
@@ -45,17 +44,19 @@ const UserPhoto = () => {
     };      
 
     const handleUpdateProfile = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+      e.preventDefault();
     
-        try {
-          const imageUrl = localStorage.getItem('imageUrl');
-          await profileService.getUpdate({ image: imageUrl! });
-    
-          console.log('Imagem atualizada com sucesso!');
-          
-        } catch (error) {
-          console.error('Erro ao atualizar a imagem:', error);
-        }
+      try {
+        const imageUrl = localStorage.getItem('imageUrl');
+        await profileService.getUpdate({ image: imageUrl! });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000 * 3);
+
+      } catch (error) {
+        console.error('Erro ao atualizar a imagem', error);
+      }
     };
 
     return(
@@ -63,14 +64,14 @@ const UserPhoto = () => {
         <Form className={styles.form} onSubmit={handleUpdateProfile}>
           <div className={styles.container_img}>
             {image ? (
-              <img  src={image} alt="" className={styles.img}/>
+              <img src={image} alt="" className={styles.img}/>
             ) : (
               <p className={styles.upload}>Upload aqui...</p>
             )}
           </div>
 
           <div className={styles.container_btn}>
-            <Input type="file" className={styles.input} onChange={handleImageChange}/>
+            <Input type="file" className={styles.inputFile} onChange={handleImageChange}/>
             <Button type='submit' className={styles.btn}>Salvar</Button>
           </div>
         </Form>

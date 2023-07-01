@@ -21,12 +21,12 @@ const SlidesAnimes = () => {
 
     return(
         <>
-            <div className={styles.containerMain}>
+            <div className={styles.container}>
                 <p className={styles.titlePage}>Todos Animes</p>
-                <div className={styles.container}>
+                <div className={styles.container_animes}>
                     {data.data?.slice(0, animeCount).map((anime: AnimeType) => (
-                        <Link href={`/animes/${anime.name}`}>
-                            <div key={anime.id} className={styles.card}>
+                        <Link href={`/animes/${anime.name}`} key={anime.id}>
+                            <div className={styles.card}>
                                 {load ? 
                                 ( <> <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div> </> ) : 
                                     (<>

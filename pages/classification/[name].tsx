@@ -44,9 +44,9 @@ const classification = () => {
             <main>
                 {auth ? <HeaderAuth/> : <HeadNoAuth/>}
                 <Categories/>
-                <div className={styles.containerMain}>
+                <div className={styles.container}>
                     <p className={styles.titlePageGender}>Categoria {name}</p>
-                    <div className={styles.container}>
+                    <div className={styles.container_animes}>
                         {animes.map((anime) => (
                             <div key={anime.id} className={styles.card}>
                                 {load ? (

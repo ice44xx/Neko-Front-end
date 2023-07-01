@@ -1,4 +1,4 @@
-.containerMain{
+.container{
     display: flex;
     flex-direction: column;
     margin: 0 50px;
@@ -27,7 +27,7 @@
         font-size: 50px;
         padding: 50px 40px;
     }
-    .container{
+    .container_animes{
         display: grid;
         justify-items: center;
         grid-template-columns: repeat(5, 1fr);
@@ -106,7 +106,7 @@
 }
 
 @media (max-width: 1550px) {
-    .containerMain {
+    .container {
         margin: 0;
         .container{
             grid-template-columns: repeat(4, 1fr);
@@ -114,21 +114,21 @@
     }
 }
 @media (max-width: 1110px) {
-    .containerMain {
+    .container {
         .container{
             grid-template-columns: repeat(3, 1fr);
         }
     }
 }
 @media (max-width: 830px) {
-    .containerMain {
+    .container {
         .container{
             grid-template-columns: repeat(2, 1fr);
         }
     }
 }
 @media (max-width: 600px) {
-    .containerMain {
+    .container {
         .container{
             grid-template-columns: repeat(1, 1fr);
         }

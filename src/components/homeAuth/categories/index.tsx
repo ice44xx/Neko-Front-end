@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import useSWR from 'swr'
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import withProtect from '@/components/withAuth'
 
 const Categories = () => {
     const { data, error } = useSWR('/categories', categoriesService.getCategories)
@@ -11,11 +12,11 @@ const Categories = () => {
 
     return(
     <>  
-        <Splide className={styles.mySplide} options={{type: 'loop', width: 1980, gap: 120, perPage: 20, perMove: 1, arrows: false, pagination: false}}>
+        <Splide className={styles.mySplide} options={{type: 'loop', perPage: 20, gap: 120, pagination: false, arrows: false}}>
             {data.data.categories?.map((categories: CategoryType) => (
-                <SplideSlide>
+                <SplideSlide key={categories.id}>
                     <div className={styles.container}>
-                        <div className={styles.containerName} key = {categories.id}>
+                        <div className={styles.containerName}>
                             <Link href={`/categories/${categories.name}`} className={styles.link}><p>{categories.name}</p></Link>
                         </div>
                     </div>
@@ -26,4 +27,4 @@ const Categories = () => {
     )
 }
 
-export default Categories
+export default withProtect (Categories)

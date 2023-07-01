@@ -14,7 +14,8 @@ interface Login {
 
 const authService = {
     register: async (attributes: Register) => {
-        const res = await api.post('/auth/register', attributes).catch((error) => {
+
+        const res = await api.post('/register', attributes).catch((error) => {
             if(error.response.status === 400) {
                 return error.response
             }
@@ -24,7 +25,7 @@ const authService = {
         return res
     },
     login: async (attributes: Login) => {
-        const res = await api.post('/auth/login', attributes).catch((error) => {
+        const res = await api.post('/login', attributes).catch((error) => {
             if(error.response.status === 400 || error.response.status === 401) {
                 return error.response
             }
