@@ -1,27 +1,29 @@
-.mySplide{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: 50px; 
-}
-
-.container{
-    margin: 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .containerName{
-        border-radius: 2px;
-        text-align: center;
-        background-color: rgb(40,40,40);
-        padding: 2px;
-        min-width: 110px;
-        cursor: pointer;
-        font-size: 18px;
-        .link{
-            text-decoration: none;
-            color: #fff;
+.mySwiper{
+    height: 60px;
+    .slides{
+        padding: 0 70px;
+        .containerName{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            .link{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 2px;
+                height: 40px;
+                background-color: rgb(40,40,40);
+                border-radius: 5px;
+                p{
+                    width: 120px;
+                    text-align: center;
+                }
+            }
         }
     }
 }
+

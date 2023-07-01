@@ -1,5 +1,5 @@
 .nav{
-    z-index: 2;
+    z-index: 3;
     position: relative;
     top: 0;
     width: 100%;
@@ -102,7 +102,7 @@
     transition: all 0.3s;
 }
 .modal{
-    z-index: 1;
+    z-index: 2;
     top: 120px;
     right: 25px;
     position: absolute;
