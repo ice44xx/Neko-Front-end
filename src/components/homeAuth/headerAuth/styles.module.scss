@@ -1,5 +1,5 @@
 .nav{
-    z-index: 3;
+    z-index: 5;
     position: relative;
     top: 0;
     width: 100%;
@@ -31,7 +31,17 @@
             justify-content: center;
             align-items: center;
             gap: 25px;
-            font-size: 30px;
+            .userName{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 30px;
+                color: #fff;
+                height: 35px;
+                p{
+                    margin: 0 auto;
+                }
+            }
             .userProfile{
                 display: flex;
                 justify-content: center;
@@ -67,7 +77,7 @@
     }
 }
 .container_search{
-    z-index: 1;
+    z-index: 4;
     position: absolute;
     top: 120px;
     height: 120px;
@@ -102,7 +112,7 @@
     transition: all 0.3s;
 }
 .modal{
-    z-index: 2;
+    z-index: 4;
     top: 120px;
     right: 25px;
     position: absolute;

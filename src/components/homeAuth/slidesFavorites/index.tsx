@@ -9,9 +9,10 @@ const SlidesFavorites = () => {
     if(error) return error
     
     const favoriteAnimes = data.data?.animes || []
+    
     return (
         <>  
-            <div className={styles.containerMain}>
+            <div className={styles.container}>
                 <p className={styles.titlePage}>Meus Favoritos</p>
                 {favoriteAnimes.length >= 1 ? 
                 (

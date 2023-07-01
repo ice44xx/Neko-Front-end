@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import styles from '../../src/components/homeNoAuth/slidesAnimes/styles.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
 import HeadNoAuth from '@/components/homeNoAuth/headerNoAuth'
 import Head from "next/head"
@@ -26,7 +26,7 @@ const Animes = () => {
                 <HeadNoAuth/>
             )}
             <main>
-                <div className={styles.container}>
+                <div className={styles.container_master}>
 
                 </div>
             </main>

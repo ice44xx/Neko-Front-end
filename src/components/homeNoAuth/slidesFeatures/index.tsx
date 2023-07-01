@@ -4,7 +4,7 @@ import animeService, { AnimeType } from '@/services/animesService'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import Link from 'next/link';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 const SlidesFeatures = () => {
@@ -15,9 +15,13 @@ const SlidesFeatures = () => {
     if(!data) return null 
     if(error) return error
 
+    const handleLoadImage = () => {
+        setLoad(false)
+    }
+ 
     return(
         <>
-            <div className={styles.containerMain}>
+            <div className={styles.container}>
                 <p className={styles.titlePage}>Top 10 em destaques</p>
                 <Splide className={styles.mySplide} options={{omitEnd: true, width: 1980, pagination: false, perPage: 5, perMove: 1, breakpoints: {
                     1650: {
@@ -45,12 +49,12 @@ const SlidesFeatures = () => {
                                 <div key={anime.id} className={styles.slide}>
                                     {
                                         load ? (
-                                            <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." />.</div>
+                                            <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
                                         ) : ( 
                                         <>
                                             <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
                                             <p className={styles.synopsis}>{anime.synopsis}</p>
-                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg}/>
+                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} onLoad={handleLoadImage}/>
                                         </>)
                                     }
                                 </div>

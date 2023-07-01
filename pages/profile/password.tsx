@@ -4,7 +4,6 @@ import Head from "next/head"
 import React from 'react'
 import Link from 'next/link';
 import UserPassword from '@/components/homeAuth/formProfile/UserPassword';
-import ProfileBackground from '@/components/common/profileBackground';
 import FooterGeneric from '@/components/common/footerGeneric';
 import withProtect from '@/components/withAuth';
 import HeaderProfileAuth from '@/components/homeAuth/headerAuthProfile';
@@ -21,9 +20,6 @@ const Password = () => {
                     <div className={styles.container}>
                         <div className={styles.containerContent}>
                             <div className={styles.containerLeft}>
-                                <div className={styles.background}>
-                                    <ProfileBackground/>
-                                </div>
                                 <div className={styles.containerContentLeft}>
                                     <p className={styles.title}>Minha conta</p>
                                     <div className={styles.containerBtn}>

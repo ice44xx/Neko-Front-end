@@ -6,7 +6,7 @@
     align-items: center;
     font-size: 40px;
 }
-.containerMain{
+.container{
     padding: 0 20px;
     .titlePage{
         font-size: 50px;
@@ -87,7 +87,7 @@
 }
 
 @media (max-width: 500px) {
-    .containerMain{
+    .container{
         .titlePage{
             font-size: 40px;
             padding: 50px 10px;
@@ -95,7 +95,7 @@
     }
 }
 @media (max-width: 360px) {
-    .containerMain{
+    .container{
         padding: 0 10px;
         .titlePage{
             font-size: 35px;

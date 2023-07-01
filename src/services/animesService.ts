@@ -79,6 +79,14 @@ const animeService = {
         } catch (error: any) {
             return error
         }
+    },
+    getSearch: async (name: string) => {
+        try {
+          const res = await api.get(`/animes/search/${name}`);
+          return res.data
+        } catch (error) {
+          return error
+        }
     }
 }
 

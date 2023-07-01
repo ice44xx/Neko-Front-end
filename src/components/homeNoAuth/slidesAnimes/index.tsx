@@ -18,6 +18,9 @@ const SlidesAnimes = () => {
     const handleMore = () => {
         setAnimeCount(prevCount => prevCount + 5)
     }
+    const handleImageLoad = () => {
+        setLoad(false)
+    }
 
     return(
         <>
@@ -32,7 +35,7 @@ const SlidesAnimes = () => {
                                     (<>
                                         <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
                                         <p className={styles.synopsis}>{anime.synopsis}</p>
-                                        <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.img} />
+                                        <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.img} onLoad={handleImageLoad}/>
                                     </>)
                                 }
                             </div>

@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import styles from '../headerAuth/styles.module.scss'
 import {useState} from 'react'
-import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import profileService from '@/services/profileService'
-
-Modal.setAppElement('#__next')
 
 const HeaderProfileAuth = () => {
     const router = useRouter()
@@ -28,7 +25,7 @@ const HeaderProfileAuth = () => {
 
     return(
         <>
-            <div className={styles.containerMain}>
+            <div className={styles.container_master}>
                 <div className = {styles.nav}>
                     <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                     <div className={styles.container}>

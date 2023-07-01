@@ -5,7 +5,6 @@ import { Button } from 'reactstrap'
 import React from 'react'
 import Link from 'next/link'
 import UserDate from '@/components/homeAuth/formProfile/UserDate'
-import ProfileBackground from '@/components/common/profileBackground'
 import withProtect from '@/components/withAuth'
 import HeaderProfileAuth from '@/components/homeAuth/headerAuthProfile'
 
@@ -22,9 +21,6 @@ const Profile = () => {
                 <div className={styles.container}>
                     <div className={styles.containerContent}>
                         <div className={styles.containerLeft}>
-                                <div className={styles.background}>
-                                    <ProfileBackground/>
-                                </div>
                             <div className={styles.containerContentLeft}>
                                 <p className={styles.title}>Minha conta</p>
                                 <div className={styles.containerBtn}>

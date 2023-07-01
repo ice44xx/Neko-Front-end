@@ -1,30 +1,35 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
 import {Form, Input} from 'reactstrap'
-import {useState} from 'react'
+import {FormEvent, useState} from 'react'
 import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import profileService from '@/services/profileService'
 
-Modal.setAppElement('#__next')
-
 const HeaderAuth = () => {
     const router = useRouter()
     const [search, setSearch] = useState(true)
+    const [searchName, setSearchName] = useState('')
     const [modalOpen, setModalOpen] = useState(true)
     
     const { data, error } = useSWR('/users/current', profileService.getUser)
     if(!data) return null
     if(error) return error
-     
+
+    const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        router.push(`/animes/search/${searchName}`);
+        setSearchName('');
+    }
 
     const handleLogout = () => {
         sessionStorage.clear()
         router.push('/')
     }
 
-    const handleSearch = () => {
+    const handleSearchVisible = () => {
         setSearch(!search)
     }
     const handleModal = () => {
@@ -33,11 +38,11 @@ const HeaderAuth = () => {
 
     return(
         <>
-            <div className={styles.containerMain}>
+            <div className={styles.container_master}>
                 <div className = {styles.nav}>
                     <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                     <div className={styles.container}>
-                        <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearch} />
+                        <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearchVisible} />
                         <div className={styles.containerProfile}>
                             <div className={styles.userName}>
                                 <p>{data.userName}</p>
@@ -53,8 +58,8 @@ const HeaderAuth = () => {
                     </div>
                 </div>
                 <div className={`${styles.container_search} ${search ? styles.active : ''}`} id='containerSearch'>
-                    <Form className={styles.form}>
-                        <Input name='search' type='search' placeholder='Pesquisar...' className={styles.input}></Input>
+                    <Form className={styles.form} onSubmit={handleSearch}>
+                        <Input value={searchName} onChange={(e) => {setSearchName(e.currentTarget.value)}} type='search' placeholder='Pesquisar...' className={styles.input}></Input>
                     </Form>
                 </div>
 

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/register&login.module.scss'
-import HeaderGeneric from '@/components/common/headerGeneric'
+import HeaderGeneric from '@/components/common/headerRegister&Login'
 import { useState, useEffect, FormEvent } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 import { useRouter } from 'next/router'
@@ -67,10 +67,9 @@ const Login = () => {
             </Head>
             <main>
                 <HeaderGeneric logoUrl='/' btnUrl='/register' btnContent='Quero fazer Parte' />
-
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>
-                        <img src={`/assets/${randomImage}`}/>
+                        <img src={`/assets/backRegister&Login/${randomImage}`}/>
                     </div>
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>

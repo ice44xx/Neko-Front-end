@@ -15,9 +15,13 @@ const SlidesNewest = () => {
     if(!data) return null
     if(error) return error
 
+    const handleLoadImage = () => {
+        setLoad(false)
+    }
+ 
     return(
         <>
-            <div className={styles.containerMain}>
+            <div className={styles.container}>
                 <p className={styles.titlePage}>Animes Lançamentos</p>
                 <Splide className={styles.mySplide} options={{omitEnd: true, width: 1300, perPage: 5, pagination: false, perMove: 1, breakpoints: {
                     1250: {
@@ -50,7 +54,7 @@ const SlidesNewest = () => {
                                         <>
                                             <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
                                             <p className={styles.synopsis}>{anime.synopsis}</p>
-                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} />
+                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} onLoad={handleLoadImage}/>
                                         </>)
                                     }
                                 </div>

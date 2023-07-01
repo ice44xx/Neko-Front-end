@@ -1,4 +1,4 @@
-import HeaderGeneric from '@/components/common/headerGeneric'
+import HeaderGeneric from '@/components/common/headerRegister&Login'
 import styles from '../styles/register&login.module.scss'
 import Head from 'next/head'
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
@@ -71,7 +71,7 @@ const Register = () => {
 
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>
-                        <img src={`/assets/${randomImage}`}/>
+                        <img src={`/assets/backRegister&Login/${randomImage}`}/>
                     </div>
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>
