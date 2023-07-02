@@ -1,4 +1,6 @@
 import api from './api'
+import { CategoryType } from './categoriesService'
+import { GenderType } from './genderService'
 
 export type EpisodesType = {
     id: number
@@ -15,6 +17,8 @@ export type AnimeType = {
     thumbnailUrl: string
     synopsis: string
     episodes?: EpisodesType[]
+    categories?: CategoryType
+    gender?: GenderType
 }
 
 const animeService = {
@@ -71,6 +75,28 @@ const animeService = {
             return error.response
         }
     },
+    like: async (animeId: number) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.post('/likes', {animeId}, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+            return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
+    removeLike: async (animeId: number) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.delete(`/likes/${animeId}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+            return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
     findAll: async () => {
         try {
             const res = await api.get('/animes')
@@ -86,6 +112,15 @@ const animeService = {
           return res.data
         } catch (error) {
           return error
+        }
+    },
+    getAnime: async (name: string) => {
+        try {
+            const res = await api.get(`animes/${name}`)
+            return res.data
+            
+        } catch (error) {
+            return error
         }
     }
 }

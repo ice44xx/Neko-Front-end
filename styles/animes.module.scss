@@ -1,0 +1,74 @@
+.container_master{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    .container_anime{
+        display: flex;
+        max-width: 1200px;
+        max-height: 350px;
+        margin-top: 200px;
+        background-color: rgb(40,40,40);
+        .container_thumbnail{
+            width: 255px;
+            height: 350px;
+            .thumb{
+                width: 255px;
+                height: 350px;
+            }
+        }
+        .container_info{
+            width: 100%;
+            text-align: left;
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+            flex-direction: column;
+            .title{
+                font-size: 50px;
+            }
+            .synopsis{
+                font-size: 25px;
+            }
+            .container_categories{
+                margin: 20px 0;
+                display: flex;
+                gap: 12px;
+                .categories{
+                    padding: 10px 15px;
+                    border-radius: 2px;
+                    font-size: 20px;
+                    color: #fff;
+                    background-color: #631dc0;
+                }
+            }
+            .like_favorite{
+                display: flex;
+                justify-content: right;
+                gap: 20px;
+                padding: 0 60px;
+                .img{
+                    width: 40px;
+                    margin-top: 0px;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                    &:hover{
+                        transform: scale(90%);
+                        transition: all 0.3s;
+                    }
+                }
+            }
+        }
+    }
+    .container_episodes{
+        margin-top: 50px;
+        width: 1600px;
+        height: 500px;
+        margin-bottom: 20px;
+        max-height: 400px;
+        background-color: rgb(40,40,40);
+    }
+}

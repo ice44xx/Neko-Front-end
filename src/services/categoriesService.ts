@@ -24,7 +24,7 @@ const categoriesService = {
         } catch (error: any) {
             return error
         }
-    },
+    }
 }
 
 export default categoriesService

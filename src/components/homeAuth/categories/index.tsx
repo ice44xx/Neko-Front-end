@@ -15,7 +15,7 @@ const Categories = () => {
     <>  
         <Swiper slidesPerView={10} loop={true} centeredSlides={false} className={styles.mySwiper} >
             {data.data.categories.map((categories: CategoryType) => (
-                <SwiperSlide className={styles.slides}>
+                <SwiperSlide className={styles.slides} key={categories.id}>
                     <div className={styles.containerName}>
                         <Link href={`/categories/${categories.name}`} className={styles.link}><p>{categories.name}</p></Link>
                     </div>

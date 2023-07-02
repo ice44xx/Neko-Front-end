@@ -7,6 +7,7 @@ import animeService, { AnimeType } from '@/services/animesService';
 import FooterGeneric from '@/components/common/footerGeneric';
 import Categories from '@/components/homeAuth/categories';
 import HeadNoAuth from '@/components/homeNoAuth/headerNoAuth';
+import Link from 'next/link';
 
 const SearchPage = () => {
     const router = useRouter()
@@ -55,16 +56,18 @@ const SearchPage = () => {
                     <p className={styles.titlePage}>Resultado da pesquisa {searchName}</p>
                     <div className={styles.container_animes}>
                         {searchResult?.map((anime) => (
-                            <div className={styles.card} key={anime.id}>
-                            {load ? 
-                            ( <> <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div> </> ) : 
-                                (<>
-                                    <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                    <p className={styles.synopsis}>{anime.synopsis}</p>
-                                    <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.img} onLoad={handleLoadImage}/>
-                                </>)
-                            }
-                        </div>
+                            <Link href={`/animes/${anime.name}`}>
+                                <div className={styles.card} key={anime.id}>
+                                {load ? 
+                                ( <> <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div> </> ) : 
+                                    (<>
+                                        <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
+                                        <p className={styles.synopsis}>{anime.synopsis}</p>
+                                        <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.img} onLoad={handleLoadImage}/>
+                                    </>)
+                                }
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
