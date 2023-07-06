@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 const Animes = () => {
     const router = useRouter()
-    const { name } = router.query
+    const { name, episodeId } = router.query
 
     const [anime, setAnime] = useState<AnimeType>()
     const [liked, setLiked] = useState(false)

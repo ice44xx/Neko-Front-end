@@ -1,6 +1,7 @@
 import api from './api'
 import { CategoryType } from './categoriesService'
 import { GenderType } from './genderService'
+import { SeasonType } from './seasonsService'
 
 export type EpisodesType = {
     id: number
@@ -19,6 +20,7 @@ export type AnimeType = {
     episodes?: EpisodesType[]
     categories?: CategoryType
     gender?: GenderType
+    season?: SeasonType[]
 }
 
 const animeService = {

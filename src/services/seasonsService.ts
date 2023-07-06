@@ -1,0 +1,29 @@
+import { EpisodesType } from './animesService'
+import api from './api'
+
+export type SeasonType = {
+    id: number
+    name: string
+    episodes?: EpisodesType[]
+}
+
+const seasonsService = {
+    getSeasons: async () => {
+        try {
+            const res = await api.get('/seasons')
+            return res.data
+        } catch (error) {
+            return error
+        }
+    },
+    getOneSeason: async (id: number) => {
+        try {
+            const res = await api.get(`/seasons/${id}`)
+            return res.data
+        } catch (error) {
+            return error
+        }
+    }
+} 
+
+export default seasonsService
