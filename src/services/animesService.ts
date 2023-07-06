@@ -39,37 +39,25 @@ const animeService = {
             return error.response
         }
     },
-    addFavorite: async (animeId: number | string) => {
-        try {
-            const token = sessionStorage.getItem('nekoanimes-token')
-            const res = await api.post('/favorites', {animeId}, {headers: {
-                Authorization: `Bearer ${token}`
-            }
-            })
-            return res
-        } catch (error: any) {
-            return error.response
-        }
-    },
-    removeFavorite: async (animeId: number | string) => {
-        try {
-            const token = sessionStorage.getItem('nekoanimes-token')
-            const res = await api.delete('/favorites', {headers: {
-                Authorization: `Bearer ${token}`
-            },
-            data: {animeId}
-        })
-        return res
-        } catch (error: any) {
-            return error.response
-        }
-    },
     getFavorites: async () => {
         try {
             const token = sessionStorage.getItem('nekoanimes-token')
             const res = await api.get('/favorites', {headers: {
                 Authorization: `Bearer ${token}`
             }})
+            
+            return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
+    favorite: async (animeId: number | string) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.post('/favorites', {animeId}, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+
             return res
         } catch (error: any) {
             return error.response
@@ -97,6 +85,17 @@ const animeService = {
             return error.response
         }
     },
+    removeFavorite: async (animeId: number | string) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.delete(`/favorites/${animeId}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+        return res
+        } catch (error: any) {
+            return error.response
+        }
+    },
     findAll: async () => {
         try {
             const res = await api.get('/animes')
@@ -118,11 +117,10 @@ const animeService = {
         try {
             const res = await api.get(`animes/${name}`)
             return res.data
-            
         } catch (error) {
             return error
         }
-    }
+    },
 }
 
 export default animeService;

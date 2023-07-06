@@ -11,6 +11,9 @@ interface Login {
     email: string
     password: string
 }
+interface Reset {
+    email: string
+}
 
 const authService = {
     register: async (attributes: Register) => {
@@ -37,7 +40,23 @@ const authService = {
         }
 
         return res
-    }
+    },
+    reset: async (attributes: Reset) => {
+        const res = await api.post('/forget-password', attributes).catch((error) => {
+            if(error.response.status === 500 || error.response.status === 404) {
+                console.log('email incorreto!')
+            }
+            return error.response
+        })
+
+        if (res.status === 500 || res.status === 404) {
+            return res.error
+
+        } else {
+            const token = res.data.token;
+        }
+        return res;
+    },
 }
 
 export default authService

@@ -1,5 +1,7 @@
 .container{
     display: flex;
+    justify-content: center;
+    align-items: center;
     .containerLeft{
         display: flex;
         justify-content: center;
@@ -75,10 +77,14 @@
                 }
             }
             .containerBtnLogin{
+                display: flex;
+                justify-content: left;
                 margin-top: 20px;
-                height: 75px;
+                height: 52px;
+                gap: 10px;
                 .btn{
-                    width: 110px;
+                    width: 120px;
+                    height: 52px;
                     font-size: 20px;
                     border: none;
                     border-radius: 0;
@@ -87,8 +93,73 @@
                         background-color: #8400ff;
                     }
                 }
+                .btnForget{
+                    @extend .btn;
+                    width: 150px;
+                }
             }
         }
+    }
+    .containerForgetPassword{
+        position: absolute;
+        top: -800px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+        align-items: center;
+        width: 700px;
+        height: 440px;
+        background-color: rgb(40, 40, 40);
+        border: 2px solid #fff;
+        transition: all 0.3s;
+        .title{
+            font-size: 45px;
+            color: #fff;
+        }
+        .form{
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            .label{
+                color: #fff;
+                font-size: 25px;
+                margin: 0;
+            }
+            .input{
+                width: 420px;
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+                box-shadow: none;
+                border-bottom: 2px solid #fff;
+                font-size: 18px;
+                color: #fff;
+                transition: all 0.3s;
+                &:hover{
+                    border-bottom: 2px solid #8400ff;
+                    transition: all 0.3s;
+                }
+            }
+        }
+        .btn{
+            width: 120px;
+            height: 52px;
+            font-size: 20px;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+            &:hover{
+                background-color: #8400ff;
+            }
+        }
+    }
+    .activeContainer{
+        top: 300px;
+        transition: all 0.3s;
     }
 }
 @media (max-width: 880px){

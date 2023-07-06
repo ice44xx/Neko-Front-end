@@ -12,6 +12,10 @@ interface PasswordParams {
     password: string
     newPassword: string
 }
+interface ResetParams {
+    email: string
+    newPassword: string
+}
 
 const profileService = {
     getUser: async () => {
@@ -49,6 +53,15 @@ const profileService = {
                 }
             })
             return res.status
+        } catch (error: any) {
+            return error
+        }
+    },
+    resetPassword : async (attributes: ResetParams) => {
+        try {
+            const res = await api.put('/reset-password', attributes)
+            return res.status
+
         } catch (error: any) {
             return error
         }

@@ -5,6 +5,10 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    background-image: url('/assets/backProfile/buble.png');
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
     .container_anime{
         display: flex;
         max-width: 1200px;
@@ -50,6 +54,9 @@
                 justify-content: right;
                 gap: 20px;
                 padding: 0 60px;
+                .icon{
+                    width: 30px;
+                }
                 .img{
                     width: 40px;
                     margin-top: 0px;
@@ -64,11 +71,27 @@
         }
     }
     .container_episodes{
-        margin-top: 50px;
+        margin: 50px 0;
+        padding: 20px;
         width: 1600px;
         height: 500px;
         margin-bottom: 20px;
         max-height: 400px;
         background-color: rgb(40,40,40);
+        .container_content{
+            display: flex;
+            gap: 20px;
+            .card{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgb(68, 68, 68);
+                width: 180px;
+                height: 180px;
+                .title{
+                    font-size: 20px;
+                }
+            }
+        }
     }
 }

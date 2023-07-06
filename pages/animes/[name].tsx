@@ -6,6 +6,7 @@ import animeService, { AnimeType } from '@/services/animesService'
 import Head from "next/head"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const Animes = () => {
     const router = useRouter()
@@ -13,15 +14,9 @@ const Animes = () => {
 
     const [anime, setAnime] = useState<AnimeType>()
     const [liked, setLiked] = useState(false)
+    const [favorited, setFavorited] = useState(false)
     const [auth, setAuth] = useState(false)
 
-    const getAnime = async () => {
-        if(typeof name === 'string') {
-            const res = await animeService.getAnime(name)
-            setAnime(res)
-        }
-    }
- 
     useEffect(() => {
         const token = sessionStorage.getItem('nekoanimes-token')
         if(token) {
@@ -32,28 +27,41 @@ const Animes = () => {
         
     }, [name])
 
-    const handleLikeAnime = async () => {
+    const getAnime = async () => {
+        if (typeof name !== 'string') return
+
+        const res = await animeService.getAnime(name)
+        setAnime(res)
+    }
+
+    const handleFavoriteAnime = async () => {
+        if (typeof anime?.id !== 'number') return;
+      
+        if (!favorited) {
+          await animeService.favorite(anime.id);
+          setFavorited(true);
+          console.log('favorited success');
+        } else {
+          await animeService.removeFavorite(anime.id);
+          setFavorited(false);
+          console.log('favorited removed');
+        }
+    };
+ 
+    //ARRUMAR LOGICA
+    const handleLikeAnime = () => {
         if (typeof anime?.id !== 'number') return;
 
-        if(liked === false) {
-            try {
-                await animeService.like(anime.id)
-                setLiked(true)
-                console.log('like sucess')
-            } catch (error) {
-                console.log('failed to like', error)
-            }
+        if (!liked) {
+            animeService.like(anime.id);
+            alert('LIKED TRUE')
+            setLiked(true);
         } else {
-           try {
-             await animeService.removeLike(anime.id)
-             setLiked(false)
-             console.log('Unlike sucess')
-
-           } catch (error) {
-            console.log('Failed to unlike', error)
-           }
+            animeService.removeLike(anime.id);
+            alert('REMOVED TRUE')
+            setLiked(false);
         }
-    } 
+    };
     
     return (
         <>
@@ -70,9 +78,9 @@ const Animes = () => {
                     <div className={styles.container_anime}>
                         <div className={styles.container_thumbnail}>
                             {anime?.thumbnailUrl ? (
-                                <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.thumb} />
+                                <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime?.thumbnailUrl}`} alt={anime?.name} className={styles.thumb} />
                                 ) : (
-                                    <div>Imagem não disponível</div>
+                                <div>Imagem não disponível</div>
                             )}
                         </div>
                         <div className={styles.container_info}>
@@ -83,13 +91,27 @@ const Animes = () => {
                                 <p className={styles.categories}>{anime?.gender?.name}</p>
                             </div>
                             <div className={styles.like_favorite}>
-                                <img onClick={handleLikeAnime} className={styles.img} src="/assets/heart.png" alt="" />
-                                <img className={styles.img}src="/assets/star.png" alt="" />
+                                {liked ? (
+                                    <img onClick={handleLikeAnime} className={styles.img} src="/assets/heart.png" alt="" />
+                                ): (
+                                    <img onClick={handleLikeAnime} className={styles.img} src="/assets/heart0.png" alt="" />
+                                )}
+                                {favorited === false ? (
+                                    <img onClick={handleFavoriteAnime} className={styles.img}src="/assets/star0.png" alt="" />
+                                ): (
+                                    <img onClick={handleFavoriteAnime} className={styles.img}src="/assets/star.png" alt="" />
+                                )}
                             </div>
                         </div>
                     </div>
                     <div className={styles.container_episodes}>
-                    
+                        <div className={styles.container_content}>
+                            {anime?.episodes?.map((episode) => (
+                                <div className={styles.card}>
+                                    <Link href={`/animes/${name}/${episode.id}`}><p className={styles.title}>{episode.name}</p></Link>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <FooterGeneric/>
