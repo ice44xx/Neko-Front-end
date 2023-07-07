@@ -1,4 +1,4 @@
-import { EpisodesType } from './animesService'
+import { AnimeType, EpisodesType } from './animesService'
 import api from './api'
 
 export type SeasonType = {
@@ -8,9 +8,9 @@ export type SeasonType = {
 }
 
 const seasonsService = {
-    getSeasons: async () => {
+    getSeasons: async (id: number) => {
         try {
-            const res = await api.get('/seasons')
+            const res = await api.get(`/seasons/${id}`)
             return res.data
         } catch (error) {
             return error

@@ -6,11 +6,12 @@ import animeService, { AnimeType } from '@/services/animesService'
 import Head from "next/head"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { Button } from 'reactstrap'
 import Link from 'next/link'
 
 const Animes = () => {
     const router = useRouter()
-    const { name, episodeId } = router.query
+    const { name } = router.query
 
     const [anime, setAnime] = useState<AnimeType>()
     const [liked, setLiked] = useState(false)
@@ -24,15 +25,16 @@ const Animes = () => {
         }
 
         getAnime()
-        
     }, [name])
 
     const getAnime = async () => {
-        if (typeof name !== 'string') return
-
-        const res = await animeService.getAnime(name)
-        setAnime(res)
-    }
+        if (typeof name !== 'string') return;
+    
+        const res = await animeService.getAnime(name);
+        setAnime(res);
+    
+        console.log(res)
+    };
 
     const handleFavoriteAnime = async () => {
         if (typeof anime?.id !== 'number') return;
@@ -48,7 +50,6 @@ const Animes = () => {
         }
     };
  
-    //ARRUMAR LOGICA
     const handleLikeAnime = () => {
         if (typeof anime?.id !== 'number') return;
 
@@ -62,7 +63,8 @@ const Animes = () => {
             setLiked(false);
         }
     };
-    
+
+
     return (
         <>
             <Head>
@@ -106,9 +108,14 @@ const Animes = () => {
                     </div>
                     <div className={styles.container_episodes}>
                         <div className={styles.container_content}>
-                            {anime?.episodes?.map((episode) => (
-                                <div className={styles.card}>
-                                    <Link href={`/animes/${name}/${episode.id}`}><p className={styles.title}>{episode.name}</p></Link>
+                            {anime?.seasons?.map((season) => (
+                                <div key={season.id}>
+                                    <Button className={styles.btn}>{season.name}</Button>
+                                    <div className={styles.container_stream}>
+                                        {season?.episodes?.map((episode) => (
+                                            <Link className={styles.card} key={episode.id} href={`/animes/${name}/${episode.id}`}><p>{episode.name}</p></Link>
+                                        ))}
+                                    </div>
                                 </div>
                             ))}
                         </div>

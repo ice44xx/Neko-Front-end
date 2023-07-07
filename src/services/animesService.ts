@@ -17,10 +17,10 @@ export type AnimeType = {
     name: string
     thumbnailUrl: string
     synopsis: string
-    episodes?: EpisodesType[]
     categories?: CategoryType
     gender?: GenderType
-    season?: SeasonType[]
+    seasons?: SeasonType[]
+    episodes?: EpisodesType[]
 }
 
 const animeService = {
