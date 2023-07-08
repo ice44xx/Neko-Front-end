@@ -28,6 +28,7 @@ const AnimeEpisode = () => {
 
       getAnime()
       setSelectedEpisodeId(episodeId);
+
     },[name, id, episodeId])
 
     const getAnime = async () => {
@@ -41,7 +42,6 @@ const AnimeEpisode = () => {
         if (episodes) {
           const episode = episodes.find((ep: EpisodesType) => ep.id === episodeId);
           if (episode) {
-            console.log(episode);
             setEpisode(episode)
           }
         }
@@ -68,7 +68,7 @@ const AnimeEpisode = () => {
               <div className={styles.container_left_right}>
 
                 <div className={styles.container_left}>
-                  <p className={styles.title}>{episode?.name}</p>
+                  <p className={styles.title}>{selectedEpisode?.name}</p>
                   <div className={styles.container_stream}>
                     {selectedEpisode && <iframe allowFullScreen width={700} height={550} src={selectedEpisode.videoUrl} />}
                   </div>
@@ -98,27 +98,6 @@ const AnimeEpisode = () => {
   
 export default AnimeEpisode;
 
-
-  /*<div className={styles.container_right}>
-  <div className={styles.list}>
-    {seasons?.map((season) => (
-      <div key={season.id}>
-        {season.episodes?.length > 0 && (
-          <>
-            <p>{season.name}</p>
-            {season.episodes.map((episode, index) => (
-              <div className={styles.item_list} key={episode.id}>
-                <Link className={styles.link} href={`/animes/${name}/${episode.id}`}>
-                  <p>{index + 1} - {episode.name}</p>
-                </Link>
-              </div>
-            ))}
-          </>
-        )}
-      </div>
-    ))}
-  </div>
-</div> */
 
 /*
     const [visibleSeasons, setVisibleSeasons] = useState<boolean[]>([]);

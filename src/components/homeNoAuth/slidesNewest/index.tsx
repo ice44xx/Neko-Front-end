@@ -53,7 +53,6 @@ const SlidesNewest = () => {
                                         ) : ( 
                                         <>
                                             <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                            <p className={styles.synopsis}>{anime.synopsis}</p>
                                             <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} onLoad={handleLoadImage}/>
                                         </>)
                                     }

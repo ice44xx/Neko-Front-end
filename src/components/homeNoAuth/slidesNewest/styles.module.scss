@@ -52,18 +52,6 @@
                 color: black;
                 font-size: 25px;
             }
-            .synopsis{
-                z-index: 1;
-                position: absolute;
-                bottom: -150px;
-                left: 0;
-                font-size: 17px;
-                color: black;
-                background-color: rgba(255, 255, 255, 0.884);
-                padding: 6px;
-                opacity: 0;
-                transition: all 0.3s;
-            }
             .slideImg{
                 min-width: 100%;
                 transition: all 0.3s;
