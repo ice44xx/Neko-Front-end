@@ -62,7 +62,7 @@ const SearchPage = () => {
                                 ( <> <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div> </> ) : 
                                     (<>
                                         <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                        <p className={styles.synopsis}>{anime.synopsis}</p>
+                                        <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
                                         <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.img} onLoad={handleLoadImage}/>
                                     </>)
                                 }

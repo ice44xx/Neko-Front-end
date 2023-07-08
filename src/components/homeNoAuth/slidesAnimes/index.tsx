@@ -24,8 +24,8 @@ const SlidesAnimes = () => {
 
     return(
         <>
+            <p className={styles.titlePage}>Todos Animes</p>
             <div className={styles.container}>
-                <p className={styles.titlePage}>Todos Animes</p>
                 <div className={styles.container_animes}>
                     {data.data?.slice(0, animeCount).map((anime: AnimeType) => (
                         <Link href={`/animes/${anime.name}`} key={anime.id}>
@@ -34,7 +34,7 @@ const SlidesAnimes = () => {
                                 ( <> <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div> </> ) : 
                                     (<>
                                         <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                        <p className={styles.synopsis}>{anime.synopsis}</p>
+                                        <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
                                         <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.img} onLoad={handleImageLoad}/>
                                     </>)
                                 }
