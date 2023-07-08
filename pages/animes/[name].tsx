@@ -110,7 +110,7 @@ const Animes = () => {
                         <div className={styles.container_content}>
                             {anime?.seasons?.map((season) => (
                                 <div key={season.id}>
-                                    <Button className={styles.btn}>{season.name}</Button>
+                                    <Button className={styles.btn}>{season.name.slice(0, 11)}</Button>
                                     <div className={styles.container_stream}>
                                         {season?.episodes?.map((episode) => (
                                             <Link className={styles.card} key={episode.id} href={`/animes/${name}/${episode.id}`}><p>{episode.name}</p></Link>

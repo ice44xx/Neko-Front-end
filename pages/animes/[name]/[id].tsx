@@ -10,17 +10,22 @@ import { useState, useEffect } from "react";
 import { Button } from 'reactstrap';
 
 const AnimeEpisode = () => {
-  const router = useRouter()
-  const {name, id} = router.query
-  const [auth, setAuth] = useState(false)
-  const [anime, setAnime] = useState<AnimeType>()
-  const [episode, setEpisode] = useState<EpisodesType>()
-  const episodeId = typeof id === 'string' ? parseInt(id) : undefined;
-  const [selectedEpisodeId, setSelectedEpisodeId] = useState<number | undefined>(episodeId);
+    const router = useRouter()
+    const {name, id} = router.query
+    const [auth, setAuth] = useState(false)
+    const [anime, setAnime] = useState<AnimeType>()
+    const [episode, setEpisode] = useState<EpisodesType>()
+    const episodeId = typeof id === 'string' ? parseInt(id) : undefined;
+    const [selectedEpisodeId, setSelectedEpisodeId] = useState<number | undefined>(episodeId);
 
-  const selectedEpisode = anime?.seasons?.flatMap((season) => season.episodes)?.find((episode) => episode?.id === selectedEpisodeId);
+    const selectedEpisode = anime?.seasons?.flatMap((season) => season.episodes)?.find((episode) => episode?.id === selectedEpisodeId);
 
     useEffect(() => {
+      const token = sessionStorage.getItem('nekoanimes-token')
+      if(token) {
+        setAuth(true)
+      }
+
       getAnime()
       setSelectedEpisodeId(episodeId);
     },[name, id, episodeId])
@@ -54,9 +59,9 @@ const AnimeEpisode = () => {
         </Head>
         <main>
           {auth ? (
-            <HeadNoAuth/>
-          ) : (
             <HeaderAuth/>
+          ) : (
+            <HeadNoAuth/>
           )}
           <div className={styles.container_master}> 
             <div className={styles.container}>
@@ -65,14 +70,14 @@ const AnimeEpisode = () => {
                 <div className={styles.container_left}>
                   <p className={styles.title}>{episode?.name}</p>
                   <div className={styles.container_stream}>
-                    {selectedEpisode && <iframe width={700} height={550} src={selectedEpisode.videoUrl} />}
+                    {selectedEpisode && <iframe allowFullScreen width={700} height={550} src={selectedEpisode.videoUrl} />}
                   </div>
                 </div>
 
                 <div className={styles.container_right}>
                   {anime?.seasons?.map((season) => (
                       <div key={season.id} className={styles.list}>
-                        <p className={styles.title}>{season.name}</p>
+                        <p className={styles.title}>{season.name.slice(0, 11)}</p>
                         {season.episodes?.map((episode) => (
                           <div key={episode.id} className={styles.item_list}>
                             <Button className={styles.btn} onClick={() => handleEpisodeClick(episode.id)}>{episode.name}</Button>
@@ -89,7 +94,7 @@ const AnimeEpisode = () => {
         </main>
       </>
     )
-  };
+};
   
 export default AnimeEpisode;
 
