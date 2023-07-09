@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { Button } from 'reactstrap';
+import Categories from '@/components/homeAuth/categories';
 
 const AnimeEpisode = () => {
     const router = useRouter()
@@ -27,7 +28,6 @@ const AnimeEpisode = () => {
       }
 
       getAnime()
-      setLoad(true)
       setSelectedEpisodeId(episodeId);
 
     },[name, id, episodeId])
@@ -37,6 +37,7 @@ const AnimeEpisode = () => {
 
       const res = await animeService.getAnime(name)
       setAnime(res)
+      setLoad(true)
     }
 
     const handleEpisodeClick = (episodeId: number) => {
@@ -46,11 +47,14 @@ const AnimeEpisode = () => {
     return (
       <>
         <Head>
-          <title>{name} - {id}</title>
+          <title>{name} - {selectedEpisode?.name}</title>
         </Head>
         <main>
           {auth ? (
-            <HeaderAuth/>
+            <>
+              <HeaderAuth/>
+              <Categories/>
+            </>
           ) : (
             <HeadNoAuth/>
           )}
@@ -62,26 +66,31 @@ const AnimeEpisode = () => {
                   <div className={styles.container_stream}>
                     {load ? (
                       <>
-                      {selectedEpisode && <iframe allowFullScreen width={700} height={550} src={selectedEpisode.videoUrl} />}
+                      {selectedEpisode && <iframe className={styles.iframe} allowFullScreen src={selectedEpisode.videoUrl} />}
                       </>
                     ) : (
-                      <p>Carregando...</p>
+                      <div className={styles.load}>
+                        <img src="/assets/load.gif" alt="" className={styles.img} />
+                      </div>
                     )}
                   </div>
                 </div>
-
-                <div className={styles.container_right}>
-                  {anime?.seasons?.map((season) => (
-                    <div key={season.id} className={styles.list}>
-                      <p className={styles.title}>{season.name.slice(0, 11)}</p>
-                      {season.episodes?.map((episode) => (
-                        <div key={episode.id} className={styles.item_list}>
-                          <Button className={styles.btn} onClick={() => handleEpisodeClick(episode.id)}>{episode.name}</Button>
-                        </div>
-                      ))}
-                    </div>
-                  ))}
+                <div className={styles.container_right_img}>
+                  <img src="/assets/catcat.gif" alt="" className={styles.cat} />
+                  <div className={styles.container_right}>
+                    {anime?.seasons?.map((season) => (
+                      <div key={season.id} className={styles.list}>
+                        <p className={styles.title}>{season.name.slice(0, 11)}</p>
+                        {season.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
+                          <div key={episode.id} className={styles.item_list}>
+                            <Button className={styles.btn} onClick={() => handleEpisodeClick(episode.id)}>{episode.name}</Button>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
+                
 
               </div>
             </div>

@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { Button } from 'reactstrap'
 import Link from 'next/link'
+import Categories from '@/components/homeAuth/categories'
 
 const Animes = () => {
     const router = useRouter()
@@ -72,12 +73,16 @@ const Animes = () => {
             </Head>
             <main>
                 {auth ? (
-                    <HeaderAuth/>
+                    <>
+                        <HeaderAuth/>
+                        <Categories/>
+                    </>
                 ) : (
                     <HeadNoAuth/>
                 )}
                 <div className={styles.container_master}>
                     <div className={styles.container_anime}>
+                        <img src="/assets/catest.png" alt="" className={styles.cat} />
                         <div className={styles.container_thumbnail}>
                             {anime?.thumbnailUrl ? (
                                 <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime?.thumbnailUrl}`} alt={anime?.name} className={styles.thumb} />
@@ -89,10 +94,12 @@ const Animes = () => {
                             <p className={styles.title}>{anime?.name}</p>
                             <p className={styles.synopsis}>{anime?.synopsis}</p>
                             <div className={styles.container_categories}>
-                                <p className={styles.categories}>{anime?.categories?.name}</p>
-                                <p className={styles.categories}>{anime?.gender?.name}</p>
+                                <Link href={`/categories/${anime?.anothers?.name}`} className={styles.link}><p className={styles.categories}>{anime?.anothers?.name}</p></Link>
+                                <Link href={`/categories/${anime?.categories?.name}`} className={styles.link}><p className={styles.categories}>{anime?.categories?.name}</p></Link>
+                                <Link href={`/classification/${anime?.gender?.name}`} className={styles.link}><p className={styles.categories}>{anime?.gender?.name}</p></Link>
                             </div>
-                            <div className={styles.like_favorite}>
+                            {auth ? (
+                                <div className={styles.like_favorite}>
                                 {liked ? (
                                     <img onClick={handleLikeAnime} className={styles.img} src="/assets/heart.png" alt="" />
                                 ): (
@@ -104,6 +111,10 @@ const Animes = () => {
                                     <img onClick={handleFavoriteAnime} className={styles.img}src="/assets/star.png" alt="" />
                                 )}
                             </div>
+                            ) : (
+                                <div></div>
+                            )}
+                            
                         </div>
                     </div>
                     <div className={styles.container_episodes}>
@@ -112,7 +123,7 @@ const Animes = () => {
                                 <div key={season.id}>
                                     <Button className={styles.btn}>{season.name.slice(0, 11)}</Button>
                                     <div className={styles.container_stream}>
-                                        {season?.episodes?.map((episode) => (
+                                        {season?.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
                                             <Link className={styles.card} key={episode.id} href={`/animes/${name}/${episode.id}`}><p>{episode.name}</p></Link>
                                         ))}
                                     </div>

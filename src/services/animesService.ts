@@ -1,5 +1,5 @@
 import api from './api'
-import { CategoryType } from './categoriesService'
+import { AnotherType, CategoryType } from './categoriesService'
 import { GenderType } from './genderService'
 import { SeasonType } from './seasonsService'
 
@@ -18,6 +18,7 @@ export type AnimeType = {
     thumbnailUrl: string
     synopsis: string
     categories?: CategoryType
+    anothers?: AnotherType
     gender?: GenderType
     seasons?: SeasonType[]
     episodes?: EpisodesType[]

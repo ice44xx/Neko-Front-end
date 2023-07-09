@@ -8,10 +8,14 @@ import { useRouter } from "next/router"
 import { useState, useEffect } from 'react'
 import FooterGeneric from '@/components/common/footerGeneric'
 import withProtect from '@/components/withAuth'
+import Link from 'next/link'
 
 const CategoriesPage = () => {
     const [category, setCategory] = useState<CategoryType>()
     const [animes, setAnimes] = useState<AnimeType[]>([])
+    const [animesAnother, setAnimesAnother] = useState<AnimeType[]>([])
+    const [selectedCategoryType, setSelectedCategoryType] = useState("");
+    const [selectedAnotherType, setSelectedAnotherType] = useState("");
     const [load, setLoad] = useState(false)
     const router = useRouter()
     const { name } = router.query
@@ -30,11 +34,24 @@ const CategoriesPage = () => {
         setLoad(false)
     }
 
+    const getAnothers = async () => {
+        if(typeof name !== "string") return
+        const res = await categoriesService.getAnother(name)
+
+        setLoad(true)
+
+        if(res.status === 200) {
+            setCategory(res.data)
+            setAnimesAnother(res.data?.animes || [])
+        }
+
+        setLoad(false)
+    }
+
     useEffect(() => {
         getCategory()
+        getAnothers()
     }, [name])
-
-    
 
     return (
         <>
@@ -47,21 +64,27 @@ const CategoriesPage = () => {
                 <div className={styles.container}>
                     <p className={styles.titlePage}>Animes de {name}</p>
                     <div className={styles.container_animes}>
-                        {animes.map((anime) => (
-                            <div key={anime.id} className={styles.card}>
-                                {load ? (
-                                    <>
-                                        <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                        <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
-                                        <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
-                                    </>
-                                )}
-                            </div>
-                        ))}
+                        {(animes || animesAnother) ? (
+                            [...animes, ...animesAnother].map((anime) => (
+                                <Link href={`/animes/${anime.name}`} key={anime.id}>
+                                    <div key={anime.id} className={styles.card}>
+                                        {load ? (
+                                            <>
+                                                <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
+                                                <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
+                                                <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
+                                            </>
+                                        )}
+                                    </div>
+                                </Link>
+                            ))
+                        ) : (
+                            <div></div>
+                        )}
                     </div>
                 </div>
                 <FooterGeneric/>

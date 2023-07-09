@@ -10,7 +10,7 @@ import { useState } from 'react'
 const SlidesNewest = () => {
     const [load, setLoad] = useState(false)
     
-    const { data, error } = useSWR('/animes/newest', animeService.getFeaturedAnimes)
+    const { data, error } = useSWR('/animes/newest', animeService.getNewestAnimes)
 
     if(!data) return null
     if(error) return error

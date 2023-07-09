@@ -8,14 +8,15 @@ import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import Categories from '@/components/homeAuth/categories'
 import FooterGeneric from '@/components/common/footerGeneric'
+import Link from 'next/link'
  
 const classification = () => {
     const router = useRouter()
     const {name} = router.query
     const [gender, setGender] = useState<GenderType>()
     const [animes, setAnimes] = useState<AnimeType[]>([])
+    const [auth, setAuth] = useState(false)
     const [load, setLoad] = useState(false)
-    const auth = !!sessionStorage.getItem('nekoanimes-token')
 
     const getGender = async () => {
         if(typeof name !== "string") return
@@ -32,6 +33,12 @@ const classification = () => {
     }
 
     useEffect(() => {
+        const token = sessionStorage.getItem('nekoanimes-token')
+        if(token) {
+            setAuth(true)
+        } else {
+            setAuth(false)
+        }
         getGender()
     },[name])
 
@@ -42,29 +49,31 @@ const classification = () => {
             </Head>
 
             <main>
-                {auth ? <HeaderAuth/> : <HeadNoAuth/>}
-                <Categories/>
+                {auth ? 
+                <> <HeaderAuth/> <Categories/> </> : <HeadNoAuth/>}
                 <div className={styles.container}>
                     <p className={styles.titlePageGender}>Categoria {name}</p>
                     <div className={styles.container_animes}>
                         {animes.map((anime) => (
-                            <div key={anime.id} className={styles.card}>
-                                {load ? (
-                                    <>
-                                        <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0, 20)}...` : anime.name}</p>
-                                        <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
-                                        <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
-                                    </>
-                                )}
-                            </div>
+                            <Link href={`/animes/${anime.name}`} key={anime.id}>
+                                <div key={anime.id} className={styles.card}>
+                                    {load ? (
+                                        <>
+                                            <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0, 20)}...` : anime.name}</p>
+                                            <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
+                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
+                                        </>
+                                    )}
+                                </div>
+                            </Link>
                         ))}
                     </div>
-                    <FooterGeneric/>
                 </div>
+                <FooterGeneric/>
             </main>
         </>
     )
