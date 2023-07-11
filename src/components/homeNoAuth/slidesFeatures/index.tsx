@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import styles from '../slidesNewest/styles.module.scss'
 import useSWR from 'swr'
 import animeService, { AnimeType } from '@/services/animesService'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
@@ -22,25 +22,43 @@ const SlidesFeatures = () => {
     return(
         <>
             <div className={styles.container}>
-                <p className={styles.titlePage}>Top 10 em destaques</p>
-                <Splide className={styles.mySplide} options={{omitEnd: true, width: 1980, pagination: false, perPage: 5, perMove: 1, breakpoints: {
-                    1650: {
-                        perPage: 4,
-                        width: 1400
+                <div className={styles.container_head}>
+                    <p className={styles.barFeatures}></p>
+                    <p className={styles.titlePage}>Top 10 em destaques</p> 
+                </div>
+                <Splide className={styles.mySplide} options={{gap: 5, omitEnd: true, width: 1750, perPage: 7, pagination: false, perMove: 1, breakpoints: {
+                    1700: {
+                        perPage: 6,
+                        width: 1500
                     },
-                    1430: {
-                        perPage: 3,
+                    1450: {
+                        perPage: 5,
+                        width: 1250
+                    },
+                    1250: {
+                        perPage: 4,
                         width: 1000
                     },
-                    1000: {
-                        perPage: 2,
-                        width: 700
+                    980: {
+                        perPage: 3,
+                        width: 0
                     },
-                    665: {
+                    520: {
+                        perPage: 3,
+                        width: 0
+                    },
+                    495: {
+                        perPage: 3,
+                        width: 0
+                    },
+                    375: {
+                        perPage: 2,
+                        width: 0
+                    },
+                    279: {
                         perPage: 1,
                         width: 0
                     }
-
                     }}}>
 
                     {data.data?.map((anime: AnimeType) => (

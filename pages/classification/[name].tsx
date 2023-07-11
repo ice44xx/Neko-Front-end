@@ -1,5 +1,5 @@
 import HeaderAuth from '@/components/homeAuth/headerAuth'
-import styles from './styles.module.scss'
+import styles from '../../src/components/homeNoAuth/slidesAnimes/styles.module.scss'
 import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth"
 import { AnimeType } from "@/services/animesService"
 import genderService, { GenderType } from "@/services/genderService"
@@ -49,28 +49,31 @@ const classification = () => {
             </Head>
 
             <main>
-                {auth ? 
-                <> <HeaderAuth/> <Categories/> </> : <HeadNoAuth/>}
-                <div className={styles.container}>
-                    <p className={styles.titlePageGender}>Categoria {name}</p>
-                    <div className={styles.container_animes}>
-                        {animes.map((anime) => (
-                            <Link href={`/animes/${anime.name}`} key={anime.id}>
-                                <div key={anime.id} className={styles.card}>
-                                    {load ? (
-                                        <>
-                                            <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0, 20)}...` : anime.name}</p>
-                                            <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
-                                            <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
-                                        </>
-                                    )}
-                                </div>
-                            </Link>
-                        ))}
+                {auth ? <> <HeaderAuth/> <Categories/> </> : <HeadNoAuth/>}
+                <div className={styles.container_master}>
+                    <div className={styles.container}>
+                        <div className={styles.container_head}>
+                            <p className={styles.titleSearch}>Classificação {name}</p>
+                        </div>
+                        <div className={styles.container_animes}>
+                            {animes.map((anime) => (
+                                <Link href={`/animes/${anime.name}`} key={anime.id}>
+                                    <div className={styles.card}>
+                                        {load ? (
+                                            <>
+                                                <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0, 20)}...` : anime.name}</p>
+                                                <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
+                                                <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
+                                            </>
+                                        )}
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
                 </div>
                 <FooterGeneric/>

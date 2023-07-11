@@ -13,7 +13,7 @@ const Categories = () => {
 
     return(
     <>  
-        <Swiper slidesPerView={10} loop={true} centeredSlides={false} className={styles.mySwiper} >
+        <Swiper slidesPerView={11} loop={true} centeredSlides={false} className={styles.mySwiper} >
             {data.data.categories.map((categories: CategoryType) => (
                 <SwiperSlide className={styles.slides} key={categories.id}>
                     <div className={styles.containerName}>

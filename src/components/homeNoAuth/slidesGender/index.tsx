@@ -38,7 +38,10 @@ const data = [
 const SlideGender = () => {
     return (
         <>
-            <p className = {styles.title}>Classificação de animes</p>
+            <div className={styles.container_head}>
+                <p className={styles.barGender}></p>
+                <p className = {styles.titlePage}>Classificação de animes</p>
+            </div>
             <div className = {styles.container}>
                 {data.map((data) => (
                 <Link href={`/classification/${data.name}`} style={{textDecoration: 'none', color: '#fff'}} key={data.id}>

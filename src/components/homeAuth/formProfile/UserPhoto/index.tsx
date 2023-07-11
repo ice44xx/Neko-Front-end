@@ -71,6 +71,7 @@ const UserPhoto = () => {
           </div>
 
           <div className={styles.container_btn}>
+            <p className={styles.rule}>Tamanho máximo de imagem 1MB.</p>
             <Input type="file" className={styles.inputFile} onChange={handleImageChange}/>
             <Button type='submit' className={styles.btn}>Salvar</Button>
           </div>

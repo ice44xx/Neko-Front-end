@@ -53,11 +53,13 @@ const SearchPage = () => {
 
             <div className={styles.container_master}>
                 <div className={styles.container}>
-                    <p className={styles.titlePage}>Resultado da pesquisa {searchName}</p>
+                    <div className={styles.container_head}>
+                        <p className={styles.titleSearch}>Resultado da pesquisa {searchName}</p>
+                    </div>
                     <div className={styles.container_animes}>
                         {searchResult?.map((anime) => (
-                            <Link href={`/animes/${anime.name}`}>
-                                <div className={styles.card} key={anime.id}>
+                            <Link href={`/animes/${anime.name}`} key={anime.id}>
+                                <div className={styles.card}>
                                 {load ? 
                                 ( <> <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div> </> ) : 
                                     (<>

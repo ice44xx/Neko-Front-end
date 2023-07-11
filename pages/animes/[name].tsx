@@ -91,14 +91,23 @@ const Animes = () => {
                             )}
                         </div>
                         <div className={styles.container_info}>
-                            <p className={styles.title}>{anime?.name}</p>
-                            <p className={styles.synopsis}>{anime?.synopsis}</p>
-                            <div className={styles.container_categories}>
-                                <Link href={`/categories/${anime?.anothers?.name}`} className={styles.link}><p className={styles.categories}>{anime?.anothers?.name}</p></Link>
-                                <Link href={`/categories/${anime?.categories?.name}`} className={styles.link}><p className={styles.categories}>{anime?.categories?.name}</p></Link>
-                                <Link href={`/classification/${anime?.gender?.name}`} className={styles.link}><p className={styles.categories}>{anime?.gender?.name}</p></Link>
+
+                            <div className={styles.title}>
+                                <p>{anime?.name}</p>
                             </div>
-                            {auth ? (
+
+                            <div className={styles.synopsis}>
+                                <p>{anime?.synopsis}</p>
+                            </div>
+                            <div className={styles.container_categories}>
+                                <div className={styles.container_content_categories}>
+                                    <Link href={`/categories/${anime?.anothers?.name}`} className={styles.link}><p className={styles.categories}>{anime?.anothers?.name}</p></Link>
+                                    <Link href={`/categories/${anime?.categories?.name}`} className={styles.link}><p className={styles.categories}>{anime?.categories?.name}</p></Link>
+                                    <Link href={`/classification/${anime?.gender?.name}`} className={styles.link}><p className={styles.categories}>{anime?.gender?.name}</p></Link>
+                                </div>
+                                
+
+                                {auth ? (
                                 <div className={styles.like_favorite}>
                                 {liked ? (
                                     <img onClick={handleLikeAnime} className={styles.img} src="/assets/heart.png" alt="" />
@@ -114,7 +123,8 @@ const Animes = () => {
                             ) : (
                                 <div></div>
                             )}
-                            
+                            </div>
+        
                         </div>
                     </div>
                     <div className={styles.container_episodes}>

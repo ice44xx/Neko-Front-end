@@ -159,6 +159,13 @@
     .modal{
         right: 9px;
     }
+    .container_search{
+        .form{
+            .input{
+                width: 70%;
+            }
+        }
+    }
 }
 @media (max-width: 550px) {
     .nav{
@@ -207,5 +214,25 @@
     }
     .activeModal{
         top: 0;
+    }
+}
+@media (max-width: 450px) {
+    .container_search{
+        .form{
+            .input{
+                width: 70%;
+                font-size: 45px;
+            }
+        }
+    }
+}
+@media (max-width: 300px) {
+    .container_search{
+        .form{
+            .input{
+                width: 80%;
+                font-size: 35px;
+            }
+        }
     }
 }

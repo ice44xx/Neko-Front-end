@@ -1,5 +1,5 @@
 {
-  "name": "sphere-front",
+  "name": "neko-animes",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@firebase/storage": "^0.11.2",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "@splidejs/react-splide": "^0.7.8",
     "@types/firebase": "^3.2.1",
     "@types/node": "20.3.1",

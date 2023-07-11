@@ -124,6 +124,14 @@ const animeService = {
             return error
         }
     },
+    getAnimePopular: async () => {
+        try {
+            const res = await api.get('/animes/popular')
+            return res.data
+        } catch (error) {
+            return error
+        }
+    }
 }
 
 export default animeService;

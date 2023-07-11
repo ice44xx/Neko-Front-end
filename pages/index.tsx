@@ -1,4 +1,5 @@
 import Head from "next/head"
+import styles from '../styles/home.module.scss'
 import { ReactNode } from "react"
 import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth";
 
@@ -9,6 +10,7 @@ import SlidesNewest from "@/components/homeNoAuth/slidesNewest";
 import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures";
 import SlideGender from "@/components/homeNoAuth/slidesGender";
 import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes";
+import SlidesPopular from "@/components/homeNoAuth/slidesPopular";
 
 interface IndexPageProps {
     children?: ReactNode;
@@ -24,12 +26,15 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
                 <meta name="description" content="" />
             </Head>
             <main>
-                <HeadNoAuth/>
-                <SlidesNewest/>
-                <SlidesAnimes/>
-                <SlidesFeatures/>
-                <SlideGender/>
-                <Footer/>
+                <div className={styles.container}>
+                    <HeadNoAuth/>
+                    <SlidesNewest/>
+                    <SlidesPopular/>
+                    <SlidesFeatures/>
+                    <SlidesAnimes/>
+                    <SlideGender/>
+                    <Footer/>
+                </div>
             </main>
         </>
     )

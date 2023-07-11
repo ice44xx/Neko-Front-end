@@ -6,7 +6,7 @@ import { Button } from 'reactstrap'
 import Link from 'next/link'
 
 const SlidesAnimes = () => {
-    const [animeCount, setAnimeCount] = useState(5)
+    const [animeCount, setAnimeCount] = useState(6)
     const [showButton, setShowButton] = useState(true)
     const [load, setLoad] = useState(false)
 
@@ -16,7 +16,7 @@ const SlidesAnimes = () => {
     if(error) return error
 
     const handleMore = () => {
-        setAnimeCount(prevCount => prevCount + 5)
+        setAnimeCount(prevCount => prevCount + 6)
     }
     const handleImageLoad = () => {
         setLoad(false)
@@ -24,7 +24,10 @@ const SlidesAnimes = () => {
 
     return(
         <>
-            <p className={styles.titlePage}>Todos Animes</p>
+            <div className={styles.container_head}>
+                <p className={styles.barAnimes}></p>
+                <p className={styles.titlePage}>Todos Animes</p>
+            </div>
             <div className={styles.container}>
                 <div className={styles.container_animes}>
                     {data.data?.slice(0, animeCount).map((anime: AnimeType) => (
@@ -42,7 +45,7 @@ const SlidesAnimes = () => {
                         </Link>
                     ))}
                 </div>
-                {data.data?.length > 5 && showButton && (
+                {data.data?.length > 6 && showButton && (
                     <Button onClick={handleMore} className={styles.btn}><img src="/assets/arrowBtn.png"/>MOSTRAR MAIS<img src="/assets/arrowBtn.png" alt="" /></Button>
                 )}
             </div>

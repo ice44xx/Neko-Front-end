@@ -9,12 +9,11 @@ import { useState } from 'react'
 
 const SlidesNewest = () => {
     const [load, setLoad] = useState(false)
-    
     const { data, error } = useSWR('/animes/newest', animeService.getNewestAnimes)
 
     if(!data) return null
     if(error) return error
-
+    
     const handleLoadImage = () => {
         setLoad(false)
     }
@@ -22,8 +21,11 @@ const SlidesNewest = () => {
     return(
         <>
             <div className={styles.container}>
-                <p className={styles.titlePage}>Animes Lançamentos</p>
-                <Splide className={styles.mySplide} options={{omitEnd: true, width: 1750, perPage: 7, pagination: false, perMove: 1, breakpoints: {
+                <div className={styles.container_head}>
+                    <p className={styles.bar}></p>
+                    <p className={styles.titlePage}>Animes Lançamentos</p>
+                </div>
+                <Splide className={styles.mySplide} options={{gap: 5, omitEnd: true, width: 1750, perPage: 7, pagination: false, perMove: 1, breakpoints: {
                     1700: {
                         perPage: 6,
                         width: 1500
@@ -38,17 +40,24 @@ const SlidesNewest = () => {
                     },
                     980: {
                         perPage: 3,
-                        width: 750
-                    },
-                    750: {
-                        perPage: 2,
-                        width: 500
+                        width: 0
                     },
                     520: {
+                        perPage: 3,
+                        width: 0
+                    },
+                    495: {
+                        perPage: 3,
+                        width: 0
+                    },
+                    375: {
+                        perPage: 2,
+                        width: 0
+                    },
+                    279: {
                         perPage: 1,
                         width: 0
                     }
-
                     }}}>
 
                     {data.data?.map((anime: AnimeType) => (
@@ -59,8 +68,8 @@ const SlidesNewest = () => {
                                         load ? (
                                             <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
                                         ) : ( 
-                                        <>
-                                            <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
+                                        <> 
+                                            <p className={styles.title}>{anime?.name}</p>
                                             <img src={'/assets/play.png'} className={styles.play}/>
                                             <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} alt={anime.name} className={styles.slideImg} onLoad={handleLoadImage}/>
                                         </>)

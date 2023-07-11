@@ -1,5 +1,5 @@
 import Categories from '@/components/homeAuth/categories'
-import styles from '../classification/styles.module.scss'
+import styles from '../../src/components/homeNoAuth/slidesAnimes/styles.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
 import { AnimeType } from "@/services/animesService"
 import categoriesService, { CategoryType } from "@/services/categoriesService"
@@ -14,8 +14,6 @@ const CategoriesPage = () => {
     const [category, setCategory] = useState<CategoryType>()
     const [animes, setAnimes] = useState<AnimeType[]>([])
     const [animesAnother, setAnimesAnother] = useState<AnimeType[]>([])
-    const [selectedCategoryType, setSelectedCategoryType] = useState("");
-    const [selectedAnotherType, setSelectedAnotherType] = useState("");
     const [load, setLoad] = useState(false)
     const router = useRouter()
     const { name } = router.query
@@ -61,30 +59,34 @@ const CategoriesPage = () => {
             <main>
                 <HeaderAuth/>
                 <Categories/>
-                <div className={styles.container}>
-                    <p className={styles.titlePage}>Animes de {name}</p>
-                    <div className={styles.container_animes}>
-                        {(animes || animesAnother) ? (
-                            [...animes, ...animesAnother].map((anime) => (
-                                <Link href={`/animes/${anime.name}`} key={anime.id}>
-                                    <div key={anime.id} className={styles.card}>
-                                        {load ? (
-                                            <>
-                                                <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                                <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
-                                                <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
-                                            </>
-                                        )}
-                                    </div>
-                                </Link>
-                            ))
-                        ) : (
-                            <div></div>
-                        )}
+                <div className={styles.container_master}>
+                    <div className={styles.container}>
+                        <div className={styles.container_head}>
+                            <p className={styles.titleSearch}>Animes de {name}</p>
+                        </div>
+                        <div className={styles.container_animes}>
+                            {(animes || animesAnother) ? (
+                                [...animes, ...animesAnother].map((anime) => (
+                                    <Link href={`/animes/${anime.name}`} key={anime.id}>
+                                        <div className={styles.card}>
+                                            {load ? (
+                                                <>
+                                                    <div className={styles.load}><img src="/assets/load.gif" alt="Carregando..." /></div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
+                                                    <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
+                                                    <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
+                                                </>
+                                            )}
+                                        </div>
+                                    </Link>
+                                ))
+                            ) : (
+                                <div></div>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <FooterGeneric/>
