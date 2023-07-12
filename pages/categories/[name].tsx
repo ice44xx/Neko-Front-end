@@ -77,7 +77,7 @@ const CategoriesPage = () => {
                                                 <>
                                                     <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
                                                     <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
-                                                    <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`} className={styles.img} />
+                                                    <img src={anime.thumbnailUrl} className={styles.img} />
                                                 </>
                                             )}
                                         </div>

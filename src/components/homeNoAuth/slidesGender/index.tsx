@@ -13,7 +13,7 @@ const data = [
         id: 2,
         name: 'Shoujo',
         description: 'Shoujo são voltadas para o público feminino jovem, explorando temas românticos e emocionais.',
-        exemples: ['"Sailor Moon", ', ' "Sailor Moon, "'],
+        exemples: ['"Fruits Basket", ', ' "Sailor Moon, "'],
     },
     {
         id: 3,

@@ -114,16 +114,17 @@
         .container_content{
             width: 100%;
             .btn{
-                margin: 20px 0;
+                margin: 20px;
                 font-size: 20px;
             }
             .container_stream{
                 display: grid;
                 justify-items: center;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-                gap: 20px;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                gap: 20px 0;
                 padding-bottom: 20px;
                 .card{
+                    position: relative;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -138,13 +139,26 @@
                     text-align: center;
                     overflow: hidden;
                     &:hover{
-                        z-index: 1;
-                        transform: scale(95%);
-                        transition: all 0.3s;
                         background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('/assets/play.png');
                         background-repeat: no-repeat;
                         background-size: auto;
                         background-position: center;
+                        transform: scale(110%);
+                        transition: all 0.3s;
+                        .back_img{
+                            position: absolute;
+                            object-fit: cover;
+                            width: 100%;
+                            opacity: 0.2;
+                            transition: all 0.3s;
+                        }
+                    }
+                    .back_img{
+                        position: absolute;
+                        object-fit: cover;
+                        width: 100%;
+                        opacity: 0;
+                        transition: all 0.3s;
                     }
                 }
                 .none{
@@ -323,6 +337,23 @@
     }
 }
 
+@media (max-width: 1400px) {
+    .container_master{
+        .container_episodes{
+            .container_content{
+                .btn{
+                    margin: 15px 0px;
+                    font-size: 20px;
+                }
+                .container_stream{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+                    gap: 15px;
+                }  
+            }
+        }
+    }
+}
 @media (max-width: 1150px) {
     .container_master{
         .container{

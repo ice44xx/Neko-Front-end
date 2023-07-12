@@ -85,7 +85,7 @@ const Animes = () => {
                         <img src="/assets/catest.png" alt="" className={styles.cat} />
                         <div className={styles.container_thumbnail}>
                             {anime?.thumbnailUrl ? (
-                                <img src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime?.thumbnailUrl}`} alt={anime?.name} className={styles.thumb} />
+                                <img src={anime.thumbnailUrl} alt={anime?.name} className={styles.thumb} />
                                 ) : (
                                 <div>Imagem não disponível</div>
                             )}
@@ -134,7 +134,12 @@ const Animes = () => {
                                     <Button className={styles.btn}>{season.name.slice(0, 11)}</Button>
                                     <div className={styles.container_stream}>
                                         {season?.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
-                                            <Link className={styles.card} key={episode.id} href={`/animes/${name}/${episode.id}`}><p>{episode.name}</p></Link>
+                                            <>
+                                                <Link className={styles.card} key={episode.id} href={`/animes/${name}/${episode.id}`}>
+                                                    <p>{episode.name}</p>
+                                                    <img src={anime?.thumbnailUrl} className={styles.back_img} />
+                                                </Link>
+                                            </>
                                         ))}
                                     </div>
                                 </div>
