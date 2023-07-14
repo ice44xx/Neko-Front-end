@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import styles from '../style.module.scss'
+import styles from '../../../../../styles/profile.module.scss'
 import profileService from '@/services/profileService';
-
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { firebaseConfig } from '@/services/firebase';
@@ -52,7 +51,7 @@ const UserPhoto = () => {
 
         setTimeout(() => {
           window.location.reload();
-        }, 1000 * 3);
+        }, 1000 * 2);
 
       } catch (error) {
         console.error('Erro ao atualizar a imagem', error);

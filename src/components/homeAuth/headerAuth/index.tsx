@@ -41,7 +41,12 @@ const HeaderAuth = () => {
                 <div className = {styles.nav}>
                     <Link href='/home'> <img src="/assets/logo.png" alt="" className = {styles.logo} /> </Link>
                     <div className={styles.container}>
-                        <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearchVisible} />
+                        <div className={styles.container_btn}>
+                            {router.pathname !== '/home' && (
+                                <Link href={'/home'}><img src="/assets/home_arrow.png" alt="" className={styles.img_arrow}/></Link>
+                            )}
+                            <img src="/assets/lupa.png" alt="" className={styles.img} onClick={handleSearchVisible} />
+                        </div>
                         <div className={styles.containerProfile}>
                             <div className={styles.userName}>
                                 <p>{data.userName}</p>

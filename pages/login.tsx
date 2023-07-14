@@ -9,6 +9,7 @@ import authService from '@/services/authService'
 import ToastError from '@/components/common/toastError'
 import Link from 'next/link'
 import profileService from '@/services/profileService'
+import FooterGeneric from '@/components/common/footerGeneric'
 
 const Login = () => {
     useEffect (() => {
@@ -126,7 +127,7 @@ const Login = () => {
                     
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>
-                            <Form onSubmit={handleLogin}>
+                            <Form onSubmit={handleLogin} className={styles.form}>
                                 <p className={styles.title}><strong>Login</strong></p>
                                 <FormGroup className={styles.formgroup}>
                                     <Label for = 'email' className={styles.label}>E-mail</Label>
@@ -188,6 +189,7 @@ const Login = () => {
                 ) : (
                     <ToastError isOpen={toast} message={toastMessage} />
                 )}
+                <FooterGeneric/>
             </main>
         </>
     )

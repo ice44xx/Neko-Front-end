@@ -56,7 +56,7 @@ const SlidesPopular = () => {
                         perPage: 2,
                         width: 0
                     },
-                    279: {
+                    250: {
                         perPage: 1,
                         width: 0
                     }

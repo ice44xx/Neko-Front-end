@@ -18,6 +18,7 @@ const Animes = () => {
     const [liked, setLiked] = useState(false)
     const [favorited, setFavorited] = useState(false)
     const [auth, setAuth] = useState(false)
+    const [visibleSeasons, setVisibleSeasons] = useState(new Array(anime?.seasons?.length).fill(true));
 
     useEffect(() => {
         const token = sessionStorage.getItem('nekoanimes-token')
@@ -65,6 +66,14 @@ const Animes = () => {
         }
     };
 
+    const toggleSeasonVisibility = (index: number) => {
+        setVisibleSeasons((prevState) => {
+          const updatedVisibleSeasons = [...prevState];
+          updatedVisibleSeasons[index] = !updatedVisibleSeasons[index];
+          return updatedVisibleSeasons;
+        });
+      };
+
 
     return (
         <>
@@ -106,7 +115,6 @@ const Animes = () => {
                                     <Link href={`/classification/${anime?.gender?.name}`} className={styles.link}><p className={styles.categories}>{anime?.gender?.name}</p></Link>
                                 </div>
                                 
-
                                 {auth ? (
                                 <div className={styles.like_favorite}>
                                 {liked ? (
@@ -129,17 +137,17 @@ const Animes = () => {
                     </div>
                     <div className={styles.container_episodes}>
                         <div className={styles.container_content}>
-                            {anime?.seasons?.map((season) => (
+                            {anime?.seasons?.map((season, index) => (
                                 <div key={season.id}>
-                                    <Button className={styles.btn}>{season.name.slice(0, 11)}</Button>
+                                    <Button onClick={() => toggleSeasonVisibility(index)} className={styles.btn}>{season.name.slice(0, 11)}<img src="/assets/arrowBtn.png" alt="" className={styles.arrow}/></Button>
                                     <div className={styles.container_stream}>
-                                        {season?.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
-                                            <>
-                                                <Link className={styles.card} key={episode.id} href={`/animes/${name}/${episode.id}`}>
-                                                    <p>{episode.name}</p>
+                                        {visibleSeasons[index] && season?.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
+                                            <div className={styles.container_card_episodes} key={episode.id}>
+                                                <Link  className={styles.card} href={`/animes/${name}/${episode.id}`}>
+                                                    <p className={styles.title_card}>{`${episode.name.length >= 24 ? `${episode.name.slice(0,24)}...` : episode.name}`}</p>
                                                     <img src={anime?.thumbnailUrl} className={styles.back_img} />
                                                 </Link>
-                                            </>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>

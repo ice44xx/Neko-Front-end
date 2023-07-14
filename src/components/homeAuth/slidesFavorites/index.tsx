@@ -46,11 +46,11 @@ const SlidesFavorites = () => {
                         perPage: 3,
                         width: 0
                     },
-                    375: {
+                    350: {
                         perPage: 2,
                         width: 0
                     },
-                    279: {
+                    250: {
                         perPage: 1,
                         width: 0
                     }
@@ -60,7 +60,7 @@ const SlidesFavorites = () => {
                         <Link href={`/animes/${anime.name}`} key={anime.id}>
                             <div key={anime.id} className={styles.slide}>
                                 <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                <img src={'/assets/play.png'} className={styles.play}/>
+                                <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
                                 <img src={anime.thumbnailUrl} alt={anime.name} className={styles.slideImg} />
                             </div>
                         </Link>

@@ -51,11 +51,11 @@ const SlidesFeatures = () => {
                         perPage: 3,
                         width: 0
                     },
-                    375: {
+                    350: {
                         perPage: 2,
                         width: 0
                     },
-                    279: {
+                    250: {
                         perPage: 1,
                         width: 0
                     }

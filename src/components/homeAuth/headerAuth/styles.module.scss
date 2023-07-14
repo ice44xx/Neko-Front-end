@@ -11,6 +11,11 @@
     padding: 0 50px;
     .logo{
         width: 300px;
+        transition: all 0.3s;
+        &:hover{
+            transform: scale(95%);
+            transition: all 0.3s;
+        }
     }
     .container{
         display: flex;
@@ -66,13 +71,25 @@
             }
         }
     }
-    .img{
-        width: 40px;
-        cursor: pointer;
-        transition: all 0.4s;
-        &:hover{
-            transform: scale(90%);
+    .container_btn{
+        display: flex;
+        gap: 25px;
+        .img{
+            width: 40px;
+            cursor: pointer;
             transition: all 0.4s;
+            &:hover{
+                transform: scale(90%);
+                transition: all 0.4s;
+            }
+        }
+        .img_arrow{
+            display: none;
+            @extend .img;
+            &:hover{
+                transform: scale(90%);
+                transition: all 0.4s;
+            }
         }
     }
 }
@@ -141,8 +158,8 @@
     top: 0;
     transition: all 0.3s;
 }
-  
-@media (max-width: 640px) {
+
+@media (max-width: 750px) {
     .nav{
         padding: 0 20px;
         .container{
@@ -174,15 +191,12 @@
         }
     }
 }
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .nav{
-        z-index: 3;
         .logo{
             width: 60px;
         }
         padding: 0 0px;
-        height: 120px;
-        justify-content: center;
         flex-direction: column;
         .container{
             width: 100%;
@@ -195,11 +209,25 @@
             }
             .containerProfile{
                 gap: 20px;
+                .userName{
+                    margin-top: 4px;
+                    font-size: 25px;
+                }
                 .userProfile{
                     width: 75px;
                     height: 75px;
-                    cursor: pointer;
                 }
+            }
+        }
+        .container_btn{
+            margin-top: 5px;
+            gap: 20px;
+            .img{
+                width: 35px;
+                height: 35px;
+            }
+            .img_arrow{
+                display: flex;
             }
         }
     }
@@ -227,11 +255,42 @@
     }
 }
 @media (max-width: 300px) {
+    .nav{
+        .container_btn{
+            .img{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
     .container_search{
         .form{
             .input{
                 width: 80%;
                 font-size: 35px;
+            }
+        }
+    }
+}
+@media (max-width: 280px) {
+    .nav{
+        overflow: hidden;
+        .container{
+            .containerProfile{
+                gap: 15px;
+                .userName{
+                    font-size: 22px;
+                }
+                .userProfile{
+                    width: 65px;
+                    height: 65px;
+                }
+            }
+            .container_btn{
+                .img{
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
     }

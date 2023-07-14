@@ -1,5 +1,5 @@
 import profileService from '@/services/profileService'
-import styles from '../style.module.scss'
+import styles from '../../../../../styles/profile.module.scss'
 import {useState, useEffect, FormEvent} from 'react'
 import { Button, Form, FormGroup, Input, Label } from "reactstrap"
 import ToastSuccess from '@/components/common/toastSuccess'
@@ -62,15 +62,15 @@ const UserPassword = () => {
     return (
         <>
             <Form className={styles.form} onSubmit={handleUpdate}>
-                <FormGroup>
+                <FormGroup className={styles.Formgroup}>
                     <Label className={styles.label} for='password'>Digite sua senha atual</Label>
                     <Input required className={styles.input} name='password' id='password' type='password' onChange={(e) => {setPassword(e.currentTarget.value)}}></Input>
                 </FormGroup>
-                <FormGroup>
+                <FormGroup className={styles.Formgroup}>
                     <Label className={styles.label} for='newPassword'>Digite sua nova senha</Label>
                     <Input required className={styles.input} name='newPassword' id='newPassword' type='password' onChange={(e) => {setNewPassword(e.currentTarget.value)}}></Input>
                 </FormGroup>
-                <FormGroup>
+                <FormGroup className={styles.Formgroup}>
                     <Label className={styles.label} for='confirmPassword'>Digite sua nova senha, novamente</Label>
                     <Input required className={styles.input} name='confirmPassword' id='confirmPassword' type='password' onChange={(e) => {setConfirmPassword(e.currentTarget.value)}}></Input>
                 </FormGroup>

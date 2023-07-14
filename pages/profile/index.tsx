@@ -6,7 +6,7 @@ import React from 'react'
 import Link from 'next/link'
 import UserDate from '@/components/homeAuth/formProfile/UserDate'
 import withProtect from '@/components/withAuth'
-import HeaderProfileAuth from '@/components/homeAuth/headerAuthProfile'
+import HeaderAuth from '@/components/homeAuth/headerAuth'
 
 const Profile = () => {
 
@@ -17,7 +17,7 @@ const Profile = () => {
             </Head>
             
             <main>
-                <HeaderProfileAuth/>
+                <HeaderAuth/>
                 <div className={styles.container}>
                     <div className={styles.containerContent}>
                         <div className={styles.containerLeft}>
@@ -39,8 +39,6 @@ const Profile = () => {
                 </div>
                 <FooterGeneric/>
             </main>
-            
-            
         </>
     )
 }

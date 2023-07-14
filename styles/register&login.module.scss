@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    overflow: hidden;
     .containerLeft{
         display: flex;
         justify-content: center;
@@ -17,7 +19,6 @@
     }
     .containerRight{
         overflow: hidden;
-        min-height: 840px;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -26,22 +27,22 @@
         padding: 0 30px;
         background-color: #fff;
         .containerRightContent{
-            margin-top: 120px;
+            margin-top: 80px;
             width: 550px;
             color: black;
             .title{
                 font-size: 40px;
-                margin-bottom: 20px;
+                margin: 50px 0;
             }
             label{
-                font-size: 20px;
+                font-size: 25px;
             }
             input{
                 border: none;
                 border-bottom: 2px solid black;
                 transition: all 0.3s;
                 border-radius: 0;
-                font-size: 20px;
+                font-size: 22px;
                 &:focus{
                     border-bottom: 2px solid #8400ff;
                     transition: all 0.3s;
@@ -79,7 +80,7 @@
             .containerBtnLogin{
                 display: flex;
                 justify-content: left;
-                margin-top: 20px;
+                margin-top: 40px;
                 height: 52px;
                 gap: 10px;
                 .btn{
@@ -101,6 +102,9 @@
         }
     }
     .containerForgetPassword{
+        max-width: 700px;
+        height: 440px;
+        width: 100%;
         position: absolute;
         top: -800px;
         display: flex;
@@ -108,11 +112,10 @@
         justify-content: center;
         gap: 50px;
         align-items: center;
-        width: 700px;
-        height: 440px;
         background-color: rgb(40, 40, 40);
         border: 2px solid #fff;
         transition: all 0.3s;
+        overflow: hidden;
         .title{
             font-size: 45px;
             color: #fff;
@@ -162,39 +165,246 @@
         transition: all 0.3s;
     }
 }
-@media (max-width: 880px){
+@media (max-width: 1150px) {
     .container{
         .containerLeft{
-            width: 45%;
-        }
-        .containerRight{
-            width: 55%;
-        }
-    }
-}
-@media (max-width: 580px){
-    .container{
-        .containerLeft{
-            display: none;
+            width: 40%;
         }
         .containerRight{
             width: 100%;
-            min-height: 900px;
+        }
+    }
+}
+@media (max-width: 850px) {
+    .container{
+        flex-direction: column;
+        .containerLeft{
+            width: 100%;
+            height: 350px;
+            min-height: 350px;
+            img{
+                margin-top: -150px;
+                min-height: 180%;
+            }
+        }
+        .containerRight{
+            align-items: top;
+            height: 100%;
+            min-height: 100vh;
             .containerRightContent{
-                .containerBtn{
-                    display: flex;
+                padding-bottom: 20px;
+                margin-top: 0;
+                .form{
+                    height: 550px;
+                }
+                .form_register{
+                    min-height: 650px;
+                    height: 100%;
+                }
+                .title{
+                    font-size: 45px;
+                    margin: 50px 0;
+                }
+                label{
+                    font-size: 25px;
+                    margin: 10px 0;
+                }
+                input{
+                    font-size: 20px;
+                }
+                .containerBtnLogin{
                     justify-content: center;
-                    align-items: center;
+                    margin-top: 45px;
                 }
             }
         }
     }
 }
-@media (max-width: 480px){
+@media (max-width: 710px) {
     .container{
-        .containerRight{
-            width: 100%;
-            margin-top: 60px;
+        .containerForgetPassword{
+            width: 500px;
+            height: 400px;
+            .title{
+                font-size: 35px;
+                color: #fff;
+            }
+            .form{
+                gap: 5px;
+                .label{
+                    font-size: 22px;
+                }
+                .input{
+                    width: 350px;
+                }
+            }
         }
     }
+}
+@media (max-width: 500px) {
+    .container{
+        .containerForgetPassword{
+            width: 400px;
+            .title{
+                font-size: 35px;
+                color: #fff;
+            }
+            .form{
+                .label{
+                    font-size: 22px;
+                }
+                .input{
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 450px) {
+    .container{
+        flex-direction: column;
+        .containerLeft{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 350px;
+            min-height: 100%;
+            img{
+                margin-top: -110px;
+                min-height: 160%;
+            }
+        }
+        .containerRight{
+            width: 100%;
+            max-width: 100%;
+            padding: 0 20px;
+            .containerRightContent{
+                margin-top: 0px;
+                padding-bottom: 0px;
+                .title{
+                    font-size: 45px;
+                    margin: 50px 0;
+                }
+                label{
+                    font-size: 23px;
+                    margin: 10px 0;
+                }
+                input{
+                    font-size: 18px;
+                }
+                .containerBtn{
+                    max-width: 290px;
+                    width: 100%;
+                    height: 100%;
+                    margin: 50px auto;
+                    flex-direction: column-reverse;
+                    position: relative;
+                    .btn{
+                        width: 100%;
+                        height: 60px;
+                        position: relative;
+                        font-size: 20px;
+                    }
+                    .recaptcha{
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 400px) {
+    .container{
+        .containerForgetPassword{
+            width: 350px;
+            .title{
+                font-size: 35px;
+                color: #fff;
+            }
+            .form{
+                .label{
+                    font-size: 22px;
+                }
+                .input{
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 350px) {
+    .container{
+        .containerForgetPassword{
+            width: 300px;
+            height: 350px;
+            .title{
+                font-size: 35px;
+                color: #fff;
+            }
+            .form{
+                .label{
+                    font-size: 22px;
+                }
+                .input{
+                    width: 250px;
+                   padding: 0;
+                }
+            }
+            .btn{
+                height: 45px;
+            }
+        }
+    }
+}
+@media (max-width: 300px) {
+    .container{
+        .containerRight{
+            .containerRightContent{
+                .containerBtn{
+                    max-width: 200px;
+                    width: 100%;
+                    height: 100%;
+                    margin: 40px auto;
+                    flex-direction: column-reverse;
+                    position: relative;
+                    .btn{
+                        width: 100%;
+                        height: 60px;
+                        position: relative;
+                        font-size: 20px;
+                    }
+                    .recaptcha{
+                        max-width: 105%;
+                        height: 100%;
+                    }
+                }
+                .containerBtnLogin{
+                    gap: 5px;
+                    .btn{
+                        width: 100px;
+                    }
+                    .btnForget{
+                        width: 150px;
+                    }
+                }
+            }
+        }
+        .containerForgetPassword{
+            width: 260px;
+            height: 320px;
+            .title{
+                font-size: 30px;
+                color: #fff;
+            }
+            .form{
+                .label{
+                    font-size: 20px;
+                }
+                .input{
+                    width: 200px;
+                }
+            }
+        }
+    }
+
 }

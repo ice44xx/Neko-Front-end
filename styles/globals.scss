@@ -1,11 +1,14 @@
+::selection {
+    background-color: #4a1591;
+}
 ::-webkit-scrollbar {
     width: 3px;
 }
 ::-webkit-scrollbar-track {
-    background: #151515;
+    background: #631dc0;
 }
 ::-webkit-scrollbar-thumb {
-    background: #ffffff;
+    background: #fff;
 }
 *{
     margin: 0;

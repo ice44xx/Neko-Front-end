@@ -1,5 +1,5 @@
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
-import styles from '../style.module.scss'
+import styles from '../../../../../styles/profile.module.scss'
 import profileService from '@/services/profileService'
 import { FormEvent, useEffect, useState } from 'react'
 import ToastSuccess from '@/components/common/toastSuccess'

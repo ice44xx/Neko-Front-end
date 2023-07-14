@@ -68,14 +68,13 @@ const Register = () => {
             </Head>
             <main>
                 <HeaderGeneric logoUrl='/' btnUrl='/login' btnContent='Quero Logar'/>
-
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>
                         <img src={`/assets/backRegister&Login/${randomImage}`}/>
                     </div>
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>
-                            <Form onSubmit={handleRegister}>
+                            <Form onSubmit={handleRegister} className={styles.form_register}>
                                 <p className={styles.title}><strong>Crie sua conta</strong></p>
                                 <FormGroup className={styles.formgroup}>
                                     <Label for = 'firstName' className={styles.label}>Nome</Label>

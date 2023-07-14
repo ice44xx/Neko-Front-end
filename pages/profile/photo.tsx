@@ -6,7 +6,7 @@ import Link from 'next/link';
 import UserPhoto from '@/components/homeAuth/formProfile/UserPhoto';
 import FooterGeneric from '@/components/common/footerGeneric';
 import withProtect from '@/components/withAuth';
-import HeaderProfileAuth from '@/components/homeAuth/headerAuthProfile';
+import HeaderAuth from '@/components/homeAuth/headerAuth';
 
 const Pic = () => {
 
@@ -16,7 +16,7 @@ const Pic = () => {
                 <title>Neko Animes - Trocar Senha</title>
             </Head>
             <main>
-                <HeaderProfileAuth/>
+                <HeaderAuth/>
                     <div className={styles.container}>
                         <div className={styles.containerContent}>
                             <div className={styles.containerLeft}>

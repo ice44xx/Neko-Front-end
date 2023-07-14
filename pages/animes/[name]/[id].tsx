@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { Button } from 'reactstrap';
 import Categories from '@/components/homeAuth/categories';
+import watchService from '@/services/watchService';
 
 const AnimeEpisode = () => {
     const router = useRouter()
@@ -15,11 +16,9 @@ const AnimeEpisode = () => {
     const [load, setLoad] = useState(false)
     const [auth, setAuth] = useState(false)
     const [anime, setAnime] = useState<AnimeType>()
-    const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
     const [visibleSeasons, setVisibleSeasons] = useState(new Array(anime?.seasons?.length).fill(true));
     const episodeId = typeof id === 'string' ? parseInt(id) : undefined;
     const [selectedEpisodeId, setSelectedEpisodeId] = useState<number | undefined>(episodeId);
-
     const selectedEpisode = anime?.seasons?.flatMap((season) => season.episodes)?.find((episode) => episode?.id === selectedEpisodeId);
 
     useEffect(() => {
@@ -27,7 +26,6 @@ const AnimeEpisode = () => {
       if(token) {
         setAuth(true)
       }
-
       getAnime()
       setSelectedEpisodeId(episodeId);
 
@@ -37,12 +35,23 @@ const AnimeEpisode = () => {
       if(typeof name !== 'string') return
 
       const res = await animeService.getAnime(name)
-      setAnime(res)
-      setLoad(true)
+
+      if(res) {
+        setAnime(res)
+        setLoad(true)
+      }
     }
 
-    const handleEpisodeClick = (episodeId: number) => {
+    const handleEpisodeClick = async (episodeId: number) => {
       setSelectedEpisodeId(episodeId);
+
+      try {
+        const res = await watchService.getClick(episodeId, anime!.name, selectedEpisode!.videoUrl, anime!.thumbnailUrl)
+        console.log(res)
+      } catch (error) {
+        console.error(error);
+      }
+
     };
 
     const handlePreviousEpisode = () => {
