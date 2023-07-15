@@ -18,21 +18,17 @@ const Register = () => {
 
     const images = ['register.webp', 'register_one.webp', 'register_two.webp', 'register_third.webp']
     const [randomImage, setRandomImage] = useState('')
+    const [recaptchaToken, setRecaptchaToken] = useState<String | null>(null);
 
     useEffect(() => {
         const index = Math.floor(Math.random() * images.length)
         const randomImage = images[index]
-       setRandomImage(randomImage)
+        setRandomImage(randomImage)
     }, [])
 
     const router = useRouter()
     const [toast, setToast] = useState(false)
     const [toastMessage, setToastMessage] = useState('')
-    const [recaptcha, setRecaptcha] = useState<string | null>(null);
-
-    const handleRecaptchaVerify = (response: string | null) => {
-        setRecaptcha(response);
-    };
 
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -44,9 +40,7 @@ const Register = () => {
         const birthday = formData.get('birthday')!.toString()
         const password = formData.get('password')!.toString()
 
-        const attributes = {firstName, userName, email, birthday, password, recaptcha: recaptcha}
-
-
+        const attributes = {firstName, userName, email, birthday, password, recaptchaToken: recaptchaToken as string}
         const {data, status} = await authService.register(attributes)
 
         if(status === 201) {
@@ -103,7 +97,7 @@ const Register = () => {
 
                                 <div className={styles.containerBtn}>
                                     <Button className={styles.btn} type='submit'>Criar agora</Button>
-                                    <ReCAPTCHA sitekey='6Ld15-MmAAAAAAV_18udyVNsolr-i5rVt0w7s-Gf' onChange={handleRecaptchaVerify} className={styles.recaptcha}/>
+                                    <ReCAPTCHA onChange={(token) => setRecaptchaToken(token)} sitekey='6Ld5TCYnAAAAADBxkk98tkSVKWeOPezw95o9u6tV' className={styles.recaptcha}/>
                                 </div>
                             </Form>
                         </div>

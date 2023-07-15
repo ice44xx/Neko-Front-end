@@ -11,6 +11,7 @@ import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures";
 import SlideGender from "@/components/homeNoAuth/slidesGender";
 import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes";
 import SlidesPopular from "@/components/homeNoAuth/slidesPopular";
+import Cookies from "@/components/common/cookies";
 
 interface IndexPageProps {
     children?: ReactNode;
@@ -28,6 +29,7 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
             <main>
                 <div className={styles.container}>
                     <HeadNoAuth/>
+                    <Cookies/>
                     <SlidesNewest/>
                     <SlidesPopular/>
                     <SlidesFeatures/>

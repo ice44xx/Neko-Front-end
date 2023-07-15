@@ -6,6 +6,7 @@ interface Register {
     email: string,
     birthday: string
     password: string,
+    recaptchaToken: string
 }
 interface Login {
     email: string
@@ -17,7 +18,6 @@ interface Reset {
 
 const authService = {
     register: async (attributes: Register) => {
-
         const res = await api.post('/register', attributes).catch((error) => {
             if(error.response.status === 400) {
                 return error.response

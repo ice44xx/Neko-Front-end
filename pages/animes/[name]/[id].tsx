@@ -42,11 +42,12 @@ const AnimeEpisode = () => {
       }
     }
 
-    const handleEpisodeClick = async (episodeId: number) => {
+    const handleEpisodeClick = async (episodeId: number, name: string, videoUrl: string, thumbnailUrl: string) => {
       setSelectedEpisodeId(episodeId);
+      router.push(`/animes/${anime?.name}/${episodeId}`)
 
       try {
-        const res = await watchService.getClick(episodeId, anime!.name, selectedEpisode!.videoUrl, anime!.thumbnailUrl)
+        const res = await watchService.getClick(episodeId, name, videoUrl, thumbnailUrl)
         console.log(res)
       } catch (error) {
         console.error(error);
@@ -133,7 +134,7 @@ const AnimeEpisode = () => {
                         
                         {visibleSeasons[index] &&  season.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
                           <div key={episode.id} className={styles.item_list}>
-                            <Button className={styles.btn} onClick={() => handleEpisodeClick(episode.id)}>{episode.name}</Button>
+                            <Button className={styles.btn} onClick={() => handleEpisodeClick(episode.order, anime.name, episode.videoUrl, anime.thumbnailUrl)}>{episode.name}</Button>
                           </div>
                         ))}
                       </div>

@@ -134,39 +134,84 @@
                 }
             }
         } 
-        .background{
-            position: absolute;
+        .videos{
+            position: relative;
             display: flex;
             justify-content: center;
-            width: 250px;
+            align-items: center;
+            width: 100%;
+            max-width: 230px;
             height: 160px;
-            background-color: rgba(0, 0, 0, 0.438);
             border: 2px solid #fff;
-            .title{
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+            background-color: black;
+            cursor: pointer;
+            transition: all 0.3s;
+            .load{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 100%;
-                height: 25px;
-                background-color: white;
-                text-align: center;
-                color: rgb(40, 40, 40);
-                font-size: 19px;
-            }
-            img{
+                background-color: rgb(40, 40, 40);
                 width: 100%;
                 height: 100%;
-                object-fit: cover;
-                position: absolute;
-                opacity: 0.3;
+                img{
+                    width: 100px;
+                }
             }
-        }
-        .videos{
-            width: 100%;
-            transition: all 0.3s;
+            .thumbnail{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                .img{
+                    width: 100%;
+                    position: absolute;
+                    object-fit: cover;
+                }
+            }
+            .background{
+                opacity: 1;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                .title{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 25px;
+                    background-color: white;
+                    text-align: center;
+                    color: rgb(40, 40, 40);
+                    font-size: 19px;
+                    transition: all 0.3s;
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    opacity: 0.3;
+                }
+            }
             &:hover{
                 transform: scale(95%);
                 transition: all 0.3s;
+                .background{
+                    .title{
+                        margin-top: -30px;
+                        transition: all 0.3s;
+                    }
+                    img{
+                        opacity: 0.8;
+                    }
+                }
             }
         }
     }
@@ -174,7 +219,20 @@
         font-size: 40px; 
     }
 }
-
+@media (max-width: 980px) {
+    .container{
+        .mySplide{
+            .slide{
+                max-width: 240px;
+                height: 340px;
+            }
+            .videos{
+                max-width: 280px;
+                height: 160px;
+            }
+        }
+    }
+}
 @media (max-width: 800px) {
     .container{
         .container_head{
@@ -190,6 +248,16 @@
                 width: 100%;
                 max-width: 200px;
                 height: 280px;
+                &:hover{
+                    .play{
+                        bottom: 105px;
+                    }
+                }
+            }
+            .videos{
+                width: 100%;
+                max-width: 200px;
+                height: 140px;
             }
         }
     }
@@ -201,17 +269,17 @@
             .slide{
                 max-width: 175px;
                 height: 260px;
-                .title{
-                    z-index: 1;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    text-align: center;
-                    background-color: rgba(255, 255, 255, 0.884);
-                    color: black;
-                    font-size: 25px;
-                }
+            }
+        }
+    }
+}
+@media (max-width: 550px) {
+    .container{
+        .mySplide{
+            .videos{
+                width: 100%;
+                max-width: 200px;
+                height: 120px;
             }
         }
     }
@@ -246,6 +314,13 @@
 }
 @media (max-width: 500px) {
     .container{
+        .mySplide{
+            .videos{
+                width: 100%;
+                max-width: 220px;
+                height: 140px;
+            }
+        }
         .titlePage{
             font-size: 40px;
             padding: 50px 0px;
@@ -289,6 +364,17 @@
                         bottom: 60px;
                     }
                 }
+            }
+        }
+    }
+}
+@media (max-width: 370px) {
+    .container{
+        .mySplide{
+            .videos{
+                width: 100%;
+                max-width: 250px;
+                height: 160px;
             }
         }
     }

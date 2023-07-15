@@ -2,13 +2,14 @@ import FooterGeneric from '@/components/common/footerGeneric'
 import styles from '../../styles/animes.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
 import HeadNoAuth from '@/components/homeNoAuth/headerNoAuth'
-import animeService, { AnimeType } from '@/services/animesService'
+import animeService, { AnimeType, EpisodesType } from '@/services/animesService'
 import Head from "next/head"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { Button } from 'reactstrap'
 import Link from 'next/link'
 import Categories from '@/components/homeAuth/categories'
+import watchService from '@/services/watchService'
 
 const Animes = () => {
     const router = useRouter()
@@ -72,8 +73,16 @@ const Animes = () => {
           updatedVisibleSeasons[index] = !updatedVisibleSeasons[index];
           return updatedVisibleSeasons;
         });
-      };
+    };
 
+    const handleClickSave = async (episodeId: number, name: string, videoUrl: string, thumbnailUrl: string) => {
+        try {
+            const res = await watchService.getClick(episodeId, name, videoUrl, thumbnailUrl)
+            console.log(res)
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
@@ -143,7 +152,7 @@ const Animes = () => {
                                     <div className={styles.container_stream}>
                                         {visibleSeasons[index] && season?.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
                                             <div className={styles.container_card_episodes} key={episode.id}>
-                                                <Link  className={styles.card} href={`/animes/${name}/${episode.id}`}>
+                                                <Link onClick={() => handleClickSave(episode.order, anime.name, episode.videoUrl, anime.thumbnailUrl)} className={styles.card} href={`/animes/${name}/${episode.id}`}>
                                                     <p className={styles.title_card}>{`${episode.name.length >= 24 ? `${episode.name.slice(0,24)}...` : episode.name}`}</p>
                                                     <img src={anime?.thumbnailUrl} className={styles.back_img} />
                                                 </Link>

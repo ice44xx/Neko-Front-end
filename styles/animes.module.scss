@@ -108,7 +108,7 @@
         justify-content: left;
         align-items: center;
         margin: 50px 0;
-        padding: 10px 15px;
+        padding: 10px 10px;
         width: 100%;
         max-width: 1500px;
         width: 100%;
@@ -129,9 +129,14 @@
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
-                margin: 20px 15px;
-                font-size: 24px;
+                font-size: 30px;
                 transition: all 0.3s;
+                margin: 25px auto;
+                background-color: transparent;
+                border: none;
+                &:focus{
+                    box-shadow: none;
+                }
                 .arrow{
                     width: 20px;
                 }
@@ -141,14 +146,15 @@
                 }
             }
             .container_stream{
-                display: grid;
-                justify-items: center;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-                gap: 20px 0;
-                padding-bottom: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 20px;
                 .container_card_episodes{
                     width: 100%;
                     height: 100%;
+                    flex-basis: calc(100% / 7);
                 }
                 .card{
                     position: relative;
@@ -156,7 +162,7 @@
                     justify-content: center;
                     align-items: center;
                     background-color: #631dc0;
-                    max-width: 150px;
+                    min-width: 150px;
                     width: 100%;
                     height: 70px;
                     text-decoration: none;
@@ -378,22 +384,6 @@
     }
 }
 
-@media (max-width: 1400px) {
-    .container_master{
-        .container_episodes{
-            .container_content{
-                .container_stream{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-                    gap: 15px;
-                } 
-                .btn{
-                    margin: 20px 0;
-                } 
-            }
-        }
-    }
-}
 @media (max-width: 1150px) {
     .container_master{
         .container{
@@ -422,31 +412,6 @@
                         }
                     }
                 }
-            }
-        }
-    }
-}
-@media (max-width: 980px) {
-    .container_master{
-        .container_episodes{
-            .container_content{
-                .btn{
-                    margin: 20px auto;
-                } 
-            }
-        }
-    }
-}
-@media (max-width: 920px) {
-    .container_master{
-        .container_episodes{
-            .container_content{
-                .container_stream{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr;
-                    gap: 15px;
-                    padding-bottom: 10px;
-                }  
             }
         }
     }
@@ -524,20 +489,6 @@
         }
     }
 }
-@media (max-width: 720px) {
-    .container_master{
-        .container_episodes{
-            .container_content{
-                .container_stream{
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr;
-                    gap: 15px;
-                    padding-bottom: 10px;
-                }  
-            }
-        }
-    }
-}
 @media (max-width: 650px) {
     .container{
         .container_left_right{
@@ -566,13 +517,6 @@
                 }
                 .container_right_img{
                     margin-top: -270px;
-                }
-            }
-            .container_episodes{
-                .container_content{
-                    .container_stream{
-                        grid-template-columns: 1fr 1fr 1fr;
-                    }  
                 }
             }
         }
@@ -628,35 +572,34 @@
         }
     }
 }
-@media (max-width: 440px) {
-    .container_master{
-        .container_episodes{
-            .container_content{
-                .container_stream{
-                    .card{
-                        .title_card{
-                            font-size: 16px;
-                            height: 25px;
-                            overflow: hidden;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 @media (max-width: 375px) {
     .container_master{
         .container_episodes{
             .container_content{
                 .container_stream{
-                    grid-template-columns: 1fr 1fr;
                     .card{
                         .title_card{
                             font-size: 18px;
                         }
                     }
                 }  
+            }
+        }
+    }
+}
+@media (max-width: 360px) {
+    .container_master{
+        .container_episodes{
+            .container_content{
+                .container_stream{
+                    .card{
+                        min-width: 120px;
+                        height: 65px;
+                        .title_card{
+                            font-size: 17px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -729,19 +672,24 @@
         }
     }
 }
-@media (max-width: 280px) {
+@media (max-width: 295px) {
     .container_master{
-        padding: 0px;
         .container_episodes{
             .container_content{
                 .container_stream{
                     .card{
+                        min-width: 110px;
                         .title_card{
-                            font-size: 15px;
+                            font-size: 16px;
                         }
                     }
-                }  
+                }
             }
         }
+    }
+}
+@media (max-width: 280px) {
+    .container_master{
+        padding: 0px;
     }
 }
