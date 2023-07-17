@@ -24,7 +24,7 @@ const UserPhoto = () => {
             const storageRef = storage.ref();
             const userId = data.id
             const fileName = generateUniqueFileName(file.name, userId);
-            const fileRef = storageRef.child(fileName); // Substitua pelo caminho desejado para o arquivo
+            const fileRef = storageRef.child(`Profile/${fileName}`); // Substitua pelo caminho desejado para o arquivo
 
             await fileRef.put(file);
             const imageUrl = await fileRef.getDownloadURL();
