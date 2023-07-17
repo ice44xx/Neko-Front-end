@@ -4,6 +4,7 @@ import api from './api'
 export type SeasonType = {
     id: number
     name: string
+    order: number
     episodes?: EpisodesType[]
 }
 

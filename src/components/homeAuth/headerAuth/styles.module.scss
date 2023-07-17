@@ -149,8 +149,11 @@
         font-size: 20px;
         text-decoration: none;
         color: #fff;
+        transition: all 0.3s;
         &:hover{
             color: #631dc0;
+            transform: scale(95%);
+            transition: all 0.3s;
         }
     }
 }

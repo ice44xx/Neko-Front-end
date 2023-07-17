@@ -75,9 +75,9 @@ const Animes = () => {
         });
     };
 
-    const handleClickSave = async (episodeId: number, name: string, videoUrl: string, thumbnailUrl: string) => {
+    const handleClickSave = async (episodeId: number, ordem: number, name: string, videoUrl: string, thumbnailUrl: string) => {
         try {
-            const res = await watchService.getClick(episodeId, name, videoUrl, thumbnailUrl)
+            const res = await watchService.getClick(episodeId, ordem, name, videoUrl, thumbnailUrl)
             console.log(res)
         } catch (error) {
             console.error(error);
@@ -150,9 +150,9 @@ const Animes = () => {
                                 <div key={season.id}>
                                     <Button onClick={() => toggleSeasonVisibility(index)} className={styles.btn}>{season.name.slice(0, 11)}<img src="/assets/arrowBtn.png" alt="" className={styles.arrow}/></Button>
                                     <div className={styles.container_stream}>
-                                        {visibleSeasons[index] && season?.episodes?.sort((a,b) => a.order - b.order).map((episode) => (
+                                        {visibleSeasons[index] && season?.episodes?.sort((a,b) => a.episodeOrder - b.episodeOrder).map((episode) => (
                                             <div className={styles.container_card_episodes} key={episode.id}>
-                                                <Link onClick={() => handleClickSave(episode.order, anime.name, episode.videoUrl, anime.thumbnailUrl)} className={styles.card} href={`/animes/${name}/${episode.id}`}>
+                                                <Link onClick={() => handleClickSave(episode.id, episode.episodeOrder, anime.name, episode.videoUrl, anime.thumbnailUrl)} className={styles.card} href={`/animes/${name}/${episode.id}`}>
                                                     <p className={styles.title_card}>{`${episode.name.length >= 24 ? `${episode.name.slice(0,24)}...` : episode.name}`}</p>
                                                     <img src={anime?.thumbnailUrl} className={styles.back_img} />
                                                 </Link>

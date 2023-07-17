@@ -1,11 +1,13 @@
 import api from "./api";
 
 export type WatchType = {
-  userId: number,
-  EpisodeId: number,
+  userId: number
+  EpisodeId: number
   name: string
-  videoUrl?: string,
+  videoUrl?: string
   thumbnailUrl: string
+  ordem: number
+  
 }
 
 const watchService = {
@@ -22,10 +24,10 @@ const watchService = {
       throw new Error(error.response.data.error);
     }
   },
-  getClick: async (episodeId: number, name: string, videoUrl: string, thumbnailUrl: string ) => {
+  getClick: async (episodeId: number, ordem: number, name: string, videoUrl: string, thumbnailUrl: string ) => {
     try {
       const token = sessionStorage.getItem('nekoanimes-token')
-      const res = await api.post('/watchtime', {episodeId, name, videoUrl, thumbnailUrl}, {headers: {
+      const res = await api.post('/watchtime', {episodeId, ordem, name, videoUrl, thumbnailUrl}, {headers: {
         Authorization: `Bearer ${token}`
       }})
       return res

@@ -12,6 +12,7 @@ const SlidesWatchTime = () => {
         const getClickedItems = async () => {
             const res = await watchService.getClickedItems();
             setClickedItems(res);
+            console.log(res)
             setLoad(false)
         };
     
@@ -64,7 +65,7 @@ const SlidesWatchTime = () => {
 
                         {clickedItems.map((item, index) => (
                             <SplideSlide key={index}>
-                                <Link href={`/animes/${item.name}/${item?.EpisodeId}`}>
+                                <Link href={`/animes/${item.name}/${item.EpisodeId}`}>
                                     <div className={styles.videos}>
                                         {
                                             load ? (
@@ -72,7 +73,7 @@ const SlidesWatchTime = () => {
                                             ) : ( 
                                             <> 
                                                 <div className={styles.background}>
-                                                    <p className={styles.title}>{`${item.name} - Ep ${item.EpisodeId}`}</p>
+                                                    <p className={styles.title}>{`${item.name} - Ep ${item.ordem}`}</p>
                                                     <img src={item.thumbnailUrl} alt={item.name} />
                                                 </div>
                                                 <div className={styles.thumbnail}>

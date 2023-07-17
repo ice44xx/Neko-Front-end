@@ -1,5 +1,6 @@
 import api from './api'
 import { AnotherType, CategoryType } from './categoriesService'
+import { CommentsType } from './commentService'
 import { GenderType } from './genderService'
 import { SeasonType } from './seasonsService'
 
@@ -7,9 +8,10 @@ export type EpisodesType = {
     id: number
     name: string
     synopsis: string
-    order: number
+    episodeOrder: number
     videoUrl: string
     secondsLong: number
+    comments?: CommentsType[]
 }
 
 export type AnimeType = {

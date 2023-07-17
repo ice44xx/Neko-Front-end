@@ -1,6 +1,6 @@
 import api from './api'
 
-interface UserParams {
+export interface UserParams {
     firstName?: string
     userName?: string
     password?: string
