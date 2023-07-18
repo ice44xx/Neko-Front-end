@@ -23,6 +23,9 @@ const AnimeEpisode = () => {
     const [userId, setUserId] = useState<number | undefined>(undefined);
     const [userName, setUserName] = useState('')
     const [userPhoto, setUserPhoto] = useState('')
+    const [commentCount, setCommentCount] = useState(0);
+    const commentsPerPage = 4;
+    const [currentPage, setCurrentPage] = useState(1);
     const [visibleSeasons, setVisibleSeasons] = useState(new Array(anime?.seasons?.length).fill(true));
     const episodeId = typeof id === 'string' ? parseInt(id) : undefined;
     const [selectedEpisodeId, setSelectedEpisodeId] = useState<number | undefined>(episodeId);
@@ -64,6 +67,7 @@ const AnimeEpisode = () => {
       const res = await commentService.getComments(episodeId)
       if(res) {
         setComments(res)
+        setCommentCount(res.length)
         console.log(res)
       }
     }
@@ -149,6 +153,18 @@ const AnimeEpisode = () => {
       }
     }
 
+    const indexOfLastComment = currentPage * commentsPerPage;
+    const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+    const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
+
+    const handleNextPage = () => {
+      setCurrentPage(currentPage + 1);
+    };
+  
+    const handlePreviousPage = () => {
+      setCurrentPage(currentPage - 1);
+    };
+
     return (
       <>
         <Head>
@@ -180,9 +196,9 @@ const AnimeEpisode = () => {
                     )}
                   </div>
                   <div className={styles.container_stream_prev_next}>
-                    <Button className={styles.btn} onClick={handlePreviousEpisode}>Voltar episódio</Button>
+                    <Button className={styles.btn} onClick={handlePreviousEpisode}><img src="/assets/arrowBtnEpisodeLeft.png" alt="seta pra esquerda" /> Voltar episódio</Button>
                     <p></p>
-                    <Button className={styles.btn} onClick={handleNextEpisode}>Próximo episódio</Button>
+                    <Button className={styles.btn} onClick={handleNextEpisode}>Próximo episódio <img src="/assets/arrowBtnEpisodeRight.png" alt="seta pra direita" /></Button>
                   </div>
                 </div>
                 <div className={styles.container_right_img}>
@@ -209,8 +225,8 @@ const AnimeEpisode = () => {
             </div>
             
             <div className={styles.container_master_comments}>
-              <img src="/assets/cat_comment.png" alt="Foto gatinho" className={styles.cat_comment}/>
-              <img src="/assets/cat_comment_two.png" alt="Foto gatinho" className={styles.cat_comment_two} />
+              <img src="/assets/cat_comment.png" alt="Cat" className={styles.cat_comment}/>
+              <img src="/assets/cat_comment_two.png" alt="Cat" className={styles.cat_comment_two} />
               {auth ? (
                 <div className={styles.container_comments}>
 
@@ -242,8 +258,20 @@ const AnimeEpisode = () => {
                   </div>
                 </div>
               )}
+
+              <div className={styles.count}>
+                {commentCount > 0 && (
+                  <>
+                    {commentCount > 1 ? (
+                    <p>{commentCount} Comentários</p>
+                  ): (
+                    <p>{commentCount} Comentário</p>
+                  )}
+                  </>
+                )}
+              </div>
       
-              {comments.map((comment: CommentsForGet) => (
+              {currentComments.map((comment: CommentsForGet) => (
                 <div className={styles.container_comments_all}>
                   <div className={styles.container_textarea}>
                     <div className={styles.container_title}>
@@ -263,10 +291,23 @@ const AnimeEpisode = () => {
                   </div>
                 </div>
               ))}
+
+              <div className={styles.pagination}>
+                {comments.length >= 6 ? (
+                  <>
+                    <Button onClick={handlePreviousPage} className={styles.btn} disabled={currentPage === 1}>Página Anterior</Button>
+                    <Button onClick={handleNextPage} className={styles.btn} disabled={indexOfLastComment >= comments.length}>Próxima Página</Button>
+                  </>
+                ) : (
+                  <div>
+
+                  </div>
+                )}
+              </div>
             </div>
 
           </div>
-          <FooterGeneric/>
+        <FooterGeneric/>
         </main>
       </>
     )

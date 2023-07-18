@@ -18,23 +18,23 @@ const UserPhoto = () => {
     if(error) return error
 
     const handleImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-          try {
-            const storageRef = storage.ref();
-            const userId = data.id
-            const fileName = generateUniqueFileName(file.name, userId);
-            const fileRef = storageRef.child(`Profile/${fileName}`); // Substitua pelo caminho desejado para o arquivo
+      const file = e.target.files?.[0];
+      if (file) {
+        try {
+          const storageRef = storage.ref();
+          const userId = data.id
+          const fileName = generateUniqueFileName(file.name, userId);
+          const fileRef = storageRef.child(`Profile/${fileName}`); // Substitua pelo caminho desejado para o arquivo
 
-            await fileRef.put(file);
-            const imageUrl = await fileRef.getDownloadURL();
+          await fileRef.put(file);
+          const imageUrl = await fileRef.getDownloadURL();
     
-            setImage(imageUrl);
-            localStorage.setItem('imageUrl', imageUrl);
-          } catch (error) {
-            console.error('Erro ao fazer upload da imagem:', error);
-          }
+          setImage(imageUrl);
+          localStorage.setItem('imageUrl', imageUrl);
+        } catch (error) {
+          console.error('Erro ao fazer upload da imagem:', error);
         }
+      }
     };  
 
     const generateUniqueFileName = (originalFileName: string, userId: string) => {
