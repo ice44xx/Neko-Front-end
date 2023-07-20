@@ -62,17 +62,17 @@ const UserPassword = () => {
     return (
         <>
             <Form className={styles.form} onSubmit={handleUpdate}>
-                <FormGroup className={styles.Formgroup}>
+                <FormGroup className={styles.formgroup}>
+                    <Input required className={styles.input} name='password' id='password' type='password' placeholder=' ' onChange={(e) => {setPassword(e.currentTarget.value)}}></Input>
                     <Label className={styles.label} for='password'>Digite sua senha atual</Label>
-                    <Input required className={styles.input} name='password' id='password' type='password' onChange={(e) => {setPassword(e.currentTarget.value)}}></Input>
                 </FormGroup>
-                <FormGroup className={styles.Formgroup}>
+                <FormGroup className={styles.formgroup}>
+                    <Input required className={styles.input} name='newPassword' id='newPassword' type='password' placeholder=' ' onChange={(e) => {setNewPassword(e.currentTarget.value)}}></Input>
                     <Label className={styles.label} for='newPassword'>Digite sua nova senha</Label>
-                    <Input required className={styles.input} name='newPassword' id='newPassword' type='password' onChange={(e) => {setNewPassword(e.currentTarget.value)}}></Input>
                 </FormGroup>
-                <FormGroup className={styles.Formgroup}>
+                <FormGroup className={styles.formgroup}>
+                    <Input required className={styles.input} name='confirmPassword' id='confirmPassword' type='password' placeholder=' ' onChange={(e) => {setConfirmPassword(e.currentTarget.value)}}></Input>
                     <Label className={styles.label} for='confirmPassword'>Digite sua nova senha, novamente</Label>
-                    <Input required className={styles.input} name='confirmPassword' id='confirmPassword' type='password' onChange={(e) => {setConfirmPassword(e.currentTarget.value)}}></Input>
                 </FormGroup>
                 <Button type='submit' className={styles.btn}>Salvar</Button>
                 {color ? (

@@ -57,6 +57,7 @@
             background-color: #fff;
             border-bottom-right-radius: 30px;
             .containerContentRight{
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -71,29 +72,61 @@
                 .form{
                     display: flex;
                     flex-direction: column;
-                    gap: 20px;
-                    width: 100%;
                     max-width: 450px;
+                    width: 100%;
                     padding: 0 20px;
-                    .input{
-                        max-width: 450px;
-                        width: 100%;
-                        border: none;
-                        border-bottom: 2px solid black;
-                        border-radius: 0;
-                        font-size: 19px;
-                        transition: all 0.3s;
-                        &:focus{
+                    .formgroup{
+                        position: relative;
+                        height: 60px;
+                        margin: 20px 0;
+                        .input{
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            width:100%;
+                            height:100%;
+                            font-size: 21px;
+                            color: rgb(40,40,40);
+                            border: 2px solid rgb(40,40,40);
+                            border-radius: 5px;
+                            outline:none;
+                            padding:1rem;
+                            background:none;
+                            z-index: 1;
+                        }
+                        .label{
+                            position: absolute;
+                            left:1rem;
+                            top: 0.8rem;
+                            padding:0 .35rem;
+                            background-color: #fff;
+                            color: rgb(40,40,40);
+                            font-size: 22px;
+                            transition: 0.3s;
+                        }
+                        .input:focus + .label{
+                            top: -1rem;
+                            left:.8rem;
+                            color: rgb(40,40,40);
+                            font-size: 20px;
+                            font-weight: 500;
+                            z-index: 10;
+                            
+                        }
+                        .input:not(:placeholder-shown).input:not(:focus)+ .label{
+                            top: -1rem;
+                            left:.8rem;
+                            font-size: 20px;
+                            z-index: 10;
+                        }
+                        .input:focus{
+                            border: 2px solid #8400ff;
                             box-shadow: none;
-                            border-bottom: 2px solid #631dc0;
-                            transition: all 0.3s;
                         }
                     }
-                    .label{
-                        font-size: 22px;
-                        color: rgb(40,40,40);
-                    }
                     .btn{
+                        border: 2px solid rgb(100, 100, 100);
+                        margin-top: 20px;
                         width: 100%;
                         max-width: 200px;
                         height: 50px;
@@ -150,7 +183,6 @@
                         }
                         .btn{
                             margin: 0 auto;
-                            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
                         }
                         .rule{
                             color: black;
@@ -200,7 +232,7 @@
                 .containerContentRight{
                     .form{
                         .btn{
-                            margin: 0 auto;
+                            margin: 20px auto;
                         }
                     }
                 }
@@ -216,6 +248,55 @@
                     .containerBtn{
                         .btn{
                             font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .containerRight{
+                .containerContentRight{
+                    .form{
+                        .formgroup{
+                            .label{
+                               
+                                font-size: 20px;
+                               
+                            }
+                            .input:focus + .label{
+                                
+                                font-size: 20px;
+                                
+                                
+                            }
+                            .input:not(:placeholder-shown).input:not(:focus)+ .label{
+                               
+                                font-size: 20px;
+                               
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 300px) {
+    .container{
+        .containerContent{
+            .containerRight{
+                .containerContentRight{
+                    .form{
+                        .formgroup{
+                            .label{
+                                top: 1rem;
+                                font-size: 18px;
+                            }
+                            .input:focus + .label{
+                                font-size: 19px;  
+                            }
+                            .input:not(:placeholder-shown).input:not(:focus)+ .label{
+                                font-size: 19px;
+                            }
                         }
                     }
                 }

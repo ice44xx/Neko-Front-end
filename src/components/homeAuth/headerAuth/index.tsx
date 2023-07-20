@@ -55,7 +55,7 @@ const HeaderAuth = () => {
                                 {data.image ? (
                                     <img src={data.image} alt="" className={styles.userImg} onClick={handleModal} />
                                 ) : (
-                                    <Link href={'/profile/photo'} className={styles.link}><p>Alterar foto</p></Link>
+                                    <Link onClick={handleModal} href={'/profile/photo'} className={styles.link}><p>Alterar foto</p></Link>
                                 )}
                             </div>
                         </div>

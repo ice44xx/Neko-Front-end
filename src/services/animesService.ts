@@ -7,10 +7,8 @@ import { SeasonType } from './seasonsService'
 export type EpisodesType = {
     id: number
     name: string
-    synopsis: string
     episodeOrder: number
     videoUrl: string
-    secondsLong: number
     comments?: CommentsType[]
 }
 

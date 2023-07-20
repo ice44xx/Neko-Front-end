@@ -112,7 +112,7 @@
         width: 100%;
         max-width: 1500px;
         width: 100%;
-        min-height: 300px;
+        min-height: 380px;
         height: 100%;
         background-color: rgb(40,40,40);
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
@@ -143,6 +143,24 @@
                 &:hover{
                     transform: scale(95%);
                     transition: all 0.3s;
+                }
+            }
+            .container_none{
+                background-color: rgb(50,50,50);
+                max-width: 600px;
+                width: 100%;
+                margin: 0 auto;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 0;
+                .title{
+                    font-size: 45px;
+                }
+                .subtitle{
+                    font-size: 30px;
                 }
             }
             .container_stream{

@@ -49,6 +49,7 @@ const Login = () => {
         if (status === 200 || status === 201) {
             router.push('/home')
         } else {
+            setColor(false)
             setToast(true)
             setTimeout(() => {setToast(false)}, 1000 * 4)
             setToastMessage('Algo esta incorreto!')
@@ -65,15 +66,23 @@ const Login = () => {
         try {
             const res = await authService.reset(attributes)
             if(res.status === 200 || res.status === 201) {
+                setToast(true)
+                setTimeout(() => { setToast(false) }, 1000 * 4)
+                setToastMessage('Codigo enviado')
+                setColor(true)
+
                 const token = res.data.token
                 setToken(token)
                 setCodeSent(true)
+
             } else {
                 return
             }
            
         } catch (error) {
-            return error
+            setToast(true)
+            setTimeout(() => {setToast(false)}, 1000 * 4)
+            setToastMessage('Email incorreto')
         }
     }
     const handleConfirm = async (e: FormEvent<HTMLFormElement>) => {
@@ -91,10 +100,14 @@ const Login = () => {
                 router.push('/login')
                     
             } else {
-                console.log('Algo esta errado!')
+                setToast(true)
+                setTimeout(() => {setToast(false)}, 1000 * 4)
+                setToastMessage('Algo esta errado')
             }
         } else {
-            console.log('token invalido')
+            setToast(true)
+            setTimeout(() => {setToast(false)}, 1000 * 4)
+            setToastMessage('Token inválido')
         }
     }
 
@@ -107,6 +120,7 @@ const Login = () => {
             setToastMessage('Cadastro feito com sucesso!')
             setColor(true)
         }
+        
     }, [router.query])
 
     const handleForgetPassword = () => {
@@ -130,13 +144,13 @@ const Login = () => {
                             <Form onSubmit={handleLogin} className={styles.form}>
                                 <p className={styles.title}><strong>Login</strong></p>
                                 <FormGroup className={styles.formgroup}>
+                                    <Input required id='email' name='email' type='email' placeholder=" " className={styles.input}/>
                                     <Label for = 'email' className={styles.label}>E-mail</Label>
-                                    <Input required id='email' name='email' type='email' placeholder='Digite seu email' className={styles.inputName}/>
                                 </FormGroup>
 
                                 <FormGroup className={styles.formgroup}>
+                                    <Input required maxLength={15} id='password' name='password' type='password' placeholder=" " className={styles.input}/>
                                     <Label for = 'password' className={styles.label}>Senha</Label>
-                                    <Input required maxLength={15} id='password' name='password' type='password' placeholder='Sua senha' className={styles.inputName}/>
                                 </FormGroup>
 
                                 <div className={styles.containerBtnLogin}>
@@ -149,37 +163,37 @@ const Login = () => {
                     
                     <div className={`${styles.containerForgetPassword} ${forgetPassword ? styles.activeContainer : ''}`}>
                         {codeSent ? 
-                        <>
+                        <div className={styles.container_form}>
                             <Form className={styles.form} onSubmit={handleConfirm}>
-                                <FormGroup>
+                                <FormGroup className={styles.formgroup}>
+                                    <Input type="text" name='code' id='code' placeholder=' ' className={styles.input} />
                                     <Label for='code' className={styles.label}>Insira o código</Label>
-                                    <Input type="text" name='code' id='code' className={styles.input} />
                                 </FormGroup>
 
-                                <FormGroup>
+                                <FormGroup className={styles.formgroup}>
+                                    <Input type="email" name='emailConfirm' id='emailConfirm'placeholder=' ' className={styles.input} />
                                     <Label for='emailConfirm' className={styles.label}>Insira o email novamente</Label>
-                                    <Input type="email" name='emailConfirm' id='emailConfirm' className={styles.input} />
                                 </FormGroup>
 
-                                <FormGroup>
+                                <FormGroup className={styles.formgroup}>
+                                    <Input type="password" name='newPassword' id='newPassword' placeholder=' ' className={styles.input}/>
                                     <Label for='newPassword' className={styles.label}>Nova senha</Label>
-                                    <Input type="password" name='newPassword' id='newPassword' className={styles.input}/>
                                 </FormGroup>
                                 <Button className={styles.btn} type='submit'>Trocar senha</Button>
                             </Form>
-                        </> : 
-                        <>
+                        </div> : 
+                        <div className={styles.container_form}>
                             <div className={styles.title}>
                                 <p>Redefinição de senha</p>
                             </div>
                             <Form className={styles.form} onSubmit={handleSendCode}>
-                                <FormGroup>
+                                <FormGroup className={styles.formgroup}>
+                                    <Input type="email" name='emailForget' id='emailForget' placeholder=' ' className={styles.input} />
                                     <Label for='emailForget' className={styles.label}>Email</Label>
-                                    <Input type="email" name='emailForget' id='emailForget' className={styles.input} />
                                 </FormGroup>
                                 <Button className={styles.btn} type='submit'>Enviar código</Button>
                             </Form>
-                        </>
+                        </div>
                         }
                     </div>
 

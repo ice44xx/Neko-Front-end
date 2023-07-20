@@ -2,7 +2,7 @@ import FooterGeneric from '@/components/common/footerGeneric'
 import styles from '../../styles/animes.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
 import HeadNoAuth from '@/components/homeNoAuth/headerNoAuth'
-import animeService, { AnimeType, EpisodesType } from '@/services/animesService'
+import animeService, { AnimeType } from '@/services/animesService'
 import Head from "next/head"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -146,21 +146,31 @@ const Animes = () => {
                     </div>
                     <div className={styles.container_episodes}>
                         <div className={styles.container_content}>
-                            {anime?.seasons?.map((season, index) => (
-                                <div key={season.id}>
-                                    <Button onClick={() => toggleSeasonVisibility(index)} className={styles.btn}>{season.name.slice(0, 11)}<img src="/assets/arrowBtn.png" alt="" className={styles.arrow}/></Button>
-                                    <div className={styles.container_stream}>
-                                        {visibleSeasons[index] && season?.episodes?.sort((a,b) => a.episodeOrder - b.episodeOrder).map((episode) => (
-                                            <div className={styles.container_card_episodes} key={episode.id}>
-                                                <Link onClick={() => handleClickSave(episode.id, episode.episodeOrder, anime.name, episode.videoUrl, anime.thumbnailUrl)} className={styles.card} href={`/animes/${name}/${episode.id}`}>
-                                                    <p className={styles.title_card}>{`${episode.name.length >= 24 ? `${episode.name.slice(0,24)}...` : episode.name}`}</p>
-                                                    <img src={anime?.thumbnailUrl} className={styles.back_img} />
-                                                </Link>
-                                            </div>
-                                        ))}
+                            {anime?.seasons && anime.seasons.length > 0 ? (
+                                <>
+                                {anime?.seasons?.map((season, index) => (
+                                    <div key={season.id}>
+                                        <Button onClick={() => toggleSeasonVisibility(index)} className={styles.btn}>{season.name.slice(0, 11)}<img src="/assets/arrowBtn.png" alt="" className={styles.arrow}/></Button>
+                                        <div className={styles.container_stream}>
+                                            {visibleSeasons[index] && season?.episodes?.sort((a,b) => a.episodeOrder - b.episodeOrder).map((episode) => (
+                                                <div className={styles.container_card_episodes} key={episode.id}>
+                                                    <Link onClick={() => handleClickSave(episode.id, episode.episodeOrder, anime.name, episode.videoUrl, anime.thumbnailUrl)} className={styles.card} href={`/animes/${name}/${episode.id}`}>
+                                                        <p className={styles.title_card}>{`${episode.name.length >= 24 ? `${episode.name.slice(0,24)}...` : episode.name}`}</p>
+                                                        <img src={anime?.thumbnailUrl} className={styles.back_img} />
+                                                    </Link>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
+                                ))}
+                                </>
+                            ) : (
+                                <div className={styles.container_none}>
+                                    <p className={styles.title}>Ops, ainda não há episódios...</p>
+                                    <p className={styles.subtitle}>Estamos trabalhando o mais rápido possível para adicionar</p>
                                 </div>
-                            ))}
+                            )}
+                            
                         </div>
                     </div>
                 </div>

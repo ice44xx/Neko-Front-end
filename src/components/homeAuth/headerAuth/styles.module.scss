@@ -58,6 +58,10 @@
                 transition: all 0.4s;
                 background-color: rgb(40, 40, 40);
                 font-size: 20px;
+                .link{
+                    text-decoration: none;
+                    color: #fff;
+                }
                 &:hover{
                     transform: scale(90%);
                     transition: all 0.4s;

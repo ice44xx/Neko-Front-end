@@ -10,6 +10,11 @@
     padding: 0 50px;
     .logo{
         width: 300px;
+        transition: all 0.3s;
+        &:hover{
+            transform: scale(95%);
+            transition: all 0.3s;
+        }
     }
     .containerButton{
         display: flex;

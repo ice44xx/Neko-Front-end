@@ -9,11 +9,18 @@
     align-items: center;
     background-color: rgb(255, 70, 70);
     .toastBody{
-        margin-left: 60px;
         font-size: 25px;
         .img{
             margin-top: -10px;
             width: 80px;
+        }
+    }
+}
+@media (max-width: 320px) {
+    .toast{
+        max-width: 250px;
+        .toastBody{
+            font-size: 22px;
         }
     }
 }

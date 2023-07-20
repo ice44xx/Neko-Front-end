@@ -1,3 +1,4 @@
+import Donations from '@/components/common/donations'
 import styles from '../styles/home.module.scss'
 import Footer from "@/components/common/footer"
 import Categories from "@/components/homeAuth/categories"
@@ -22,6 +23,7 @@ const Home = () => {
                 <div className={styles.container}>
                     <HeaderAuth/>
                     <Categories/>
+                    <Donations/>
                     <SlidesWatchTime/>
                     <SlidesFavorites/>
                     <SlidesNewest/>

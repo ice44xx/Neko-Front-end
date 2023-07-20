@@ -16,10 +16,14 @@
         color: black;
         font-size: 20px;
         .imgCoffe{
-            width: 30px;
+            margin-top: -9px;
+            width: 19px;
+            pointer-events: none;
         }
         .imgHeart{
-            width: 25px;
+            margin-top: -5px;
+            width: 21px;
+            pointer-events: none;
         }
     }
     .nav{
@@ -34,6 +38,11 @@
         .logo{
             margin-top: -25px;
             width: 350px;
+            transition: all 0.3s;
+            &:hover{
+                transform: scale(95%);
+                transition: all 0.3s;
+            }
         }
         .container{
             width: 400px;

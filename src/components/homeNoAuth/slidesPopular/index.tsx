@@ -67,7 +67,7 @@ const SlidesPopular = () => {
                             <Link href={`/animes/${anime.name}`} key={anime.id}>
                                 <div key={anime.id} className={styles.slide}>
                                 <p className={styles.title}>{anime.name.length > 20 ? `${anime.name.slice(0,20)}...` : anime.name}</p>
-                                    <img src={'/assets/play.png'} className={styles.play}/>
+                                    <img src={'/assets/play.png'} className={`${styles.play} ${styles.pulse}`}/>
                                     <img src={anime.thumbnailUrl} alt={anime?.name} className={styles.slideImg}/>
                                 </div>
                             </Link>

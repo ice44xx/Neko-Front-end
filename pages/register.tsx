@@ -71,28 +71,28 @@ const Register = () => {
                             <Form onSubmit={handleRegister} className={styles.form_register}>
                                 <p className={styles.title}><strong>Crie sua conta</strong></p>
                                 <FormGroup className={styles.formgroup}>
+                                    <Input required maxLength={15} id='firstName' name='firstName' type='text' placeholder=" " className={styles.input}/>
                                     <Label for = 'firstName' className={styles.label}>Nome</Label>
-                                    <Input required maxLength={15} id='firstName' name='firstName' type='text' placeholder='Qual seu nome?' className={styles.inputName}/>
                                 </FormGroup>
 
-                                <FormGroup>
-                                    <Label for = 'userName' className={styles.label}>Nick (apelido)</Label>
-                                    <Input required maxLength={15} id='userName' name='userName' type='text' placeholder='Escolha seu username' className={styles.input} />
+                                <FormGroup className={styles.formgroup}>
+                                    <Input required maxLength={15} id='userName' name='userName' type='text' placeholder=" " className={styles.input} />
+                                    <Label for = 'userName' className={styles.label}>Nick</Label>
                                 </FormGroup>
 
-                                <FormGroup>
+                                <FormGroup className={styles.formgroup}>
+                                    <Input required id='email' name='email' type='email' placeholder=" " className={styles.input} />
                                     <Label for = 'email' className={styles.label}>E-mail</Label>
-                                    <Input required id='email' name='email' type='email' placeholder='Digite seu email' className={styles.input} />
                                 </FormGroup>
 
-                                <FormGroup>
-                                    <Label for = 'birthday' className={styles.label}>Data de Nascimento</Label>
+                                <FormGroup className={styles.formgroup}>
                                     <Input required id='birthday' name='birthday' type='date' min='1930-01-01' max='2023-12-31' className={styles.input} />
+                                    <Label for = 'birthday' className={styles.label}>Data de Nascimento</Label>
                                 </FormGroup>
 
-                                <FormGroup>
+                                <FormGroup className={styles.formgroup}>
+                                    <Input required id='password' name='password' type='password' placeholder=" " minLength={6} maxLength={20} className={styles.input} />
                                     <Label for = 'password' className={styles.label}>Senha</Label>
-                                    <Input required id='password' name='password' type='password' placeholder='Digite uma senha' minLength={6} maxLength={20} className={styles.input} />
                                 </FormGroup>
 
                                 <div className={styles.containerBtn}>

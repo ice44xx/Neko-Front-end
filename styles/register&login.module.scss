@@ -34,18 +34,51 @@
                 font-size: 40px;
                 margin: 50px 0;
             }
-            label{
-                font-size: 25px;
-            }
-            input{
-                border: none;
-                border-bottom: 2px solid black;
-                transition: all 0.3s;
-                border-radius: 0;
-                font-size: 22px;
-                &:focus{
-                    border-bottom: 2px solid #8400ff;
-                    transition: all 0.3s;
+            .formgroup{
+                position: relative;
+                height: 60px;
+                margin: 30px 0;
+                .input{
+                    position: absolute;
+                    top:0;
+                    left:0;
+                    width:100%;
+                    height:100%;
+                    font-size: 21px;
+                    border: 2px solid black;
+                    border-radius: 5px;
+                    outline:none;
+                    padding:1rem;
+                    background:none;
+                    z-index: 1;
+                }
+                .label{
+                    position: absolute;
+                    left:1rem;
+                    top: 0.8rem;
+                    padding:0 .50rem;
+                    background-color: #fff;
+                    color: black;
+                    font-size: 22px;
+                    transition: 0.3s;
+                }
+                .input:focus + .label{
+                    top: -1rem;
+                    left:.8rem;
+                    background-color: #fff;
+                    font-size: 20px;
+                    font-weight: 500;
+                    z-index: 10;
+                    
+                }
+                .input:not(:placeholder-shown).input:not(:focus)+ .label{
+                    top: -1rem;
+                    left:.8rem;
+                    font-size: 20px;
+                    z-index: 10;
+                }
+                .input:focus{
+                    border: 2px solid #8400ff;
                     box-shadow: none;
                 }
             }
@@ -68,6 +101,7 @@
                     font-size: 20px;
                     border: none;
                     border-radius: 0;
+                    transition: all 0.3s;
                     &:hover{
                         background-color: #8400ff;
                     }
@@ -90,8 +124,11 @@
                     border: none;
                     border-radius: 0;
                     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+                    transition: all 0.3s;
                     &:hover{
                         background-color: #8400ff;
+                        transform: scale(95%);
+                        transition: all 0.3s
                     }
                 }
                 .btnForget{
@@ -102,66 +139,109 @@
         }
     }
     .containerForgetPassword{
+        z-index: 10;
         max-width: 700px;
-        height: 440px;
+        max-height: 400px;
         width: 100%;
-        position: absolute;
-        top: -800px;
+        height: 100%;
         display: flex;
+        opacity: 0;
+        top: center;
+        position: absolute;
         flex-direction: column;
         justify-content: center;
-        gap: 50px;
         align-items: center;
         background-color: rgb(40, 40, 40);
         border: 2px solid #fff;
         transition: all 0.3s;
         overflow: hidden;
+        pointer-events: none;
         .title{
             font-size: 45px;
             color: #fff;
         }
-        .form{
-            width: 500px;
+        .container_form{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            gap: 5px;
-            .label{
-                color: #fff;
-                font-size: 25px;
-                margin: 0;
-            }
-            .input{
-                width: 420px;
-                border: none;
-                border-radius: 0;
-                background-color: transparent;
-                box-shadow: none;
-                border-bottom: 2px solid #fff;
-                font-size: 18px;
-                color: #fff;
-                transition: all 0.3s;
-                &:hover{
-                    border-bottom: 2px solid #8400ff;
-                    transition: all 0.3s;
-                }
-            }
-        }
+            gap: 20px;
+            text-align: center;
+            max-width: 550px;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            .form{
+                padding: 0 20px;
+                .formgroup{
+                    position: relative;
+                    height: 60px;
+                    margin: 20px 0;
+                    .input{
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width:100%;
+                        height:100%;
+                        font-size: 21px;
+                        color: #fff;
+                        border: 2px solid #fff;
+                        border-radius: 5px;
+                        outline:none;
+                        padding:1rem;
+                        background:none;
+                        z-index: 1;
+                    }
+                    .label{
+                        position: absolute;
+                        left:1rem;
+                        top: 0.8rem;
+                        padding:0 .35rem;
+                        background-color: rgb(40,40,40);
+                        color: #fff;
+                        font-size: 22px;
+                        transition: 0.3s;
+                    }
+                    .input:focus + .label{
+                        top: -1rem;
+                        left:.8rem;
+                        color: #fff;
+                        font-size: 20px;
+                        font-weight: 500;
+                        z-index: 10;
+                        
+                    }
+                    .input:not(:placeholder-shown).input:not(:focus)+ .label{
+                        top: -1rem;
+                        left:.8rem;
+                        font-size: 20px;
+                        z-index: 10;
+                    }
+                    .input:focus{
+                        border: 2px solid #8400ff;
+                        box-shadow: none;
+                    }
+                } 
+            }  
+        } 
         .btn{
-            width: 120px;
+            max-width: 120px;
+            width: 100%;
             height: 52px;
             font-size: 20px;
             border: none;
             border-radius: 0;
             box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+            transition: all 0.3s;
             &:hover{
                 background-color: #8400ff;
+                transform: scale(95%);
+                transition: all 0.3s;
             }
         }
     }
     .activeContainer{
-        top: 300px;
+        opacity: 1;
+        pointer-events: all;
         transition: all 0.3s;
     }
 }
@@ -205,13 +285,6 @@
                     font-size: 45px;
                     margin: 50px 0;
                 }
-                label{
-                    font-size: 25px;
-                    margin: 10px 0;
-                }
-                input{
-                    font-size: 20px;
-                }
                 .containerBtnLogin{
                     justify-content: center;
                     margin-top: 45px;
@@ -223,40 +296,23 @@
 @media (max-width: 710px) {
     .container{
         .containerForgetPassword{
-            width: 500px;
-            height: 400px;
-            .title{
-                font-size: 35px;
-                color: #fff;
-            }
-            .form{
-                gap: 5px;
-                .label{
-                    font-size: 22px;
-                }
-                .input{
-                    width: 350px;
-                }
-            }
+            max-width: 600px;
         }
     }
+
 }
-@media (max-width: 500px) {
+@media (max-width: 610px) {
     .container{
         .containerForgetPassword{
-            width: 400px;
-            .title{
-                font-size: 35px;
-                color: #fff;
-            }
-            .form{
-                .label{
-                    font-size: 22px;
-                }
-                .input{
-                    width: 300px;
-                }
-            }
+            max-width: 500px;
+        }
+    }
+
+}
+@media (max-width: 510px) {
+    .container{
+        .containerForgetPassword{
+            max-width: 400px;
         }
     }
 }
@@ -285,13 +341,6 @@
                     font-size: 45px;
                     margin: 50px 0;
                 }
-                label{
-                    font-size: 23px;
-                    margin: 10px 0;
-                }
-                input{
-                    font-size: 18px;
-                }
                 .containerBtn{
                     max-width: 290px;
                     width: 100%;
@@ -313,45 +362,42 @@
         }
     }
 }
-@media (max-width: 400px) {
+@media (max-width: 410px) {
     .container{
         .containerForgetPassword{
-            width: 350px;
+            max-width: 350px;
             .title{
                 font-size: 35px;
-                color: #fff;
             }
-            .form{
-                .label{
-                    font-size: 22px;
-                }
-                .input{
-                    width: 300px;
-                }
+            .container_form{
+                .form{
+                    .formgroup{
+                        .label{
+                            font-size: 20px;
+                            top: 1rem;
+                        }
+                    } 
+                }  
+            } 
+        }
+    }
+}
+@media (max-width: 355px) {
+    .container{
+        .containerForgetPassword{
+            max-width: 300px;
+            .title{
+                font-size: 35px;
             }
         }
     }
 }
-@media (max-width: 350px) {
+@media (max-width: 310px) {
     .container{
         .containerForgetPassword{
-            width: 300px;
-            height: 350px;
+            max-width: 260px;
             .title{
-                font-size: 35px;
-                color: #fff;
-            }
-            .form{
-                .label{
-                    font-size: 22px;
-                }
-                .input{
-                    width: 250px;
-                   padding: 0;
-                }
-            }
-            .btn{
-                height: 45px;
+                font-size: 30px;
             }
         }
     }
@@ -361,7 +407,7 @@
         .containerRight{
             .containerRightContent{
                 .containerBtn{
-                    max-width: 200px;
+                    max-width: 210px;
                     width: 100%;
                     height: 100%;
                     margin: 40px auto;
@@ -386,22 +432,6 @@
                     .btnForget{
                         width: 150px;
                     }
-                }
-            }
-        }
-        .containerForgetPassword{
-            width: 260px;
-            height: 320px;
-            .title{
-                font-size: 30px;
-                color: #fff;
-            }
-            .form{
-                .label{
-                    font-size: 20px;
-                }
-                .input{
-                    width: 200px;
                 }
             }
         }
