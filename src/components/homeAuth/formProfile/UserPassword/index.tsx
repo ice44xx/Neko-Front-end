@@ -74,7 +74,10 @@ const UserPassword = () => {
                     <Input required className={styles.input} name='confirmPassword' id='confirmPassword' type='password' placeholder=' ' onChange={(e) => {setConfirmPassword(e.currentTarget.value)}}></Input>
                     <Label className={styles.label} for='confirmPassword'>Digite sua nova senha, novamente</Label>
                 </FormGroup>
-                <Button type='submit' className={styles.btn}>Salvar</Button>
+
+                <div className={styles.container_submit}>
+                    <Button type='submit' className={styles.btn}>Salvar</Button>
+                </div>
                 {color ? (
                     <ToastSuccess isOpen={toast} message={message}/>
                 ) : (

@@ -43,10 +43,7 @@ const authService = {
     },
     reset: async (attributes: Reset) => {
         const res = await api.post('/forget-password', attributes).catch((error) => {
-            if(error.response.status === 500 || error.response.status === 404) {
-                console.log('email incorreto!')
-            }
-            return error.response
+            if(error.response.status === 500 || error.response.status === 404) return error.response
         })
 
         if (res.status === 500 || res.status === 404) {

@@ -24,6 +24,7 @@ const Profile = () => {
                             <div className={styles.containerContentLeft}>
                                 <p className={styles.title}>Minha conta</p>
                                 <div className={styles.containerBtn}>
+                                    <Link href={'/profile/email'}><Button className={styles.btn}>Trocar Email</Button></Link>
                                     <Link href={'/profile/photo'}><Button className={styles.btn}>Trocar foto</Button></Link>
                                     <Link href={'/profile/password'}><Button className={styles.btn}>Trocar Senha</Button></Link>
                                 </div> 

@@ -100,7 +100,7 @@ const Animes = () => {
                 )}
                 <div className={styles.container_master}>
                     <div className={styles.container_anime}>
-                        <img src="/assets/catest.png" alt="" className={styles.cat} />
+                        <img src="/assets/cat_comment_two.png" alt="" className={styles.cat} />
                         <div className={styles.container_thumbnail}>
                             {anime?.thumbnailUrl ? (
                                 <img src={anime.thumbnailUrl} alt={anime?.name} className={styles.thumb} />

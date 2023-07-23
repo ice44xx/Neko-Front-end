@@ -14,7 +14,6 @@ const SlidesPopular = () => {
 
     if(!data) return null 
     if(error) return error
-    console.log(data)
 
     const handleLoadImage = () => {
         setLoad(false)

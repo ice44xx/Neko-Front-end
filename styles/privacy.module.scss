@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    .title{
+        margin-top: 100px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 50px;
+    }
+    .container_dmca{
+        max-width: 1300px;
+        width: 100%;
+        height: 100%;
+        padding: 0px 10px;
+        background-color: #48148b;
+        border: 4px solid #3f117c;
+        .desc{
+            margin: 20px 0;
+            font-size: 20px;
+            span{
+                color: rgb(255, 55, 55);
+            }
+        }
+    }
+}

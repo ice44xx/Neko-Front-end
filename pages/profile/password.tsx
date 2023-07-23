@@ -24,6 +24,7 @@ const Password = () => {
                                     <p className={styles.title}>Minha conta</p>
                                     <div className={styles.containerBtn}>
                                         <Link href={'/profile'}><Button className={styles.btn}>Dados Pessoais</Button></Link>
+                                        <Link href={'/profile/email'}><Button className={styles.btn}>Trocar Email</Button></Link>
                                         <Link href={'/profile/photo'}><Button className={styles.btn}>Trocar foto</Button></Link>
                                     </div>
                                     

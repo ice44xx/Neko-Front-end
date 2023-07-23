@@ -1,0 +1,26 @@
+.mySwiper{
+    display: flex;
+    width: 100%;
+    height: 450px;
+    .background_one{
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0,0,0,0.2), rgb(99, 29, 192)),url('/assets/carousel/jujutsu.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat
+    }
+    .background_two{
+        @extend .background_one;
+        background: linear-gradient(rgb(0,0,0,0.2), rgb(99, 29, 192)),url('/assets/carousel/demon.png');
+    }
+    .background_third{
+        @extend .background_one;
+        background: linear-gradient(rgb(0,0,0,0.2), rgb(99, 29, 192)),url('/assets/carousel/hashi.png');
+    }
+    .background_four{
+        @extend .background_one;
+        background: linear-gradient(rgb(0,0,0,0.2), rgb(99, 29, 192)),url('/assets/carousel/cyber.png');
+    }
+}
+

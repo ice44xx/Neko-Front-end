@@ -3,7 +3,7 @@ const FooterGeneric = () => {
     return (
         <>
             <div className={styles.footer}>
-                <img src="/assets/catpage.gif" alt="" className={styles.img} />
+                <img src="/assets/footer-teste.png" alt="" className={styles.img} />
             </div>
         </>
     )

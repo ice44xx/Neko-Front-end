@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 import Link from 'next/link'
 import withProtect from '@/components/withAuth'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper';
 import 'swiper/swiper.min.css';
 
 const Categories = () => {
@@ -13,7 +14,7 @@ const Categories = () => {
 
     return(
     <>  
-        <Swiper slidesPerView={11} loop={true} centeredSlides={false} className={styles.mySwiper} >
+        <Swiper slidesPerView={12} loop={true} centeredSlides={false} autoplay={{ delay: 4000, disableOnInteraction: false }} modules={[Autoplay]} className={styles.mySwiper} >
             {data.data.categories.map((categories: CategoryType) => (
                 <SwiperSlide className={styles.slides} key={categories.id}>
                     <div className={styles.containerName}>

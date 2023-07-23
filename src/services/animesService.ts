@@ -30,7 +30,6 @@ const animeService = {
             const res = await api.get('/animes/newest')
             return res
         } catch (error: any) {
-            //console.log(error.response.data.message)
             return error.response
         }
     },

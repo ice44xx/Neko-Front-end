@@ -56,7 +56,10 @@
                 border-radius: 100%;
                 cursor: pointer;
                 transition: all 0.4s;
-                background-color: rgb(40, 40, 40);
+                background: linear-gradient(rgba(30, 30, 30, 0.6), rgb(30,30,30,0.6)), url('/assets/catwelcome.png');
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
                 font-size: 20px;
                 .link{
                     text-decoration: none;

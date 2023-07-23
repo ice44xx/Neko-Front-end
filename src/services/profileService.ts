@@ -5,7 +5,9 @@ export interface UserParams {
     userName?: string
     password?: string
     email?: string
+    birthday?: string
     image?: string
+    userUpdated?: boolean
     created_at?: string
 }
 interface PasswordParams {
@@ -35,6 +37,19 @@ const profileService = {
         try {
             const token = sessionStorage.getItem('nekoanimes-token')
             const res = await api.put('/profile', attributes, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            return res.status
+        } catch (error: any) {
+            return error
+        }
+    },
+    getUpdateUserEmail: async (attributes: UserParams) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.put('/profile/email', attributes, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

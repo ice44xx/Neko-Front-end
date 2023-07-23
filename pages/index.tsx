@@ -1,8 +1,8 @@
 import Head from "next/head"
 import styles from '../styles/home.module.scss'
-import { ReactNode } from "react"
+import OneSignal from 'react-onesignal';
+import { ReactNode, useEffect } from "react"
 import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth";
-
 import { GetStaticProps } from "next";
 import animeService, { AnimeType } from "@/services/animesService";
 import Footer from "@/components/common/footer";
@@ -12,6 +12,7 @@ import SlideGender from "@/components/homeNoAuth/slidesGender";
 import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes";
 import SlidesPopular from "@/components/homeNoAuth/slidesPopular";
 import Cookies from "@/components/common/cookies";
+import SlidesCarousel from "@/components/homeNoAuth/slidesCarousel";
 
 interface IndexPageProps {
     children?: ReactNode;
@@ -19,6 +20,12 @@ interface IndexPageProps {
 }
 
 const HomeNoAuth = ({anime}: IndexPageProps) => {
+    useEffect (() => {
+        setTimeout(() => {
+           OneSignal.init({ appId: "aa62f87b-a179-48a4-b130-7902f61c97b7", allowLocalhostAsSecureOrigin: true});
+           OneSignal.showSlidedownPrompt();
+        }, 1000 * 4)
+    }, [])
     return (
         <>
             <Head>
@@ -30,6 +37,7 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
                 <div className={styles.container}>
                     <HeadNoAuth/>
                     <Cookies/>
+                    <SlidesCarousel/>
                     <SlidesNewest/>
                     <SlidesPopular/>
                     <SlidesFeatures/>

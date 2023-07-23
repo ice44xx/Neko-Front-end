@@ -38,6 +38,7 @@ const AnimeEpisode = () => {
         setUserId(user.id)
       })
     }, [])
+    
 
     useEffect(() => {
       const token = sessionStorage.getItem('nekoanimes-token')
@@ -68,7 +69,6 @@ const AnimeEpisode = () => {
       if(res) {
         setComments(res)
         setCommentCount(res.length)
-        console.log(res)
       }
     }
 
@@ -76,12 +76,7 @@ const AnimeEpisode = () => {
       setSelectedEpisodeId(episodeId);
       router.push(`/animes/${anime?.name}/${episodeId}`)
 
-      try {
-        const res = await watchService.getClick(episodeId, ordem, name, videoUrl, thumbnailUrl)
-        console.log(res)
-      } catch (error) {
-        console.error(error);
-      }
+      await watchService.getClick(episodeId, ordem, name, videoUrl, thumbnailUrl)
 
     };
 
@@ -133,24 +128,13 @@ const AnimeEpisode = () => {
     
       const attributes: CommentsType = { animeId, episodeId, content, userPhoto, userName };
 
-      console.log(attributes)
-      try {
-        const res = await commentService.createComment(attributes)
-        console.log(res)
-        router.reload()
-      } catch (error) {
-        console.log(error)
-      }
+      await commentService.createComment(attributes)
+      router.reload()
     };
 
     const handleDeleteComment = async (id: number) => {
-      try {
-        await commentService.delete(id)
-        router.reload()
-        console.log('deletado com sucesso')
-      } catch (error) {
-        console.log(error)
-      }
+      await commentService.delete(id)
+      router.reload()
     }
 
     const indexOfLastComment = currentPage * commentsPerPage;
@@ -185,15 +169,7 @@ const AnimeEpisode = () => {
                 <div className={styles.container_left}>
                   <p className={styles.title}>{selectedEpisode?.name}</p>
                   <div className={styles.container_stream}>
-                    {load ? (
-                      <>
-                      {selectedEpisode && <iframe className={styles.iframe} allowFullScreen src={selectedEpisode.videoUrl} />}
-                      </>
-                    ) : (
-                      <div className={styles.load}>
-                        <img src="/assets/load.gif" alt="" className={styles.img} />
-                      </div>
-                    )}
+                    {selectedEpisode && <iframe className={styles.iframe} allowFullScreen src={selectedEpisode.videoUrl} />}
                   </div>
                   <div className={styles.container_stream_prev_next}>
                     <Button className={styles.btn} onClick={handlePreviousEpisode}><img src="/assets/arrowBtnEpisodeLeft.png" alt="seta pra esquerda" /> Voltar episódio</Button>
@@ -202,7 +178,7 @@ const AnimeEpisode = () => {
                   </div>
                 </div>
                 <div className={styles.container_right_img}>
-                  <img src="/assets/catcat.gif" alt="" className={styles.cat} />
+                  <img src="/assets/catfashion.png" alt="" className={styles.cat} />
                   <div className={styles.container_right}>
                     {anime?.seasons?.map((season, index) => (
                       <div key={season.id} className={styles.list}>
@@ -225,13 +201,18 @@ const AnimeEpisode = () => {
             </div>
             
             <div className={styles.container_master_comments}>
-              <img src="/assets/cat_comment.png" alt="Cat" className={styles.cat_comment}/>
-              <img src="/assets/cat_comment_two.png" alt="Cat" className={styles.cat_comment_two} />
+              <img src="/assets/head.png" alt="Cat" className={styles.cat_comment}/>
+              <img src="/assets/catid.png" alt="Cat" className={styles.cat_comment_two} />
               {auth ? (
                 <div className={styles.container_comments}>
 
                   <div className={styles.containerPhoto}> 
+                  {userPhoto ? (
                     <img src={userPhoto} alt={userName} className={styles.profile}/>
+                  ) : (
+                    <img src={'/assets/catwelcome.png'} alt={userName} className={styles.profile_false}/>
+                  )}
+                    
                   </div>
 
                   <div className={styles.container_textarea}>
@@ -276,7 +257,11 @@ const AnimeEpisode = () => {
                   <div className={styles.container_textarea}>
                     <div className={styles.container_title}>
                       <div className={styles.container_photo}>
-                        <img src={comment.userPhoto} alt={comment.userName} className={styles.profile} />
+                        {comment.userPhoto ? (
+                          <img src={comment.userPhoto} alt={comment.userName} className={styles.profile} />
+                        ) : (
+                          <img src={`/assets/catwelcome.png`} alt={comment.userName} className={styles.profile_false} />
+                        )}
                       </div>
                       <p className={styles.title}>{comment.userName}</p>
                       {comment.userId === Number(userId) && (

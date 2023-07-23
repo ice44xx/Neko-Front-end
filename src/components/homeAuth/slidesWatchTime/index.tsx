@@ -12,7 +12,6 @@ const SlidesWatchTime = () => {
         const getClickedItems = async () => {
             const res = await watchService.getClickedItems();
             setClickedItems(res);
-            console.log(res)
             setLoad(false)
         };
     

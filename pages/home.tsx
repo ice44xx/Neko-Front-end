@@ -1,3 +1,5 @@
+import OneSignal from 'react-onesignal';
+import { useEffect } from "react"
 import Donations from '@/components/common/donations'
 import styles from '../styles/home.module.scss'
 import Footer from "@/components/common/footer"
@@ -12,8 +14,16 @@ import SlidesNewest from "@/components/homeNoAuth/slidesNewest"
 import SlidesPopular from '@/components/homeNoAuth/slidesPopular'
 import withProtect from "@/components/withAuth"
 import Head from "next/head"
+import DonationsKoi from '@/components/common/donationsKoi'
+import SlidesCarousel from '@/components/homeNoAuth/slidesCarousel';
 
 const Home = () => {
+    useEffect (() => {
+        setTimeout(() => {
+           OneSignal.init({ appId: "aa62f87b-a179-48a4-b130-7902f61c97b7", allowLocalhostAsSecureOrigin: true});
+           OneSignal.showSlidedownPrompt();
+        }, 1000 * 4)
+    }, [])
     return (
         <>
             <Head>
@@ -23,7 +33,9 @@ const Home = () => {
                 <div className={styles.container}>
                     <HeaderAuth/>
                     <Categories/>
+                    <SlidesCarousel/>
                     <Donations/>
+                    <DonationsKoi/>
                     <SlidesWatchTime/>
                     <SlidesFavorites/>
                     <SlidesNewest/>
