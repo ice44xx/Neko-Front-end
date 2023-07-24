@@ -19,6 +19,7 @@ export type CommentsForGet = {
     userName: string
     userPhoto: string
     createdAt?: Date
+    likeComments: number[];
 }
 
 const commentService = {
@@ -53,6 +54,28 @@ const commentService = {
             return error.response
         }
     },
+    like: async (commentId: number) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.post(`/comment/like`, {commentId}, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+            return res.data
+        } catch (error: any) {
+            return error.response
+        }
+    },
+    removeLike: async (commentId: number) => {
+        try {
+            const token = sessionStorage.getItem('nekoanimes-token')
+            const res = await api.delete(`/comment/like/${commentId}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+            return res
+        } catch (error: any) {
+            return error.response
+        }
+    }
 }
 
 export default commentService

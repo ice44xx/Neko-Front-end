@@ -40,7 +40,7 @@ const SlideGender = () => {
         <>
             <div className={styles.container_head}>
                 <p className={styles.barGender}></p>
-                <p className = {styles.titlePage}>Classificação de animes</p>
+                <p className = {styles.titlePage}>Classificações de animes</p>
             </div>
             <div className = {styles.container}>
                 {data.map((data) => (

@@ -1,7 +1,7 @@
 import animeService, { AnimeType } from '@/services/animesService'
 import styles from './styles.module.scss'
 import useSWR from 'swr'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from 'reactstrap'
 import Link from 'next/link'
 

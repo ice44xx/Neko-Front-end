@@ -584,10 +584,41 @@
                     height: 100%;
                 }
                 .date{
+                    justify-content: space-between;
+                    align-items: center;
+                    display: flex;
                     margin-top: 20px;
-                    margin-right: 10px;
                     text-align: right;
                     font-size: 18px;
+                    .like{
+                        margin-left: 12px;
+                        display: flex;
+                        gap: 10px;
+                        .like_btn{
+                            border: none;
+                            background-color: transparent;
+                            background-position: center;
+                            background-size: cover;
+                            transition: all 0.3s;
+                            &:focus{
+                                box-shadow: none;
+                            }
+                            &:hover{
+                                transform: scale(115%);
+                                transition: all 0.3s;
+                            }
+                        }
+                        .liked{
+                            background-size: 30px;
+                            background-image: url('/assets/heart.png');
+                            transition: all 0.3s;
+                        }
+                        .notLiked{
+                            background-size: 30px;
+                            background-image: url('/assets/heart_like.png');
+                            transition: all 0.3s;
+                        }
+                    }
                 }
             }  
         } 

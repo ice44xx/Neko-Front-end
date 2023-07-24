@@ -1,10 +1,8 @@
 import Head from "next/head"
 import styles from '../styles/home.module.scss'
 import OneSignal from 'react-onesignal';
-import { ReactNode, useEffect } from "react"
+import { useEffect } from "react"
 import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth";
-import { GetStaticProps } from "next";
-import animeService, { AnimeType } from "@/services/animesService";
 import Footer from "@/components/common/footer";
 import SlidesNewest from "@/components/homeNoAuth/slidesNewest";
 import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures";
@@ -14,12 +12,8 @@ import SlidesPopular from "@/components/homeNoAuth/slidesPopular";
 import Cookies from "@/components/common/cookies";
 import SlidesCarousel from "@/components/homeNoAuth/slidesCarousel";
 
-interface IndexPageProps {
-    children?: ReactNode;
-    anime: AnimeType[]
-}
 
-const HomeNoAuth = ({anime}: IndexPageProps) => {
+const HomeNoAuth = () => {
     useEffect (() => {
         setTimeout(() => {
            OneSignal.init({ appId: "aa62f87b-a179-48a4-b130-7902f61c97b7", allowLocalhostAsSecureOrigin: true});
@@ -48,16 +42,6 @@ const HomeNoAuth = ({anime}: IndexPageProps) => {
             </main>
         </>
     )
-}
-
-export const getStaticProps: GetStaticProps = async () => {
-    const res = await animeService.getNewestAnimes()
-    return {
-        props: {
-            anime: res.data
-        },
-        revalidate: 3600 * 12
-    }
 }
 
 export default HomeNoAuth;

@@ -141,13 +141,14 @@
                 }
                 .play{
                     z-index: 1;
-                    bottom: 130px;
+                    bottom: 140px;
                     transition: all 0.3s;
                 }
             }
         }
     }
 }
+
 @media (max-width: 1850px) {
     .container {
         padding: 0 10px;

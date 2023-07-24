@@ -19,10 +19,11 @@ const AnimeEpisode = () => {
     const [load, setLoad] = useState(false)
     const [auth, setAuth] = useState(false)
     const [anime, setAnime] = useState<AnimeType>()
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState<CommentsForGet[] | null>(null);
     const [userId, setUserId] = useState<number | undefined>(undefined);
     const [userName, setUserName] = useState('')
     const [userPhoto, setUserPhoto] = useState('')
+    const [liked, setLiked] = useState<LikedState>({});
     const [commentCount, setCommentCount] = useState(0);
     const commentsPerPage = 4;
     const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +39,6 @@ const AnimeEpisode = () => {
         setUserId(user.id)
       })
     }, [])
-    
 
     useEffect(() => {
       const token = sessionStorage.getItem('nekoanimes-token')
@@ -49,7 +49,7 @@ const AnimeEpisode = () => {
       getComments()
       setSelectedEpisodeId(episodeId);
 
-    },[name, id, episodeId])
+    },[name, id, episodeId, comments])
 
     const getAnime = async () => {
       if(typeof name !== 'string') return
@@ -64,7 +64,6 @@ const AnimeEpisode = () => {
 
     const getComments = async () => {
       if(typeof episodeId !== 'number') return
-
       const res = await commentService.getComments(episodeId)
       if(res) {
         setComments(res)
@@ -129,7 +128,6 @@ const AnimeEpisode = () => {
       const attributes: CommentsType = { animeId, episodeId, content, userPhoto, userName };
 
       await commentService.createComment(attributes)
-      router.reload()
     };
 
     const handleDeleteComment = async (id: number) => {
@@ -139,7 +137,7 @@ const AnimeEpisode = () => {
 
     const indexOfLastComment = currentPage * commentsPerPage;
     const indexOfFirstComment = indexOfLastComment - commentsPerPage;
-    const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
+    const currentComments = comments?.slice(indexOfFirstComment, indexOfLastComment);
 
     const handleNextPage = () => {
       setCurrentPage(currentPage + 1);
@@ -149,6 +147,24 @@ const AnimeEpisode = () => {
       setCurrentPage(currentPage - 1);
     };
 
+    type LikedState = { [commentId: number]: boolean };
+  
+    const handleLike = async (commentId: number) => {
+      // Verifica o estado atual do "liked" para o comentário específico (commentId)
+      const isLiked = liked[commentId] || false;
+    
+      // Se o comentário já foi "gostado", remove o "like"
+      if (isLiked) {
+        await commentService.removeLike(commentId);
+      } else {
+        // Caso contrário, adiciona o "like"
+        await commentService.like(commentId);
+      }
+    
+      // Atualiza o estado "liked" apenas para o comentário específico (commentId)
+      setLiked((prevLiked) => ({ ...prevLiked, [commentId]: !isLiked }));
+    };
+    
     return (
       <>
         <Head>
@@ -252,7 +268,7 @@ const AnimeEpisode = () => {
                 )}
               </div>
       
-              {currentComments.map((comment: CommentsForGet) => (
+              {currentComments?.map((comment) => (
                 <div className={styles.container_comments_all}>
                   <div className={styles.container_textarea}>
                     <div className={styles.container_title}>
@@ -271,6 +287,20 @@ const AnimeEpisode = () => {
                     <p className={styles.comment}>{comment.content}</p>
 
                     <div className={styles.date}>
+                      <div className={styles.like}>
+                        {auth ? (
+                          <>
+                            <Button className={`${styles.like_btn} ${liked[comment.id] ? styles.liked : styles.notLiked}`} onClick={() => handleLike(comment.id)}></Button>
+                            <p>{comment.likeComments.length}</p>
+                          </>
+                        ) : (
+                          <>
+                            <Button className={`${styles.like_btn} ${styles.notLiked}`} onClick={() => router.push('/login')}></Button>
+                            <p>{comment.likeComments.length}</p>
+                          </>
+                        )}
+                        
+                      </div>
                       <p>{comment.createdAt ? new Date(comment.createdAt).toLocaleString() : 'N/A'}</p>
                     </div>
                   </div>
@@ -278,16 +308,16 @@ const AnimeEpisode = () => {
               ))}
 
               <div className={styles.pagination}>
-                {comments.length >= 6 ? (
-                  <>
-                    <Button onClick={handlePreviousPage} className={styles.btn} disabled={currentPage === 1}>Página Anterior</Button>
-                    <Button onClick={handleNextPage} className={styles.btn} disabled={indexOfLastComment >= comments.length}>Próxima Página</Button>
-                  </>
-                ) : (
-                  <div>
+                {comments && comments.length >= 6 ? (
+                    <>
+                      <Button onClick={handlePreviousPage} className={styles.btn} disabled={currentPage === 1}>Página Anterior</Button>
+                      <Button onClick={handleNextPage} className={styles.btn} disabled={indexOfLastComment >= comments?.length}>Próxima Página</Button>
+                    </>
+                  ) : (
+                    <div>
 
-                  </div>
-                )}
+                    </div>
+                  )}
               </div>
             </div>
 
