@@ -9,6 +9,7 @@ import { useState, useEffect } from "react"
 import Categories from '@/components/homeAuth/categories'
 import FooterGeneric from '@/components/common/footerGeneric'
 import Link from 'next/link'
+import LoadingBar from 'react-top-loading-bar'
  
 const classification = () => {
     const router = useRouter()
@@ -17,6 +18,7 @@ const classification = () => {
     const [animes, setAnimes] = useState<AnimeType[]>([])
     const [auth, setAuth] = useState(false)
     const [load, setLoad] = useState(false)
+    const [loading, setLoading] = useState(true);
 
     const getGender = async () => {
         if(typeof name !== "string") return
@@ -28,7 +30,7 @@ const classification = () => {
             setGender(res.data)
             setAnimes(res.data?.animes || [])
         }
-
+        setLoading(false)
         setLoad(false)
     }
 
@@ -49,6 +51,7 @@ const classification = () => {
             </Head>
 
             <main>
+            <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
                 {auth ? <> <HeaderAuth/> <Categories/> </> : <HeadNoAuth/>}
                 <div className={styles.container_master}>
                     <div className={styles.container}>

@@ -7,9 +7,9 @@ import { useRouter } from 'next/router'
 import ToastSuccess from '@/components/common/toastSuccess'
 import authService from '@/services/authService'
 import ToastError from '@/components/common/toastError'
-import Link from 'next/link'
 import profileService from '@/services/profileService'
 import FooterGeneric from '@/components/common/footerGeneric'
+import LoadingBar from 'react-top-loading-bar'
 
 const Login = () => {
     useEffect (() => {
@@ -28,6 +28,7 @@ const Login = () => {
     }, [])
 
     const router = useRouter() 
+    const [loading, setLoading] = useState(true);
     const [toast, setToast] = useState(false)
     const [color, setColor] = useState(false)
     const [toastMessage, setToastMessage] = useState('')
@@ -47,13 +48,18 @@ const Login = () => {
         const { status } = await authService.login(attributes)
 
         if (status === 200 || status === 201) {
-            router.push('/home')
+            setTimeout(() => {
+                setLoading(false)
+                router.push('/home')
+            }, 1000)
+            
         } else {
             setColor(false)
             setToast(true)
             setTimeout(() => {setToast(false)}, 1000 * 4)
             setToastMessage('Algo esta incorreto!')
         }
+        setLoading(false)
     }
     const handleSendCode = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -133,6 +139,7 @@ const Login = () => {
                 <title>Neko Animes - Login</title>
             </Head>
             <main>
+                <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
                 <HeaderGeneric logoUrl='/' btnUrl='/register' btnContent='Quero fazer Parte' />
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>

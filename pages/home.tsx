@@ -16,6 +16,7 @@ import withProtect from "@/components/withAuth"
 import Head from "next/head"
 import DonationsKoi from '@/components/common/donationsKoi'
 import SlidesCarousel from '@/components/homeNoAuth/slidesCarousel';
+import Loading from '@/components/common/loading';
 
 const Home = () => {
     useEffect (() => {
@@ -31,6 +32,7 @@ const Home = () => {
             </Head>
             <main>
                 <div className={styles.container}>
+                    <Loading/>
                     <HeaderAuth/>
                     <Categories/>
                     <SlidesCarousel/>

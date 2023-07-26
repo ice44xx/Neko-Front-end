@@ -11,6 +11,7 @@ import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes";
 import SlidesPopular from "@/components/homeNoAuth/slidesPopular";
 import Cookies from "@/components/common/cookies";
 import SlidesCarousel from "@/components/homeNoAuth/slidesCarousel";
+import Loading from "@/components/common/loading";
 
 
 const HomeNoAuth = () => {
@@ -29,6 +30,7 @@ const HomeNoAuth = () => {
             </Head>
             <main>
                 <div className={styles.container}>
+                    <Loading/>
                     <HeadNoAuth/>
                     <Cookies/>
                     <SlidesCarousel/>

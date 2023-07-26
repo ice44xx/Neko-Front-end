@@ -9,12 +9,14 @@ import { useState, useEffect } from 'react'
 import FooterGeneric from '@/components/common/footerGeneric'
 import withProtect from '@/components/withAuth'
 import Link from 'next/link'
+import LoadingBar from 'react-top-loading-bar'
 
 const CategoriesPage = () => {
     const [category, setCategory] = useState<CategoryType>()
     const [animes, setAnimes] = useState<AnimeType[]>([])
     const [animesAnother, setAnimesAnother] = useState<AnimeType[]>([])
     const [load, setLoad] = useState(false)
+    const [loading, setLoading] = useState(true);
     const router = useRouter()
     const { name } = router.query
 
@@ -29,6 +31,7 @@ const CategoriesPage = () => {
             setAnimes(res.data?.animes || [])
         }
 
+        setLoading(false)
         setLoad(false)
     }
 
@@ -43,6 +46,7 @@ const CategoriesPage = () => {
             setAnimesAnother(res.data?.animes || [])
         }
 
+        setLoading(false)
         setLoad(false)
     }
 
@@ -57,6 +61,7 @@ const CategoriesPage = () => {
                 <title>Neko animes - {name}</title>
             </Head>
             <main>
+                <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
                 <HeaderAuth/>
                 <Categories/>
                 <div className={styles.container_master}>

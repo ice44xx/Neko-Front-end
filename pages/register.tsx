@@ -8,27 +8,27 @@ import authService from '@/services/authService'
 import { useRouter } from 'next/router'
 import ToastError from '@/components/common/toastError'
 import ReCAPTCHA from 'react-google-recaptcha'
+import LoadingBar from 'react-top-loading-bar'
 
 const Register = () => {
-    useEffect (() => {
-        if(sessionStorage.getItem('nekoanimes-token')) {
-            router.push('/home')
-        }
-    }, [])
+    const [loading, setLoading] = useState(true);
+    const router = useRouter()
+    const [toast, setToast] = useState(false)
+    const [toastMessage, setToastMessage] = useState('')
 
     const images = ['register.webp', 'register_one.webp', 'register_two.webp', 'register_third.webp']
     const [randomImage, setRandomImage] = useState('')
     const [recaptchaToken, setRecaptchaToken] = useState<String | null>(null);
 
-    useEffect(() => {
+    useEffect (() => {
+        if(sessionStorage.getItem('nekoanimes-token')) {
+            router.push('/home')
+        }
         const index = Math.floor(Math.random() * images.length)
         const randomImage = images[index]
         setRandomImage(randomImage)
-    }, [])
 
-    const router = useRouter()
-    const [toast, setToast] = useState(false)
-    const [toastMessage, setToastMessage] = useState('')
+    }, [])
 
     const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -44,7 +44,11 @@ const Register = () => {
         const {data, status} = await authService.register(attributes)
 
         if(status === 201) {
-            router.push("/login?registred=true")
+            setTimeout(() => {
+                setLoading(false)
+                router.push("/login?registred=true")
+            }, 1000)
+            
         } else if (status === 400) {
             setToast(true)
             setTimeout(() => {
@@ -53,6 +57,7 @@ const Register = () => {
             setToastMessage(data.message)
             return
         }
+        setLoading(false)
     }
 
     return (
@@ -61,6 +66,7 @@ const Register = () => {
                 <title>Neko Animes - Registro</title>
             </Head>
             <main>
+                <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
                 <HeaderGeneric logoUrl='/' btnUrl='/login' btnContent='Quero Logar'/>
                 <div className={styles.container}>
                     <div className={styles.containerLeft}>

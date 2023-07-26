@@ -10,6 +10,7 @@ import { Button } from 'reactstrap'
 import Link from 'next/link'
 import Categories from '@/components/homeAuth/categories'
 import watchService from '@/services/watchService'
+import LoadingBar from 'react-top-loading-bar'
 
 const Animes = () => {
     const router = useRouter()
@@ -19,6 +20,7 @@ const Animes = () => {
     const [liked, setLiked] = useState(false)
     const [favorited, setFavorited] = useState(false)
     const [auth, setAuth] = useState(false)
+    const [loading, setLoading] = useState(true);
     const [visibleSeasons, setVisibleSeasons] = useState(new Array(anime?.seasons?.length).fill(true));
 
     useEffect(() => {
@@ -36,7 +38,7 @@ const Animes = () => {
         const res = await animeService.getAnime(name);
         setAnime(res);
     
-        console.log(res)
+        setLoading(false)
     };
 
     const handleFavoriteAnime = async () => {
@@ -45,11 +47,9 @@ const Animes = () => {
         if (!favorited) {
           await animeService.favorite(anime.id);
           setFavorited(true);
-          console.log('favorited success');
         } else {
           await animeService.removeFavorite(anime.id);
           setFavorited(false);
-          console.log('favorited removed');
         }
     };
  
@@ -74,13 +74,12 @@ const Animes = () => {
           return updatedVisibleSeasons;
         });
     };
-
+    
     const handleClickSave = async (episodeId: number, ordem: number, name: string, videoUrl: string, thumbnailUrl: string) => {
         try {
             const res = await watchService.getClick(episodeId, ordem, name, videoUrl, thumbnailUrl)
-            console.log(res)
+            return res
         } catch (error) {
-            console.error(error);
         }
     }
 
@@ -90,6 +89,7 @@ const Animes = () => {
                 <title>Neko Animes - {anime?.name}</title>
             </Head>
             <main>
+            <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
                 {auth ? (
                     <>
                         <HeaderAuth/>

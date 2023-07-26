@@ -7,7 +7,7 @@ const Donations = () => {
         <div className={styles.container}>
             <div className={styles.container_content}>
                 <p>Gosta de assistir animes aqui? <br/> Ajude-nos doando QUALQUER valor para apoiar á continuar esse projeto <img src="/assets/heartDonate.png" alt="Coração" className={styles.heart} /></p>
-                <Link href={'https://link.mercadopago.com.br/nekoanimes'} className={styles.link} target="blank">
+                <Link href={'/donates'} className={styles.link}>
                     <div className={styles.background}>
                         <img src="/assets/head.png" className={styles.head} alt="logo neko animes" />
                         <img src="/assets/body.png" className={styles.body} alt="logo neko animes" />

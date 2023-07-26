@@ -5,10 +5,12 @@ import {FormEvent, useState} from 'react'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import profileService from '@/services/profileService'
+import animeService, { AnimeType } from '@/services/animesService'
 
 const HeaderAuth = () => {
     const router = useRouter()
     const [search, setSearch] = useState(true)
+    const [randomName, setRandomName] = useState('')
     const [searchName, setSearchName] = useState('')
     const [modalOpen, setModalOpen] = useState(true)
     
@@ -28,12 +30,33 @@ const HeaderAuth = () => {
         router.push('/')
     }
 
+    const getAnime = async () => {
+        const res = await animeService.findAll();
+        return res.data; 
+      };
+      
+    const randomAnime = async () => {
+        try {
+            const animes = await getAnime();
+            const animesName = animes.map((anime: AnimeType) => anime.name)
+
+            const randomIndex = Math.floor(Math.random() * animesName.length)
+            const randomAnimeName = animesName[randomIndex]
+            setRandomName(randomAnimeName)
+            
+        } catch (error) {
+            console.error('Erro ao obter os animes:', error);
+        }
+    };
+    randomAnime()
+
     const handleSearchVisible = () => {
         setSearch(!search)
     }
     const handleModal = () => {
         setModalOpen(!modalOpen)
     }
+
 
     return(
         <>
@@ -68,7 +91,10 @@ const HeaderAuth = () => {
                 </div>
 
                 <div className={`${styles.modal} ${modalOpen ? styles.activeModal : ''}`}>
-                    <Link href='/profile' className={styles.link}><p className={styles.modalLink}>Meus Dados <img src="/assets/user.png" alt="user" className={styles.img} /></p></Link>
+                    <Link href={'/profile'} className={styles.link}><p className={styles.modalLink}>Meus Dados <img src="/assets/user.png" alt="user" className={styles.img} /></p></Link>
+                    <Link href={'/donates'} className={styles.link}><p className={styles.modalLink}>Doações <img src="/assets/donates.png" alt="donates" className={styles.img} /></p></Link>
+                    <Link href={'/order'} className={styles.link}><p className={styles.modalLink}>Pedidos <img src="/assets/order.png" alt="donates" className={styles.img} /></p></Link>
+                    <Link href={`/animes/${randomName}`} className={styles.link}><p className={styles.modalLink}>Anime aleatório <img src="/assets/dados.png" alt="anime aleatório" className={styles.img} /></p></Link>
                     <Link href={'/'} className={styles.link}><p className={styles.modalLink} onClick={handleLogout}><span>Sair <img src="/assets/logout.png" alt="logout" className={styles.img} /></span></p></Link>
                 </div>
             </div>

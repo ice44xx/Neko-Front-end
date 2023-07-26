@@ -8,12 +8,14 @@ import FooterGeneric from '@/components/common/footerGeneric';
 import Categories from '@/components/homeAuth/categories';
 import HeadNoAuth from '@/components/homeNoAuth/headerNoAuth';
 import Link from 'next/link';
+import LoadingBar from 'react-top-loading-bar';
 
 const SearchPage = () => {
     const router = useRouter()
     const searchName = router.query.name
     const [searchResult, setSearchResult] = useState<AnimeType[]>([]);
     const [load, setLoad] = useState(false)
+    const [loading, setLoading] = useState(true);
     const [auth, setAuth] = useState(false)
     
     const searchAnime = async () => {
@@ -21,6 +23,7 @@ const SearchPage = () => {
             const res = await animeService.getSearch(searchName);
             setSearchResult(res)
         }
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -42,6 +45,7 @@ const SearchPage = () => {
             <title>Neko Animes - {searchName}</title>
         </Head>
         <main>
+        <LoadingBar progress={loading ? 10 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
             {auth ? (
                 <>
                     <HeaderAuth/>

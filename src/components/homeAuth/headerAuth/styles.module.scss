@@ -138,15 +138,15 @@
 .modal{
     z-index: 4;
     top: 120px;
-    right: 25px;
+    right: 20px;
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    width: 140px;
-    height: 90px;
+    width: 145px;
+    height: 200px;
     background-color: rgb(15,15,15);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -165,7 +165,7 @@
     }
 }
 .activeModal{
-    top: 0;
+    top: -90px;
     transition: all 0.3s;
 }
 
