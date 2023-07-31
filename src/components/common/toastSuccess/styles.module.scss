@@ -1,3 +1,5 @@
+@import '../../../../styles/colors.module.scss';
+
 .toast{
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
@@ -7,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(48, 206, 61);
+    background-color: $toast_success;
     .toastBody{
         font-size: 25px;
         .img{

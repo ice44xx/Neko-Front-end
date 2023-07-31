@@ -145,7 +145,6 @@ const Login = () => {
                     <div className={styles.containerLeft}>
                         <img src={`/assets/backRegister&Login/${randomImage}`}/>
                     </div>
-                    
                     <div className={styles.containerRight}>
                         <div className={styles.containerRightContent}>
                             <Form onSubmit={handleLogin} className={styles.form}>
@@ -167,7 +166,6 @@ const Login = () => {
                             </Form>
                         </div>
                     </div>
-                    
                     <div className={`${styles.containerForgetPassword} ${forgetPassword ? styles.activeContainer : ''}`}>
                         {codeSent ? 
                         <div className={styles.container_form}>
@@ -203,7 +201,6 @@ const Login = () => {
                         </div>
                         }
                     </div>
-
                 </div>
                 {color ? (
                     <ToastSuccess isOpen={toast} message={toastMessage}/>

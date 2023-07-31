@@ -1,10 +1,10 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyBpzqmC9Lg4y6cEoF4W9YEok4Xosm7rmy4",
-    authDomain: "neko-animes-862d5.firebaseapp.com",
-    projectId: "neko-animes-862d5",
-    storageBucket: "neko-animes-862d5.appspot.com",
-    messagingSenderId: "1016112572732",
-    appId: "1:1016112572732:web:ca97e7411d155220a19639"
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_APP_ID
 };
   
 

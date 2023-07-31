@@ -1,3 +1,5 @@
+@import './colors.module.scss';
+
 .container{
     display: flex;
     justify-content: center;
@@ -59,7 +61,7 @@
         .containerRight{
             width: 50%;
             height: 100%;
-            background-color: #fff;
+            background-color: $white;
             border-bottom-right-radius: 30px;
             .containerContentRight{
                 position: relative;
@@ -72,7 +74,7 @@
                 gap: 50px;
                 .title{
                     font-size: 50px;
-                    color: rgb(40,40,40);
+                    color: $blackColor_background;
                 }
                 .form{
                     display: flex;
@@ -87,7 +89,7 @@
                         font-size: 16px;
                         text-align: center;
                         font-weight: 600;
-                        color: #631dc0;
+                        color: $primary;
                         cursor: pointer;
                         img{
                             margin-left: 5px;
@@ -106,8 +108,8 @@
                             width:100%;
                             height:100%;
                             font-size: 21px;
-                            color: rgb(40,40,40);
-                            border: 2px solid rgb(40,40,40);
+                            color: $blackColor_background;
+                            border: 2px solid $blackColor_background;
                             border-radius: 5px;
                             outline:none;
                             padding:1rem;
@@ -125,15 +127,15 @@
                             left:1rem;
                             top: 0.8rem;
                             padding:0 .35rem;
-                            background-color: #fff;
-                            color: rgb(40,40,40);
+                            background-color: $white;
+                            color: $blackColor_background;
                             font-size: 22px;
                             transition: 0.3s;
                         }
                         .input:focus + .label{
                             top: -1rem;
                             left:.8rem;
-                            color: rgb(40,40,40);
+                            color: $blackColor_background;
                             font-size: 20px;
                             font-weight: 500;
                             z-index: 10;
@@ -146,7 +148,7 @@
                             z-index: 10;
                         }
                         .input:focus{
-                            border: 2px solid #8400ff;
+                            border: 2px solid $input_focus;
                             box-shadow: none;
                         }
                     }
@@ -178,7 +180,7 @@
                         margin: 0 auto;
                         &:focus{
                             box-shadow: none;
-                            border-bottom: 2px solid #631dc0;
+                            border-bottom: 2px solid $primary;
                             transition: all 0.3s;
                         }
                     }
@@ -190,14 +192,14 @@
                         justify-content: center;
                         align-items: center;
                         border-radius: 100%;
-                        border: 2px solid rgb(40,40,40);
+                        border: 2px solid $blackColor_background;
                         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-                        background-color: rgb(40,40,40);
+                        background-color: $blackColor_background;
                         overflow: hidden;
                         margin: 0 auto;
                         transition: all 0.3s;
                         .upload{
-                            color: #fff;
+                            color: $white;
                             position: absolute;
                             font-size: 25px;
                         }
@@ -207,7 +209,7 @@
                             object-fit: cover;
                         }
                         &:hover{
-                            background-color: rgb(50,50,50);
+                            background-color: $black50;
                             transition: all 0.3s;
                         }
                     }
@@ -217,10 +219,10 @@
                         gap: 20px;
                         .input{
                             width: 100%;
-                            border: 2px solid rgb(40,40,40);
+                            border: 2px solid $blackColor_background;
                             transition: all 0.3s;
                             &:hover{
-                                border: 2px solid #631dc0;
+                                border: 2px solid $primary;
                                 transition: all 0.3s;
                             }
                         }
@@ -228,7 +230,7 @@
                             margin: 0 auto;
                         }
                         .rule{
-                            color: black;
+                            color: $black;
                             text-align: center;
                         }
                     }
@@ -245,9 +247,9 @@
                     height: 100%;
                     max-height: 600px;
                     padding: 5px;
-                    border: 2px solid #631dc0;
+                    border: 2px solid $primary;
                     border-radius: 10px;
-                    background-color: #fff;
+                    background-color: $white;
                     transition: all 0.3s;
                     img{
                         cursor: pointer;
@@ -266,8 +268,7 @@
                     z-index: 9999;
                     display: flex;
                     opacity: 1;
-                    transition: all 0.3s;
-                    
+                    transition: all 0.3s;   
                 }
             }
         }
@@ -377,8 +378,7 @@
                             }
                             .input:not(:placeholder-shown).input:not(:focus)+ .label{
                                 font-size: 20px;
-                            }
-                            
+                            }   
                         }
                     }
                 }

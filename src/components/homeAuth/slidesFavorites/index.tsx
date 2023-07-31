@@ -1,5 +1,5 @@
 import animeService, { AnimeType } from '@/services/animesService'
-import styles from '../../homeNoAuth/slidesNewest/styles.module.scss'
+import styles from '../../../../styles/splideCarousel.module.scss'
 import useSWR from 'swr'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import Link from 'next/link'

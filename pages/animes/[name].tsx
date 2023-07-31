@@ -1,7 +1,7 @@
 import FooterGeneric from '@/components/common/footerGeneric'
 import styles from '../../styles/animes.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
-import HeadNoAuth from '@/components/homeNoAuth/headerNoAuth'
+import HeaderNoAuth from '@/components/homeNoAuth/headerNoAuth'
 import animeService, { AnimeType } from '@/services/animesService'
 import Head from "next/head"
 import { useRouter } from 'next/router'
@@ -58,11 +58,9 @@ const Animes = () => {
 
         if (!liked) {
             animeService.like(anime.id);
-            alert('LIKED TRUE')
             setLiked(true);
         } else {
             animeService.removeLike(anime.id);
-            alert('REMOVED TRUE')
             setLiked(false);
         }
     };
@@ -89,15 +87,8 @@ const Animes = () => {
                 <title>Neko Animes - {anime?.name}</title>
             </Head>
             <main>
-            <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
-                {auth ? (
-                    <>
-                        <HeaderAuth/>
-                        <Categories/>
-                    </>
-                ) : (
-                    <HeadNoAuth/>
-                )}
+                <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
+                {auth ? (<><HeaderAuth/><Categories/></>) : (<HeaderNoAuth/>)}
                 <div className={styles.container_master}>
                     <div className={styles.container_anime}>
                         <img src="/assets/cat_comment_two.png" alt="" className={styles.cat} />
@@ -123,7 +114,6 @@ const Animes = () => {
                                     <Link href={`/categories/${anime?.categories?.name}`} className={styles.link}><p className={styles.categories}>{anime?.categories?.name}</p></Link>
                                     <Link href={`/classification/${anime?.gender?.name}`} className={styles.link}><p className={styles.categories}>{anime?.gender?.name}</p></Link>
                                 </div>
-                                
                                 {auth ? (
                                 <div className={styles.like_favorite}>
                                 {liked ? (
@@ -141,7 +131,6 @@ const Animes = () => {
                                 <div></div>
                             )}
                             </div>
-        
                         </div>
                     </div>
                     <div className={styles.container_episodes}>
@@ -170,7 +159,6 @@ const Animes = () => {
                                     <p className={styles.subtitle}>Estamos trabalhando o mais rápido possível para adicionar</p>
                                 </div>
                             )}
-                            
                         </div>
                     </div>
                 </div>

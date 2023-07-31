@@ -1,3 +1,4 @@
+@import './colors.module.scss';
 .container{
     display: flex;
     flex-direction: column;
@@ -16,13 +17,13 @@
         width: 100%;
         height: 100%;
         padding: 0px 10px;
-        background-color: #48148b;
-        border: 4px solid #3f117c;
+        background-color: $background_primary;
+        border: 4px solid $border_primary;
         .desc{
             margin: 20px 0;
             font-size: 20px;
             span{
-                color: rgb(255, 55, 55);
+                color: $attetion;
             }
         }
     }

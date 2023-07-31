@@ -1,3 +1,5 @@
+@import './colors.module.scss';
+
 .load{
     width: 100%;
     height: 100%;
@@ -21,20 +23,20 @@
             margin-top: 2px;
             width: 4px;
             height: 50px;
-            background-color: rgb(2, 162, 255);
+            background-color: $bar;
             border-radius: 10px;
         }
         .barPopular{
             @extend .bar;
-            background-color: rgb(10, 255, 2);
+            background-color: $bar_popular;
         }
         .barFeatures{
             @extend .bar;
-            background-color: rgb(255, 2, 120);
+            background-color: $bar_features;
         }
         .barFav{
             @extend .bar;
-            background-color: rgb(255, 2, 120);
+            background-color: $bar_fav;
         }
         .titlePage{
             font-size: 50px;
@@ -49,7 +51,7 @@
         width: 250px;
         border-radius: 15px;
         margin: 0 auto;
-        background-color: rgb(40,40,40);
+        background-color: $blackColor_background;
     }
     .mySplide{
         margin: 0 auto;
@@ -61,7 +63,7 @@
             width: 100%;
             max-width: 220px;
             height: 330px;
-            border: 2px solid #fff;
+            border: 2px solid $white;
             border-radius: 5px;
             overflow: hidden;
             margin: 20px auto;
@@ -72,7 +74,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: rgb(40, 40, 40);
+                background-color: $blackColor_background;
                 width: 100%;
                 height: 100%;
                 img{
@@ -89,7 +91,7 @@
                 overflow-y: hidden;
                 text-align: center;
                 background-color: rgba(255, 255, 255, 0.884);
-                color: black;
+                color: $black;
                 font-size: 25px;
             }
             .play{
@@ -121,7 +123,7 @@
             &:hover{
                 transition: all 0.3s;
                 transform: scale(95%);
-                background-color: rgb(20, 20, 20);
+                background-color: $blackColor;
                 .slideImg{
                     opacity: 0.5;
                     transition: all 0.3s;
@@ -142,19 +144,19 @@
             width: 100%;
             max-width: 230px;
             height: 160px;
-            border: 2px solid #fff;
+            border: 2px solid $white;
             border-radius: 5px;
             overflow: hidden;
             margin: 20px auto;
             box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
-            background-color: black;
+            background-color: $black;
             cursor: pointer;
             transition: all 0.3s;
             .load{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: rgb(40, 40, 40);
+                background-color: $blackColor_background;
                 width: 100%;
                 height: 100%;
                 img{
@@ -186,9 +188,9 @@
                     align-items: center;
                     width: 100%;
                     height: 25px;
-                    background-color: white;
+                    background-color: $white;
                     text-align: center;
-                    color: rgb(40, 40, 40);
+                    color: $blackColor_background;
                     font-size: 19px;
                     transition: all 0.3s;
                 }
@@ -219,6 +221,7 @@
         font-size: 40px; 
     }
 }
+
 @media (max-width: 980px) {
     .container{
         .mySplide{

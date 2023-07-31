@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export const HeadNoAuth = () => {
+export const HeaderNoAuth = () => {
     const router = useRouter()
     const [search, setSearch] = useState(true)
     const [searchName, setSearchName] = useState('')
@@ -45,4 +45,4 @@ export const HeadNoAuth = () => {
     )
 }
 
-export default HeadNoAuth;
+export default HeaderNoAuth;

@@ -2,27 +2,24 @@ import React, { useState, useEffect } from 'react';
 import LoadingBar from 'react-top-loading-bar';
 
 const Loading = () => {
-    const [progress,setProgress] = useState(0);
-
+  const [progress,setProgress] = useState(0);
     useEffect(() => {
-        // Simulando o progresso de carregamento com um atraso de 1 segundo
-        const simulateProgress = () => {
-          setProgress(0);
-          setTimeout(() => {
-            setProgress(30);
-          }, 500);
-          setTimeout(() => {
-            setProgress(70);
-          }, 1000);
-          setTimeout(() => {
-            setProgress(100);
-          }, 1500);
-        };
+      const simulateProgress = () => {
+        setProgress(0);
+        setTimeout(() => {
+          setProgress(30);
+        }, 500);
+        setTimeout(() => {
+          setProgress(70);
+        }, 1000);
+        setTimeout(() => {
+          setProgress(100);
+        }, 1500);
+      };
     
-        simulateProgress();
+      simulateProgress();
     }, []);
   
-
   return (
     <div>
       <LoadingBar color={'#8400ff'} progress={progress} onLoaderFinished={() => setProgress(0)} />

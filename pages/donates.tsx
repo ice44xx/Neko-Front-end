@@ -1,7 +1,7 @@
 import FooterGeneric from '@/components/common/footerGeneric'
 import styles from '../styles/donates.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth"
-import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth"
+import HeaderNoAuth from "@/components/homeNoAuth/headerNoAuth"
 import Head from "next/head"
 import { useState, useEffect } from "react"
 import withProtect from '@/components/withAuth'
@@ -20,7 +20,7 @@ const Donates = () => {
         <div>
             <Head><title>Neko Animes - Doação</title></Head>
             <main>
-                {auth ? (<HeaderAuth/>) : (<HeadNoAuth/>)}
+                {auth ? (<HeaderAuth/>) : (<HeaderNoAuth/>)}
                 <div className={styles.container}>
                     <div className={styles.container_title}>
                         <p className={styles.title}>Neko Doações</p>

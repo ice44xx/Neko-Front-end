@@ -126,7 +126,7 @@ const animeService = {
     getAnimePopular: async () => {
         try {
             const res = await api.get('/animes/popular')
-            return res.data
+            return res
         } catch (error) {
             return error
         }

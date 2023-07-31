@@ -1,3 +1,5 @@
+@import './colors.module.scss';
+
 .container{
     display: flex;
     flex-direction: column;
@@ -31,22 +33,22 @@
         align-items: center;
         width: 100%;
         max-width: 1400px;
+        min-height: 700px;
         height: 100%;
-        max-height: 700px;
         padding: 0px 10px;
-        background-color: #48148b;
-        border: 4px solid #3f117c;
-        margin-bottom: 80px;
+        margin-bottom: 60px;
         .alert{
-            border: 4px solid #3f117c;
-            background-color: rgba(106, 15, 190, 0.493);
+            background-color: $background_primary;
+            border: 4px solid $border-primary;
             text-align: center;
             max-width: 1000px;
             font-size: 20px;
             border-radius: 10px;
-            padding: 20px;
+            padding:  15px 20px;
+            margin: 20px 0;
             span{
                 font-size: 30px;
+                color: $attetion;
             }
         }
         .contact{
@@ -55,15 +57,13 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            text-align: center;
             font-size: 20px;
         }
         .desc{
             text-align: center;
             margin: 20px 0;
             font-size: 30px;
-            span{
-                color: rgb(255, 55, 55);
-            }
         }
         .container_master{
             display: flex;
@@ -74,15 +74,17 @@
             height: 350px;
             display: flex;
             .mercado_pago{
-               
+               .title{
+                    margin: 10px 0;
+               }
             }
             .koi_fi{
-                
+                @extend .mercado_pago
             }
             .bar{
                 margin-top: 50px;
                 width: 2px;
-                background-color: #fff;
+                background-color: $border-primary;
                 border-radius: 20px;
                 height: 100%;
             }
@@ -95,5 +97,63 @@
                 height: 200px;
             }
         }
+    }
+}
+
+@media (max-width: 600px) {
+    .container{
+        .container_donate{
+            .alert{
+                margin-bottom: 50px;
+                font-size: 18px;
+                span{
+                    font-size: 22px;
+                }
+            }
+            .desc{
+                font-size: 20px;
+            }
+            .container_master{
+                flex-direction: column;
+                gap: 0px;
+                height: 100%;
+                .bar{
+                    margin: 20px 0;
+                    height: 3px;
+                    max-width: 400px;
+                    width: 100%;
+                    background-color: $white;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 380px) {
+    .container{
+        padding: 0 10px;
+        .container_title{
+            .title{
+                font-size: 40px;
+            }
+        }
+        .container_donate{
+            padding: 0 5px;
+            .alert{
+                padding: 10px 5px;
+                margin-bottom: 40px;
+                font-size: 18px;
+                span{
+                    font-size: 22px;
+                }
+            }
+            .desc{
+                font-size: 20px;
+            }
+        }
+    }
+}
+@media (max-width: 280px) {
+    .container{
+        padding: 0 5px;
     }
 }

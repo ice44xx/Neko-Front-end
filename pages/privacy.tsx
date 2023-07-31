@@ -5,7 +5,7 @@ import Footer from '@/components/common/footer'
 import {useState, useEffect} from 'react'
 import HeaderNoAuth from '@/components/homeNoAuth/headerNoAuth'
 
-const Dmca = () => {
+const Privacy = () => {
     const [auth, setAuth] = useState(false)
     useEffect(() => {
         const token = sessionStorage.getItem('nekoanimes-token')
@@ -13,7 +13,6 @@ const Dmca = () => {
             setAuth(true)
         }
     }, [])
-    
     return(
         <>
             <Head>
@@ -23,7 +22,7 @@ const Dmca = () => {
                 {auth ? (<HeaderAuth/>) : (<HeaderNoAuth/>)} 
                 
                 <div className={styles.container}>
-                    <p className={styles.title}>Neko - DMCA</p>
+                    <p className={styles.title}>Neko - Privacidade</p>
                     <div className={styles.container_dmca}>
                         <p className={styles.desc}>Por favor, esteja ciente de que não hospedamos nenhum desses vídeos incorporados aqui. Todos os vídeos encontrados em nosso site são encontrados gratuitamente disponíveis em toda a web em sites como YouTube, Dailymotion ou Rutube, Nossa missão aqui, é organizar esses vídeos e tornar a sua busca mais facil e amigável. Nós simplesmente vinculamos ao vídeo que já está hospedado em outros sites. Se você está preocupado com o material protegido por direitos autorais que aparece neste site, sugerimos que você entre em contato com o site que está hospedando o vídeo e removê-lo de lá. Uma vez que o conteúdo é removido do site que hospeda seu conteúdo, ele será automaticamente removido de nekoanimes.com Não somos afiliados nem reivindicamos ser afiliados a nenhum dos proprietários de vídeos/transmissões reproduzidos em nosso site.</p>
                         <p className={styles.desc}>Todo o conteúdo é de direitos autorais de seus respectivos proprietários. Pedimos a todos os proprietários de direitos autorais que reconheçam que os links contidos neste site estão localizados em outro lugar na web. O link incorporado aponta para o local do vídeo na Web. Por favor, direcione todas as questões de violação de direitos autorais para as empresas que hospedam esses arquivos (Videa, Rutube, Ustream.tv, DailyMotion, etc.).</p>
@@ -40,4 +39,4 @@ const Dmca = () => {
     )
 }
 
-export default Dmca
+export default Privacy

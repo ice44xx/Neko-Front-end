@@ -1,11 +1,11 @@
 import FooterGeneric from '@/components/common/footerGeneric';
 import styles from '../../../styles/animes.module.scss'
 import HeaderAuth from "@/components/homeAuth/headerAuth";
-import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth";
+import HeaderNoAuth from "@/components/homeNoAuth/headerNoAuth";
 import animeService, { AnimeType } from "@/services/animesService";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState, useEffect, FormEvent, HtmlHTMLAttributes } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { Button, Form } from 'reactstrap';
 import Categories from '@/components/homeAuth/categories';
 import watchService from '@/services/watchService';
@@ -13,7 +13,6 @@ import profileService from '@/services/profileService';
 import commentService, { CommentsForGet, CommentsType } from '@/services/commentService';
 import Link from 'next/link';
 import LoadingBar from 'react-top-loading-bar';
-
 
 const AnimeEpisode = () => {
   const router = useRouter()
@@ -33,7 +32,8 @@ const AnimeEpisode = () => {
   const episodeId = typeof id === 'string' ? parseInt(id) : undefined;
   const [selectedEpisodeId, setSelectedEpisodeId] = useState<number | undefined>(episodeId);
   const selectedEpisode = anime?.seasons?.flatMap((season) => season.episodes)?.find((episode) => episode?.id === selectedEpisodeId);
-
+  
+  console.log(selectedEpisode)
   useEffect(() => {
     profileService.getUser().then((user) => {
       setUserName(user.userName)
@@ -44,13 +44,24 @@ const AnimeEpisode = () => {
       if(token) {
         setAuth(true)
       }
-    
-      getAnime()
-      getComments()
-      setSelectedEpisodeId(episodeId);
     })
-  },[name, id, episodeId, comments])
-  
+
+    getAnime()
+    getComments()
+    console.log(episodeId)
+
+    if (selectedEpisodeId !== undefined) {
+      sessionStorage.setItem('selectedEpisodeId', selectedEpisodeId.toString())
+    }
+    
+    const storedEpisodeId = sessionStorage.getItem('selectedEpisodeId');
+    if (storedEpisodeId) {
+      setSelectedEpisodeId(parseInt(storedEpisodeId));
+    }
+    
+  },[name, id, episodeId, selectedEpisodeId])
+
+
   const getAnime = async () => {
     if(typeof name !== 'string') return
 
@@ -59,7 +70,6 @@ const AnimeEpisode = () => {
     if(res) {
       setAnime(res)
     }
-    setLoading(false)
   }
   const getComments = async () => {
     if(typeof episodeId !== 'number') return
@@ -84,6 +94,7 @@ const AnimeEpisode = () => {
       if (currentIndex > 0) {
         const previousEpisodeId = episodes[currentIndex - 1]?.id;
         setSelectedEpisodeId(previousEpisodeId);
+        router.push(`/animes/${name}/${previousEpisodeId}`);
       }
     }
   };
@@ -94,6 +105,7 @@ const AnimeEpisode = () => {
       if (currentIndex < episodes.length - 1) {
         const nextEpisodeId = episodes[currentIndex + 1]?.id;
         setSelectedEpisodeId(nextEpisodeId);
+        router.push(`/animes/${name}/${nextEpisodeId}`);
       }
     }
   };
@@ -166,14 +178,7 @@ const AnimeEpisode = () => {
       <Head><title>{name} - {selectedEpisode?.name}</title></Head>
       <main>
       <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
-        {auth ? (
-          <>
-            <HeaderAuth/>
-            <Categories/>
-          </>
-        ) : (
-          <HeadNoAuth/>
-        )}
+        {auth ? (<><HeaderAuth/> <Categories/></>) : (<HeaderNoAuth/>)}
         <div className={styles.container_master}> 
           <div className={styles.container}>
             <div className={styles.container_left_right}>
@@ -181,14 +186,12 @@ const AnimeEpisode = () => {
                 <p className={styles.title}>{selectedEpisode?.name}</p>
                 <div className={styles.container_stream}>
                   {selectedEpisode && <iframe className={styles.iframe} allowFullScreen src={selectedEpisode.videoUrl} />}
-
                   <div className={styles.container_stream_prev_next}>
                     <Button className={styles.btn} onClick={handlePreviousEpisode}><img src="/assets/arrowBtnEpisodeLeft.png" alt="seta pra esquerda" /> Voltar episódio</Button>
                     <p></p>
                     <Button className={styles.btn} onClick={handleNextEpisode}>Próximo episódio <img src="/assets/arrowBtnEpisodeRight.png" alt="seta pra direita" /></Button>
                   </div>
                 </div>
-                
               </div>
               <div className={styles.container_right_img}>
                 <img src="/assets/catfashion.png" alt="" className={styles.cat} />
@@ -211,12 +214,12 @@ const AnimeEpisode = () => {
             </div>
           </div>
           <div className={styles.container_cat}>
-            <img src="/assets/head.png" alt="Cat" className={styles.cat_comment}/>
+            <img src="/assets/head.png" alt="Logo neko" className={styles.cat_comment}/>
           </div>
           <div className={styles.container_master_comments}>
             <img src="/assets/catid.png" alt="Cat" className={styles.cat_comment_two} />
             <div className={styles.alert}>
-              <p><img src="/assets/alert.png" alt="" /> PEDIMOS COM CARINHO, QUE RESPEITEM OS OUTROS E NÃO COMENTE SPOILERS</p>
+              <p><img src="/assets/alert.png" alt="alerta" /> PEDIMOS COM CARINHO, QUE RESPEITEM OS OUTROS E NÃO COMENTE SPOILERS</p>
             </div>
             {auth ? (
               <div className={styles.container_comments}>
@@ -226,9 +229,7 @@ const AnimeEpisode = () => {
                   ) : (
                     <img src={'/assets/catwelcome.png'} alt={userName} className={styles.profile_false}/>
                   )}
-                    
                   </div>
-
                   <div className={styles.container_textarea}>
                     <div className={styles.title}><p>Comentar como {userName}</p></div>
                     <Form className={styles.form} onSubmit={handleCreateComment}>
@@ -264,7 +265,7 @@ const AnimeEpisode = () => {
                 )}
               </div>
               {currentComments?.map((comment) => (
-                <div className={styles.container_comments_all}>
+                <div key={comment.id} className={styles.container_comments_all}>
                   <div className={styles.container_textarea}>
                     <div className={styles.container_title}>
                       <div className={styles.container_photo}>

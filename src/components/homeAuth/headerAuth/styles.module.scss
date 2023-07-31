@@ -194,15 +194,9 @@
         }
     }
 }
-@media (max-width: 550px) {
-    .nav{
-        .logo{
-            width: 190px;
-        }
-    }
-}
 @media (max-width: 580px) {
     .nav{
+        height: 120px;
         .logo{
             width: 60px;
         }
@@ -251,7 +245,7 @@
         z-index: 2;
     }
     .activeModal{
-        top: 0;
+        top: -80px;
     }
 }
 @media (max-width: 450px) {

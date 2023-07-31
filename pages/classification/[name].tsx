@@ -1,6 +1,6 @@
 import HeaderAuth from '@/components/homeAuth/headerAuth'
 import styles from '../../src/components/homeNoAuth/slidesAnimes/styles.module.scss'
-import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth"
+import HeaderNoAuth from "@/components/homeNoAuth/headerNoAuth"
 import { AnimeType } from "@/services/animesService"
 import genderService, { GenderType } from "@/services/genderService"
 import Head from "next/head"
@@ -49,10 +49,9 @@ const classification = () => {
             <Head>
                 <title>Neko animes - {name}</title>
             </Head>
-
             <main>
             <LoadingBar progress={loading ? 0 : 100} color="#631dc0" height={3} onLoaderFinished={() => setLoading(false)}/>
-                {auth ? <> <HeaderAuth/> <Categories/> </> : <HeadNoAuth/>}
+                {auth ? <> <HeaderAuth/> <Categories/> </> : <HeaderNoAuth/>}
                 <div className={styles.container_master}>
                     <div className={styles.container}>
                         <div className={styles.container_head}>

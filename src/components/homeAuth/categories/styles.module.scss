@@ -1,5 +1,7 @@
+@import '../../../../styles/colors.module.scss';
+
 .mySwiper{
-    background-color: rgb(15,15,15);
+    background-color: $blackColor15;
     height: 60px;
     .slides{
         padding: 0 70px;
@@ -19,11 +21,11 @@
                 justify-content: center;
                 align-items: center;
                 font-size: 20px;
-                color: #fff;
+                color: $white;
                 text-decoration: none;
                 border-radius: 2px;
                 height: 35px;
-                background-color: #631dc0;
+                background-color: $primary;
                 border-radius: 5px;
                 p{
                     margin: auto 0;

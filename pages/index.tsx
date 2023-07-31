@@ -2,7 +2,7 @@ import Head from "next/head"
 import styles from '../styles/home.module.scss'
 import OneSignal from 'react-onesignal';
 import { useEffect } from "react"
-import HeadNoAuth from "@/components/homeNoAuth/headerNoAuth";
+import HeaderNoAuth from "@/components/homeNoAuth/headerNoAuth";
 import Footer from "@/components/common/footer";
 import SlidesNewest from "@/components/homeNoAuth/slidesNewest";
 import SlidesFeatures from "@/components/homeNoAuth/slidesFeatures";
@@ -10,9 +10,8 @@ import SlideGender from "@/components/homeNoAuth/slidesGender";
 import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes";
 import SlidesPopular from "@/components/homeNoAuth/slidesPopular";
 import Cookies from "@/components/common/cookies";
-import SlidesCarousel from "@/components/homeNoAuth/slidesCarousel";
+import SlidesCarousel from "@/components/homeNoAuth/slidesBackground";
 import Loading from "@/components/common/loading";
-
 
 const HomeNoAuth = () => {
     useEffect (() => {
@@ -31,7 +30,7 @@ const HomeNoAuth = () => {
             <main>
                 <div className={styles.container}>
                     <Loading/>
-                    <HeadNoAuth/>
+                    <HeaderNoAuth/>
                     <Cookies/>
                     <SlidesCarousel/>
                     <SlidesNewest/>

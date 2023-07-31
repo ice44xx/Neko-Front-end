@@ -1,6 +1,6 @@
 import watchService, { WatchType } from "@/services/watchService";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import styles from '../../homeNoAuth/slidesNewest/styles.module.scss'
+import styles from '../../../../styles/splideCarousel.module.scss'
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 

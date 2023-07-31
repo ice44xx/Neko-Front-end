@@ -1,4 +1,4 @@
-import { AnimeType, EpisodesType } from './animesService'
+import { EpisodesType } from './animesService'
 import api from './api'
 
 export type SeasonType = {

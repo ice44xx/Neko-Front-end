@@ -1,14 +1,16 @@
+@import './colors.module.scss';
+
 ::selection {
-    background-color: #4a1591;
+    background-color: $background_primary;
 }
 ::-webkit-scrollbar {
     width: 3px;
 }
 ::-webkit-scrollbar-track {
-    background: #631dc0;
+    background: $primary;
 }
 ::-webkit-scrollbar-thumb {
-    background: #fff;
+    background: $white;
 }
 *{
     margin: 0;
@@ -17,9 +19,9 @@
     font-family: 'Pathway Gothic One', sans-serif;
 }
 main{
-    background-color: #631dc0; 
+    background-color: $primary; 
     height: 100%;   
-    color: white;
+    color: $white;
     p{
         margin: 0;
     }

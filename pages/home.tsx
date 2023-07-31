@@ -4,7 +4,7 @@ import Donations from '@/components/common/donations'
 import styles from '../styles/home.module.scss'
 import Footer from "@/components/common/footer"
 import Categories from "@/components/homeAuth/categories"
-import HeaderAuth from "@/components/homeAuth/headerAuth"
+import HeaderNoAuth from "@/components/homeAuth/headerAuth"
 import SlidesFavorites from "@/components/homeAuth/slidesFavorites"
 import SlidesWatchTime from '@/components/homeAuth/slidesWatchTime'
 import SlidesAnimes from "@/components/homeNoAuth/slidesAnimes"
@@ -15,7 +15,7 @@ import SlidesPopular from '@/components/homeNoAuth/slidesPopular'
 import withProtect from "@/components/withAuth"
 import Head from "next/head"
 import DonationsKoi from '@/components/common/donationsKoi'
-import SlidesCarousel from '@/components/homeNoAuth/slidesCarousel';
+import SlidesCarousel from '@/components/homeNoAuth/slidesBackground';
 import Loading from '@/components/common/loading';
 
 const Home = () => {
@@ -33,7 +33,7 @@ const Home = () => {
             <main>
                 <div className={styles.container}>
                     <Loading/>
-                    <HeaderAuth/>
+                    <HeaderNoAuth/>
                     <Categories/>
                     <SlidesCarousel/>
                     <Donations/>

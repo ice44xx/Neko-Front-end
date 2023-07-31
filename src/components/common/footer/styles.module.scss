@@ -1,3 +1,5 @@
+@import '../../../../styles/colors.module.scss';
+
 .containerImg{
     position: relative;
     height: 355px;
@@ -19,9 +21,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: #fff;
+        color: $white;
         font-size: 22px;
-        background-color: rgb(15, 15, 15);
+        background-color: $blackColor15;
         overflow: hidden;
         padding: 0 20px;
         text-align: center;
@@ -38,17 +40,23 @@
             }
         }
         .link{
-            color: #fff;
+            color: $white;
             .dmca{
                 position: absolute;
                 right: 20px;
-                bottom: 5px;
+                bottom: 35px;
                 transition: all 0.3s;
                 &:hover{
-                    color: #631dc0;
+                    color: $primary;
                     transform: scale(95%);
                     transition: all 0.3s;
                 }
+            }
+            .priv{
+                position: absolute;
+                right: 20px;
+                bottom: 5px;
+                @extend .dmca
             }
         }
         .footer_img{
