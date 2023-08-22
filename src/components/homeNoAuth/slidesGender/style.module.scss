@@ -1,321 +1,320 @@
-.container_head{
-    width: 100%;
-    height: 100%;
+.container_head {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  height: 150px;
+  padding: 0 40px;
+  .barGender {
+    margin-top: 2px;
+    width: 4px;
+    height: 50px;
+    background-color: rgb(255, 124, 2);
+    border-radius: 10px;
+  }
+  .titlePage {
+    font-size: 50px;
+  }
+}
+
+.container {
+  background-image: url('/assets/paws.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 50px;
+  overflow: hidden;
+  .card {
     display: flex;
-    justify-content: left;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    height: 150px;
-    padding: 0 40px;
-    .barGender{
-        margin-top: 2px;
-        width: 4px;
-        height: 50px;
-        background-color: rgb(255, 124, 2);
-        border-radius: 10px;
-    }
-    .titlePage{
-        font-size: 50px;
-    }
-}
-
-.container{
-    background-image: url('/assets/paws.png');
+    position: relative;
+    border: 2px solid rgb(255, 255, 255);
+    width: 250px;
+    height: 350px;
+    border-radius: 5px;
+    transition: all ease-in-out 0.3s;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(0, 0, 0, 1)), url('/cardClass/Shounen.png');
+    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 50px;
+    box-shadow: 0px 4px 16px -3px rgba(0, 0, 0, 0.75);
     overflow: hidden;
-    .card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        border: 2px solid rgb(255, 255, 255);
-        width: 250px;
-        height: 350px;
-        border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-15px);
+      transition: all ease-in-out 0.3s;
+      border: 2px solid rgb(247, 58, 58);
+      .title {
+        color: rgb(247, 58, 58);
+        margin: 0px;
+        font-size: 40px;
         transition: all ease-in-out 0.3s;
-        background: linear-gradient(rgba(0,0,0,0.7),rgb(0, 0, 0, 1)), url('/cardClass/Shounen.png');
-        background-size: cover;
-        background-position: center;
-        box-shadow: 0px 4px 16px -3px rgba(0,0,0,0.75);
-        overflow: hidden;
-        cursor: pointer;
-        &:hover{
-            transform: translateY(-15px);
-            transition: all ease-in-out 0.3s;
-            border: 2px solid rgb(247, 58, 58);
-            .title{
-                color: rgb(247, 58, 58);
-                margin: 0px;
-                font-size: 40px;
-                transition: all ease-in-out 0.3s;
-            }
-            .example{
-                span{
-                    color: rgb(247, 58, 58);
-                    margin-right: 5px;
-                }
-                bottom: 10px;
-                opacity: 1;
-                transition: all ease-in 0.3s;
-            }
-            .description{
-                opacity: 1;
-                font-size: 22px;
-                transition: all 0.3s;
-            }
+      }
+      .example {
+        span {
+          color: rgb(247, 58, 58);
+          margin-right: 5px;
         }
-        .title{
-            opacity: 1;
-            padding: 20px;
-            margin: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 55px;
-            transition: all ease-in-out 0.3s;
-        }
-        .description{
-            opacity: 0;
-            height: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 30px;
-            padding: 0 5px;
-            transition: all 0.3s;
-        }
-        .example{
-            position: absolute;
-            bottom: -35px;
-            width: 100%;
-            opacity: 0;
-            font-size: 18px;
-            text-align: center;
-            background-color: rgb(34, 34, 34);
-            transition: all ease-in-out 0.3s;
-            span{
-                color: rgb(145, 20, 247);
-            }
-        }
+        bottom: 10px;
+        opacity: 1;
+        transition: all ease-in 0.3s;
+      }
+      .description {
+        opacity: 1;
+        font-size: 22px;
+        transition: all 0.3s;
+      }
     }
-    .card-2{
-        background-size: cover;
-        background-position: center;
-        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Shoujo.png');
-        &:hover{
-            border: 2px solid rgb(255, 153, 0);
-            .title{
-                color: rgb(255, 153, 0)
-            }
-            .example{
-                span{
-                    color: rgb(255, 153, 0);
-                }
-            }
-        }
+    .title {
+      opacity: 1;
+      padding: 20px;
+      margin: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      transition: all ease-in-out 0.3s;
     }
-    .card-3{
-        background-position: center;
-        background-size: cover;
-        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Seinen.png');
-        &:hover{
-            border: 2px solid rgb(0, 174, 255);
-            .title{
-                color: rgb(0, 174, 255)
-            }
-            .example{
-                span{
-                    color: rgb(0, 174, 255);
-                }
-            }
-        }
+    .description {
+      opacity: 0;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 30px;
+      padding: 0 5px;
+      transition: all 0.3s;
     }
-    .card-4{
-        background-position: center;
-        background-size: cover;
-        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Josei.png');
-        &:hover{
-            border: 2px solid pink;
-            .title{
-                color: pink
-            }
-            .example{
-                span{
-                    color: pink;
-                }
-            }
-        }
+    .example {
+      position: absolute;
+      bottom: -35px;
+      width: 100%;
+      opacity: 0;
+      font-size: 18px;
+      text-align: center;
+      background-color: rgb(34, 34, 34);
+      transition: all ease-in-out 0.3s;
+      span {
+        color: rgb(145, 20, 247);
+      }
     }
-    .card-5{
-        background-position: center;
-        background-size: cover;
-        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url('/cardClass/Kodomo.png');
-        &:hover{
-            border: 2px solid rgb(255, 208, 0);
-            .title{
-                color: rgb(255, 208, 0);
-            }
-            .example{
-                span{
-                    color: rgb(255, 208, 0);
-                }
-            }
+  }
+  .card-2 {
+    background-size: cover;
+    background-position: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)), url('/cardClass/Shoujo.png');
+    &:hover {
+      border: 2px solid rgb(255, 153, 0);
+      .title {
+        color: rgb(255, 153, 0);
+      }
+      .example {
+        span {
+          color: rgb(255, 153, 0);
         }
+      }
     }
+  }
+  .card-3 {
+    background-position: center;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)), url('/cardClass/Seinen.png');
+    &:hover {
+      border: 2px solid rgb(0, 174, 255);
+      .title {
+        color: rgb(0, 174, 255);
+      }
+      .example {
+        span {
+          color: rgb(0, 174, 255);
+        }
+      }
+    }
+  }
+  .card-4 {
+    background-position: center;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)), url('/cardClass/Josei.png');
+    &:hover {
+      border: 2px solid pink;
+      .title {
+        color: pink;
+      }
+      .example {
+        span {
+          color: pink;
+        }
+      }
+    }
+  }
+  .card-5 {
+    background-position: center;
+    background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)), url('/cardClass/Kodomo.png');
+    &:hover {
+      border: 2px solid rgb(255, 208, 0);
+      .title {
+        color: rgb(255, 208, 0);
+      }
+      .example {
+        span {
+          color: rgb(255, 208, 0);
+        }
+      }
+    }
+  }
 }
 
-@media (max-width: 1500px){
-    .container{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: center;
-        align-items: center;
-        row-gap: 20px;
-        .card{
-            &:hover{
-                transform: translateY(-10px);
-            }
-        }
+@media (max-width: 1500px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-items: center;
+    row-gap: 20px;
+    .card {
+      &:hover {
+        transform: translateY(-10px);
+      }
     }
+  }
 }
 @media (max-width: 1200px) {
-    .container {
-        padding: 20px 150px;
-        grid-template-columns: repeat(3, 1fr);
-        .card{
-            max-width: 220px;
-            height: 300px;
-            .title{
-                font-size: 40px;
-            }
-            .example{
-                font-size: 15px;
-            }
-            &:hover{
-                .title{
-                    font-size: 38px;
-                }
-                .description{
-                    font-size: 16px;
-                }
-            }
+  .container {
+    padding: 20px 150px;
+    grid-template-columns: repeat(3, 1fr);
+    .card {
+      max-width: 220px;
+      height: 300px;
+      .title {
+        font-size: 40px;
+      }
+      .example {
+        font-size: 15px;
+      }
+      &:hover {
+        .title {
+          font-size: 38px;
         }
+        .description {
+          font-size: 16px;
+        }
+      }
     }
+  }
 }
 @media (max-width: 700px) {
-    .container {
-        .card{
-            max-width: 200px;
-            height: 280px;
-            .title{
-                margin: 80px;
-                font-size: 40px;
-            }
-        }
-        .card-2{
-            background-size: contain;
-        }
-        .card-3{
-            background-size: contain;
-        }
-        .card-4{
-            background-size: contain;
-        }
-        .card-5{
-            background-size: contain;
-        }
+  .container {
+    .card {
+      max-width: 200px;
+      height: 280px;
+      .title {
+        margin: 80px;
+        font-size: 40px;
+      }
     }
+    .card-2 {
+      background-size: contain;
+    }
+    .card-3 {
+      background-size: contain;
+    }
+    .card-4 {
+      background-size: contain;
+    }
+    .card-5 {
+      background-size: contain;
+    }
+  }
 }
 @media (max-width: 650px) {
-    .container{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        .card{
-            max-width: 180px;
-            height: 260px;
-            .example{
-                font-size: 12px;
-            }
-        }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    .card {
+      max-width: 180px;
+      height: 260px;
+      .example {
+        font-size: 12px;
+      }
     }
+  }
 }
 @media (max-width: 580px) {
-    .container{
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 520px) {
-    .container_head{
-        padding: 0 10px;
-        .titlePage{
-            font-size: 35px;
-        }
+  .container_head {
+    padding: 0 10px;
+    .titlePage {
+      font-size: 35px;
     }
+  }
 }
 @media (max-width: 388px) {
-    .container{
-        gap: 8px;
-        row-gap: 20px;
-        .card{
-            max-width: 150px;
-            height: 220px;
-            .title{
-                margin: 65px;
-                font-size: 30px;
-            }
-            .example{
-                display: none;
-            }
-            &:hover{
-                .title{
-                    font-size: 30px;
-                }
-                .description{
-                    font-size: 15px;
-                }
-            }
+  .container {
+    gap: 8px;
+    row-gap: 20px;
+    .card {
+      max-width: 150px;
+      height: 220px;
+      .title {
+        margin: 65px;
+        font-size: 30px;
+      }
+      .example {
+        display: none;
+      }
+      &:hover {
+        .title {
+          font-size: 30px;
         }
+        .description {
+          font-size: 15px;
+        }
+      }
     }
+  }
 }
 @media (max-width: 350px) {
-    .container_head{
-        padding: 0 5px;
-        justify-content: center;
-        .titlePage{
-            font-size: 35px;
-        }
+  .container_head {
+    padding: 0 5px;
+    justify-content: center;
+    .titlePage {
+      font-size: 35px;
     }
+  }
 }
 @media (max-width: 315px) {
-    .container{
-        padding: 0 20px;
-        row-gap: 15px;
-        .card{
-            max-width: 130px;
-            height: 200px;
-            .title{
-                margin: 55px;
-                font-size: 30px;
-            }
-            &:hover{
-                .description{
-                    margin-top: -10px;
-                }
-            }
+  .container {
+    padding: 0 20px;
+    row-gap: 15px;
+    .card {
+      max-width: 130px;
+      height: 200px;
+      .title {
+        margin: 55px;
+        font-size: 30px;
+      }
+      &:hover {
+        .description {
+          margin-top: -10px;
         }
+      }
     }
+  }
 }
 @media (max-width: 290px) {
-    .container_head{
-        .titlePage{
-            font-size: 30px;
-        }
+  .container_head {
+    .titlePage {
+      font-size: 30px;
     }
+  }
 }
-

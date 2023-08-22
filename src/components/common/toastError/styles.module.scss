@@ -1,28 +1,28 @@
 @import '../../../../styles/colors.module.scss';
 
-.toast{
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    position: absolute;
-    top: 30px;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $toast;
-    .toastBody{
-        font-size: 25px;
-        .img{
-            margin-top: -10px;
-            width: 80px;
-        }
+.toast {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $toast;
+  .toastBody {
+    font-size: 25px;
+    .img {
+      margin-top: -10px;
+      width: 80px;
     }
+  }
 }
 @media (max-width: 320px) {
-    .toast{
-        max-width: 250px;
-        .toastBody{
-            font-size: 22px;
-        }
+  .toast {
+    max-width: 250px;
+    .toastBody {
+      font-size: 22px;
     }
+  }
 }

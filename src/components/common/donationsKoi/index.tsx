@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react';
 
 const DonationsKoi = () => {
   useEffect(() => {
@@ -23,9 +23,7 @@ const DonationsKoi = () => {
       document.body.removeChild(script);
     };
   }, []);
-  return(
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-export default DonationsKoi
+export default DonationsKoi;

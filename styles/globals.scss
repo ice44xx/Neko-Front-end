@@ -1,29 +1,28 @@
 @import './colors.module.scss';
 
 ::selection {
-    background-color: $background_primary;
+  background-color: $background_primary;
 }
 ::-webkit-scrollbar {
-    width: 3px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
-    background: $primary;
+  background: $primary;
 }
 ::-webkit-scrollbar-thumb {
-    background: $white;
+  background: $white;
 }
-*{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Pathway Gothic One', sans-serif;
+}
+main {
+  background-color: $primary;
+  height: 100%;
+  color: $white;
+  p {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Pathway Gothic One', sans-serif;
+  }
 }
-main{
-    background-color: $primary; 
-    height: 100%;   
-    color: $white;
-    p{
-        margin: 0;
-    }
-}
-

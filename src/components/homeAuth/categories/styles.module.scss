@@ -1,56 +1,57 @@
 @import '../../../../styles/colors.module.scss';
 
-.mySwiper{
-    background-color: $blackColor15;
-    height: 60px;
-    .slides{
-        padding: 0 70px;
-        .containerName{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            transition: all 0.3s;
-            &:hover{
-                transform: scale(95%);
-                transition: all 0.3s;
-            }
-            .link{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 20px;
-                color: $white;
-                text-decoration: none;
-                border-radius: 2px;
-                height: 35px;
-                background-color: $primary;
-                border-radius: 5px;
-                p{
-                    margin: auto 0;
-                    width: 120px;
-                    text-align: center;
-                }
-            }
+.mySwiper {
+  background-color: $blackColor15;
+  height: 65px;
+  .slides {
+    width: 100%;
+    min-width: 140px;
+    .containerName {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(95%);
+        transition: all 0.3s;
+      }
+      .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: $white;
+        text-decoration: none;
+        border-radius: 2px;
+        height: 35px;
+        background-color: $primary;
+        border-radius: 5px;
+        p {
+          margin: auto 0;
+          min-width: 140px;
+          text-align: center;
         }
+      }
     }
+  }
 }
 
 @media (max-width: 350px) {
-    .mySwiper{
-        height: 50px;
-        .slides{
-            padding: 0 60px;
-            .containerName{
-                .link{
-                    height: 30px;
-                    font-size: 20px;
-                    p{
-                        width: 100px; 
-                    }
-                }
-            }
+  .mySwiper {
+    height: 50px;
+    .slides {
+      padding: 0 60px;
+      min-width: 100px;
+      .containerName {
+        .link {
+          height: 30px;
+          font-size: 20px;
+          p {
+            min-width: 120px;
+          }
         }
+      }
     }
+  }
 }

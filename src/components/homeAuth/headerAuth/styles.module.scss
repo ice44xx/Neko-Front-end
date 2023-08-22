@@ -1,301 +1,301 @@
-.nav{
-    z-index: 5;
-    position: relative;
-    top: 0;
-    width: 100%;
-    height: 120px;
-    background-color: rgb(15, 15, 15);
+.nav {
+  z-index: 5;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 120px;
+  background-color: rgb(15, 15, 15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  .logo {
+    width: 300px;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(95%);
+      transition: all 0.3s;
+    }
+  }
+  .container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 50px;
-    .logo{
-        width: 300px;
+    height: 100px;
+    gap: 60px;
+    .home_arrow {
+      display: none;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(90%);
         transition: all 0.3s;
-        &:hover{
-            transform: scale(95%);
-            transition: all 0.3s;
-        }
+      }
     }
-    .container{
+    .containerProfile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      .userName {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100px;
-        gap: 60px;
-        .home_arrow{
-            display: none;
-            transition: all 0.3s;
-            &:hover{
-                transform: scale(90%);
-                transition: all 0.3s;
-            }
-        }
-        .containerProfile{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            .userName{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 30px;
-                color: #fff;
-                height: 35px;
-                p{
-                    margin: 0 auto;
-                }
-            }
-            .userProfile{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 90px;
-                height: 90px;
-                border-radius: 100%;
-                cursor: pointer;
-                transition: all 0.4s;
-                background: linear-gradient(rgba(30, 30, 30, 0.6), rgb(30,30,30,0.6)), url('/assets/catwelcome.png');
-                background-position: center;
-                background-size: contain;
-                background-repeat: no-repeat;
-                font-size: 20px;
-                .link{
-                    text-decoration: none;
-                    color: #fff;
-                }
-                &:hover{
-                    transform: scale(90%);
-                    transition: all 0.4s;
-                }
-                .userImg{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 100%;
-                    object-fit: cover;
-                }
-            }
-        }
-    }
-    .container_btn{
-        display: flex;
-        gap: 25px;
-        .img{
-            width: 40px;
-            cursor: pointer;
-            transition: all 0.4s;
-            &:hover{
-                transform: scale(90%);
-                transition: all 0.4s;
-            }
-        }
-        .img_arrow{
-            display: none;
-            @extend .img;
-            &:hover{
-                transform: scale(90%);
-                transition: all 0.4s;
-            }
-        }
-    }
-}
-.container_search{
-    z-index: 4;
-    position: absolute;
-    top: 120px;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    transition: all 0.3s;
-    .form{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100px;
-        .input{
-            background-color: transparent;
-            border: none;
-            border-radius: 0;
-            border-bottom: 3px solid rgb(145, 20, 247);
-            width: 50%;
-            height: 70%;
-            font-size: 50px;
-            &:focus{
-                box-shadow: none;
-            }
-        }
-    }
-}
-.active{
-    top: 0px;
-    transition: all 0.3s;
-}
-.modal{
-    z-index: 4;
-    top: 120px;
-    right: 20px;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: 145px;
-    height: 200px;
-    background-color: rgb(15,15,15);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    transition: all 0.3s;
-    .link{
-        height: 30px;
-        font-size: 20px;
-        text-decoration: none;
+        font-size: 30px;
         color: #fff;
-        transition: all 0.3s;
-        &:hover{
-            color: #631dc0;
-            transform: scale(95%);
-            transition: all 0.3s;
+        height: 35px;
+        p {
+          margin: 0 auto;
         }
+      }
+      .userProfile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: all 0.4s;
+        background: linear-gradient(rgba(30, 30, 30, 0.6), rgb(30, 30, 30, 0.6)), url('/assets/catwelcome.png');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        font-size: 20px;
+        .link {
+          text-decoration: none;
+          color: #fff;
+        }
+        &:hover {
+          transform: scale(90%);
+          transition: all 0.4s;
+        }
+        .userImg {
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+      }
     }
+  }
+  .container_btn {
+    display: flex;
+    gap: 25px;
+    .img {
+      width: 40px;
+      cursor: pointer;
+      transition: all 0.4s;
+      &:hover {
+        transform: scale(90%);
+        transition: all 0.4s;
+      }
+    }
+    .img_arrow {
+      display: none;
+      @extend .img;
+      &:hover {
+        transform: scale(90%);
+        transition: all 0.4s;
+      }
+    }
+  }
 }
-.activeModal{
-    top: -90px;
+.container_search {
+  z-index: 4;
+  position: absolute;
+  top: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  transition: all 0.3s;
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    .input {
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      border-bottom: 3px solid rgb(145, 20, 247);
+      width: 50%;
+      height: 70%;
+      font-size: 50px;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+.active {
+  top: 0px;
+  transition: all 0.3s;
+}
+.modal {
+  z-index: 4;
+  top: 120px;
+  right: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 145px;
+  height: 200px;
+  background-color: rgb(15, 15, 15);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 0.3s;
+  .link {
+    height: 30px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
     transition: all 0.3s;
+    &:hover {
+      color: #631dc0;
+      transform: scale(95%);
+      transition: all 0.3s;
+    }
+  }
+}
+.activeModal {
+  top: -90px;
+  transition: all 0.3s;
 }
 
 @media (max-width: 750px) {
-    .nav{
-        padding: 0 20px;
-        .container{
-            gap: 30px;
-        }
-        .logo{
-            width: 240px;
-        }
-        .img{
-            width: 35px;
-            cursor: pointer;
-       }
+  .nav {
+    padding: 0 20px;
+    .container {
+      gap: 30px;
     }
-    .modal{
-        right: 9px;
+    .logo {
+      width: 240px;
     }
-    .container_search{
-        .form{
-            .input{
-                width: 70%;
-            }
-        }
+    .img {
+      width: 35px;
+      cursor: pointer;
     }
+  }
+  .modal {
+    right: 9px;
+  }
+  .container_search {
+    .form {
+      .input {
+        width: 70%;
+      }
+    }
+  }
 }
 @media (max-width: 580px) {
-    .nav{
-        height: 120px;
-        .logo{
-            width: 60px;
+  .nav {
+    height: 120px;
+    .logo {
+      width: 60px;
+    }
+    padding: 0 0px;
+    flex-direction: column;
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 12px;
+      .home_arrow {
+        display: flex;
+        margin-right: 20px;
+      }
+      .containerProfile {
+        gap: 20px;
+        .userName {
+          margin-top: 4px;
+          font-size: 25px;
         }
-        padding: 0 0px;
-        flex-direction: column;
-        .container{
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 12px;
-            .home_arrow{
-                display: flex;
-                margin-right: 20px;
-            }
-            .containerProfile{
-                gap: 20px;
-                .userName{
-                    margin-top: 4px;
-                    font-size: 25px;
-                }
-                .userProfile{
-                    width: 75px;
-                    height: 75px;
-                }
-            }
+        .userProfile {
+          width: 75px;
+          height: 75px;
         }
-        .container_btn{
-            margin-top: 5px;
-            gap: 20px;
-            .img{
-                width: 35px;
-                height: 35px;
-            }
-            .img_arrow{
-                display: flex;
-            }
-        }
+      }
     }
-    .modal{
-        z-index: 2;
-        width: 100%;
-        top: 120px;
-        right: 0;
+    .container_btn {
+      margin-top: 5px;
+      gap: 20px;
+      .img {
+        width: 35px;
+        height: 35px;
+      }
+      .img_arrow {
+        display: flex;
+      }
     }
-    .container_search{
-        z-index: 2;
-    }
-    .activeModal{
-        top: -80px;
-    }
+  }
+  .modal {
+    z-index: 2;
+    width: 100%;
+    top: 120px;
+    right: 0;
+  }
+  .container_search {
+    z-index: 2;
+  }
+  .activeModal {
+    top: -80px;
+  }
 }
 @media (max-width: 450px) {
-    .container_search{
-        .form{
-            .input{
-                width: 70%;
-                font-size: 45px;
-            }
-        }
+  .container_search {
+    .form {
+      .input {
+        width: 70%;
+        font-size: 45px;
+      }
     }
+  }
 }
 @media (max-width: 300px) {
-    .nav{
-        .container_btn{
-            .img{
-                width: 30px;
-                height: 30px;
-            }
-        }
+  .nav {
+    .container_btn {
+      .img {
+        width: 30px;
+        height: 30px;
+      }
     }
-    .container_search{
-        .form{
-            .input{
-                width: 80%;
-                font-size: 35px;
-            }
-        }
+  }
+  .container_search {
+    .form {
+      .input {
+        width: 80%;
+        font-size: 35px;
+      }
     }
+  }
 }
 @media (max-width: 280px) {
-    .nav{
-        overflow: hidden;
-        .container{
-            .containerProfile{
-                gap: 15px;
-                .userName{
-                    font-size: 22px;
-                }
-                .userProfile{
-                    width: 65px;
-                    height: 65px;
-                }
-            }
-            .container_btn{
-                .img{
-                    width: 25px;
-                    height: 25px;
-                }
-            }
+  .nav {
+    overflow: hidden;
+    .container {
+      .containerProfile {
+        gap: 15px;
+        .userName {
+          font-size: 22px;
         }
+        .userProfile {
+          width: 65px;
+          height: 65px;
+        }
+      }
+      .container_btn {
+        .img {
+          width: 25px;
+          height: 25px;
+        }
+      }
     }
+  }
 }
