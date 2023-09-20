@@ -4,7 +4,7 @@ import api from './api';
 export type GenderType = {
   id: number;
   name: string;
-  position: number;
+  position?: number;
   animes?: AnimeType;
 };
 
@@ -12,6 +12,14 @@ const genderService = {
   getGender: async (name: string) => {
     try {
       const res = await api.get(`/gender/${name}`);
+      return res;
+    } catch (error: any) {
+      return error;
+    }
+  },
+  getGenderAll: async () => {
+    try {
+      const res = await api.get('/gender');
       return res;
     } catch (error: any) {
       return error;

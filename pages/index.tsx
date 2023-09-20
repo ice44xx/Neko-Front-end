@@ -35,7 +35,6 @@ const HomeNoAuth = () => {
           <SlidesCarousel />
           <SlidesNewest />
           <SlidesPopular />
-          <SlidesFeatures />
           <SlidesAnimes />
           <SlideGender />
           <Footer />

@@ -1,0 +1,103 @@
+@import '../../styles/colors.module.scss';
+.container {
+  background-color: $primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/assets/backProfile/buble-animes-info.png');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  padding: 0 10px;
+  .container_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    max-height: 450px;
+    height: 100%;
+    width: 100%;
+    border: 2px solid $black50;
+    background-color: $white;
+    border-radius: 15px;
+    .container_left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $black50;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 400px;
+      width: 100%;
+      padding: 0 20px;
+      height: 300px;
+      .btn {
+        z-index: 2;
+      }
+      .formgroup {
+        position: relative;
+        height: 60px;
+        margin: 20px 0;
+        .input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          font-size: 21px;
+          color: $black50;
+          border: 2px solid $black50;
+          border-radius: 5px;
+          outline: none;
+          padding: 1rem;
+          background: none;
+          z-index: 1;
+        }
+        .label {
+          position: absolute;
+          left: 1rem;
+          top: 0.8rem;
+          padding: 0 0.35rem;
+          background-color: $white;
+          color: $black50;
+          font-size: 22px;
+          transition: 0.3s;
+        }
+        .input:focus + .label {
+          top: -1rem;
+          left: 0.8rem;
+          color: $black50;
+          font-size: 20px;
+          font-weight: 500;
+          z-index: 10;
+        }
+        .input:not(:placeholder-shown).input:not(:focus) + .label {
+          top: -1rem;
+          left: 0.8rem;
+          font-size: 20px;
+          z-index: 10;
+        }
+        .input:focus {
+          border: 2px solid $input_focus;
+          box-shadow: none;
+        }
+      }
+      .btn {
+        margin: 15px 0;
+        padding: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}

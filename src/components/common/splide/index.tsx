@@ -71,7 +71,7 @@ const SplideCarousel: React.FC<Props> = ({ apiEndPoint, dataFetch }) => {
             }
           }}
         >
-          {data.data?.map((anime: AnimeType) => (
+          {data?.data?.map((anime: AnimeType) => (
             <SplideSlide className={styles.SplideSlide} key={anime.id}>
               <Link href={`/animes/${anime.name}`}>
                 <div className={styles.slide}>

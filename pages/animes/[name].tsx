@@ -37,7 +37,6 @@ const Animes = () => {
 
     const res = await animeService.getAnime(name);
     setAnime(res);
-
     setLoading(false);
   };
 

@@ -4,26 +4,22 @@ import { useRouter } from 'next/router';
 const withProtect = (WrappedComponent: React.ComponentType) => {
   const ProtectedRoute = (props: any) => {
     const router = useRouter();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
-      const checkAuthStatus = async () => {
-        try {
-          const token = sessionStorage.getItem('nekoanimes-token');
-          if (token) {
-            setIsAuthenticated(!!token);
-          } else {
-            router.replace('/login');
-          }
-        } catch (error) {
-          router.replace('/login');
-        }
-      };
-
-      checkAuthStatus();
+      const token = sessionStorage.getItem('nekoanimes-token');
+      if (token) {
+        setIsAuth(true);
+      } else {
+        router.replace('/login');
+      }
     }, [router]);
 
-    return <>{isAuthenticated && <WrappedComponent {...props} />}</>;
+    if (!isAuth) {
+      return null;
+    }
+
+    return <WrappedComponent {...props} />;
   };
 
   return ProtectedRoute;

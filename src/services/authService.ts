@@ -52,6 +52,17 @@ const authService = {
       const token = res.data.token;
     }
     return res;
+  },
+  loginAdmin: async (attributes: Login) => {
+    const res = await api.post('/loginAdmin', attributes).catch(error => {
+      if (error.response.status === 400 || error.response.status === 401) return error.response;
+      return error;
+    });
+
+    if (res.status === 201 || res.status === 200) {
+      sessionStorage.setItem('nekoanimes-token-admin', res.data.token);
+    }
+    return res;
   }
 };
 
