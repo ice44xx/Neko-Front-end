@@ -1,5 +1,4 @@
 # Neko Animes
-![image](https://github.com/ice44xx/Neko-Frontend/assets/112848324/6b3e81ae-5f6f-4aff-9190-9de4794c2632)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
